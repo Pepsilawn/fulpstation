@@ -94,7 +94,7 @@
 	belt = /obj/item/storage/belt/security/webbing/full
 	glasses = /obj/item/clothing/glasses/thermal/eyepatch
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
-	mask = /obj/item/clothing/mask/gas/sechailer/swat$
+	mask = /obj/item/clothing/mask/gas/sechailer/swat
 	l_hand = /obj/item/gun/energy/e_gun
 
 // ENGINEERING ERT OUTFITS
