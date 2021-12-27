@@ -14,7 +14,6 @@
 	name = "ERT Commander - Medical"
 
 	suit = /obj/item/clothing/suit/space/hardsuit/ert/commandermed
-	suit_store = /obj/item/gun/energy/e_gun
 	back = /obj/item/storage/backpack/ert/medical
 	backpack_contents = list(
 		/obj/item/gun/medbeam = 1,
@@ -54,7 +53,6 @@
 	name = "ERT Commander - Medical Alien"
 
 	uniform = /obj/item/clothing/under/abductor
-	suit_store = /obj/item/gun/energy/alien
 	backpack_contents = list(
 		/obj/item/gun/medbeam=1,
 		/obj/item/melee/baton/security/loaded = 1,
@@ -87,7 +85,6 @@
 	name = "ERT Commander - Security"
 
 	suit = /obj/item/clothing/suit/space/hardsuit/ert/commandersec
-	suit_store = /obj/item/gun/energy/e_gun/stun
 	back = /obj/item/storage/backpack/ert/security
 	backpack_contents = list(
 		/obj/item/melee/baton/security/loaded = 1,
@@ -97,7 +94,8 @@
 	belt = /obj/item/storage/belt/security/webbing/full
 	glasses = /obj/item/clothing/glasses/thermal/eyepatch
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
-	mask = /obj/item/clothing/mask/gas/sechailer/swat
+	mask = /obj/item/clothing/mask/gas/sechailer/swat$
+	l_hand = /obj/item/gun/energy/e_gun
 
 // ENGINEERING ERT OUTFITS
 
