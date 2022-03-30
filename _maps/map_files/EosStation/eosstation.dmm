@@ -377,6 +377,10 @@
 	},
 /turf/open/floor/plating/rust,
 /area/maintenance/port/fore)
+"adc" = (
+/obj/structure/sign/poster/contraband/syndicate_recruitment,
+/turf/closed/wall/r_wall/syndicate,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "ade" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/atmospherics/pipe/smart/simple/cyan/visible{
@@ -584,6 +588,11 @@
 /obj/effect/landmark/blobstart,
 /turf/open/floor/plating,
 /area/maintenance/port/aft)
+"aeI" = (
+/obj/structure/cable,
+/obj/effect/spawner/random/structure/girder,
+/turf/open/floor/engine,
+/area/maintenance/port/aft)
 "aeM" = (
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
@@ -596,6 +605,12 @@
 "aeQ" = (
 /turf/closed/wall/r_wall,
 /area/ai_monitored/turret_protected/ai_upload)
+"afg" = (
+/obj/machinery/atmospherics/components/unary/vent_pump{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "afi" = (
 /obj/machinery/camera{
 	c_tag = "Security South Bridge";
@@ -2540,6 +2555,14 @@
 /obj/structure/cable,
 /turf/open/floor/holofloor/chapel,
 /area/service/chapel)
+"auG" = (
+/obj/machinery/light/directional/north,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 10
+	},
+/obj/item/wrench,
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "auJ" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -3327,14 +3350,35 @@
 /turf/closed/wall,
 /area/science/genetics)
 "aAM" = (
-/obj/machinery/light/directional/west,
-/turf/open/floor/mineral/titanium/white,
-/area/maintenance/port/aft)
+/obj/structure/closet/syndicate{
+	anchored = 1;
+	armor = list("melee" = 70, "bullet" = 40, "laser" = 40, "energy" = 30, "bomb" = 30, "bio" = 0, "fire" = 70, "acid" = 60);
+	desc = "A basic closet for all your villainous needs.";
+	locked = 1;
+	name = "Closet";
+	req_one_access_txt = "150";
+	secure = 1
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "aAR" = (
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
 /area/maintenance/starboard/aft)
+"aAS" = (
+/obj/structure/closet/syndicate{
+	anchored = 1;
+	armor = list("melee" = 70, "bullet" = 40, "laser" = 40, "energy" = 30, "bomb" = 30, "bio" = 0, "fire" = 70, "acid" = 60);
+	desc = "A basic closet for all your villainous needs.";
+	locked = 1;
+	name = "Closet";
+	req_one_access_txt = "150";
+	secure = 1
+	},
+/obj/item/crowbar/red,
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "aAT" = (
 /obj/machinery/door/airlock{
 	name = "Theatre";
@@ -4308,6 +4352,12 @@
 	},
 /turf/open/floor/engine/o2,
 /area/engineering/atmos)
+"aIV" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/structure/girder,
+/turf/open/floor/plating,
+/area/maintenance/port/aft)
 "aJi" = (
 /obj/machinery/status_display/evac/directional/south,
 /obj/effect/turf_decal/siding/red,
@@ -4735,6 +4785,9 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/iron,
 /area/hallway/primary/fore)
+"aNQ" = (
+/turf/closed/mineral/random/low_chance,
+/area/space)
 "aNT" = (
 /obj/machinery/atmospherics/components/binary/pump{
 	dir = 8;
@@ -4989,15 +5042,6 @@
 	},
 /turf/open/floor/iron,
 /area/hallway/primary/fore)
-"aQK" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/fluff/broken_flooring{
-	dir = 8;
-	icon_state = "singular"
-	},
-/turf/open/floor/plating,
-/area/maintenance/port/aft)
 "aQM" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
@@ -5013,6 +5057,10 @@
 /obj/machinery/light/directional/west,
 /turf/open/floor/iron/freezer,
 /area/commons/toilet/restrooms)
+"aRb" = (
+/obj/machinery/atmospherics/components/unary/vent_pump,
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "aRd" = (
 /turf/closed/wall/r_wall,
 /area/ai_monitored/turret_protected/aisat_interior)
@@ -5352,6 +5400,11 @@
 /obj/structure/table/wood/fancy,
 /turf/open/floor/plating/rust,
 /area/maintenance/fore/greater)
+"aTV" = (
+/obj/structure/cable,
+/obj/effect/spawner/random/structure/girder,
+/turf/open/floor/plating,
+/area/maintenance/port/aft)
 "aTW" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 10
@@ -7965,6 +8018,9 @@
 /obj/machinery/smartfridge/chemistry,
 /turf/closed/wall,
 /area/medical/pharmacy)
+"bfu" = (
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "bfx" = (
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "Maintenance Hatch"
@@ -8506,13 +8562,6 @@
 	dir = 8
 	},
 /obj/structure/cable,
-/obj/item/ai_module/core/freeformcore,
-/obj/item/ai_module/core/full/drone,
-/obj/item/ai_module/core/full/hippocratic,
-/obj/item/ai_module/core/full/hulkamania,
-/obj/item/ai_module/core/full/overlord,
-/obj/item/ai_module/core/full/peacekeeper,
-/obj/item/ai_module/core/full/thermurderdynamic,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
@@ -8520,6 +8569,8 @@
 	dir = 1;
 	layer = 2.9
 	},
+/obj/item/ai_module/core/full/hulkamania,
+/obj/item/ai_module/core/full/hulkamania,
 /turf/open/floor/iron,
 /area/ai_monitored/turret_protected/ai_upload)
 "bjK" = (
@@ -8547,7 +8598,6 @@
 	},
 /obj/machinery/camera{
 	c_tag = "Medbay - Examination";
-	dir = 10;
 	name = "medbay camera";
 	network = list("ss13","medbay")
 	},
@@ -8559,10 +8609,6 @@
 	icon_state = "platingdmg3"
 	},
 /area/maintenance/starboard/lesser)
-"bki" = (
-/obj/structure/chess/blackqueen,
-/turf/open/floor/engine,
-/area/maintenance/port/aft)
 "bkI" = (
 /obj/machinery/chem_master,
 /obj/machinery/airalarm/directional/west,
@@ -9883,6 +9929,14 @@
 	},
 /turf/open/floor/iron/white,
 /area/medical/pharmacy)
+"bxb" = (
+/obj/structure/table/reinforced,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "bxh" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
@@ -10363,9 +10417,14 @@
 /turf/open/floor/iron,
 /area/hallway/primary/starboard)
 "bBs" = (
-/obj/structure/chess/blackrook,
-/turf/open/floor/engine,
-/area/maintenance/port/aft)
+/obj/structure/window/reinforced/plasma/plastitanium,
+/obj/machinery/door/poddoor{
+	id = "fslockdown";
+	name = "Ship blast door";
+	state_open = 1
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "bBu" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 8
@@ -10554,6 +10613,10 @@
 	},
 /turf/open/floor/iron,
 /area/hallway/primary/starboard)
+"bFJ" = (
+/obj/structure/girder/displaced,
+/turf/open/misc/asteroid/airless,
+/area/space/nearstation)
 "bFK" = (
 /obj/structure/reagent_dispensers/fueltank,
 /obj/effect/turf_decal/tile/purple{
@@ -10946,11 +11009,6 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/item/ai_module/ion,
-/obj/item/ai_module/reset/purge,
-/obj/item/ai_module/supplied/oxygen,
-/obj/item/ai_module/supplied/safeguard,
-/obj/item/ai_module/syndicate,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
@@ -10959,6 +11017,9 @@
 	layer = 2.9
 	},
 /obj/machinery/light/directional/east,
+/obj/item/ai_module/reset/purge,
+/obj/item/ai_module/reset,
+/obj/item/ai_module/core/freeformcore,
 /turf/open/floor/iron,
 /area/ai_monitored/turret_protected/ai_upload)
 "bKX" = (
@@ -11439,6 +11500,18 @@
 	},
 /turf/open/floor/iron,
 /area/engineering/main)
+"bRG" = (
+/obj/machinery/door/airlock/grunge{
+	name = "Captain's room";
+	req_one_access_txt = "150"
+	},
+/obj/machinery/door/poddoor{
+	id = "fscaproom";
+	name = "Captain's blast door";
+	state_open = 1
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "bRP" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/maintenance_hatch{
@@ -11837,6 +11910,10 @@
 	},
 /turf/open/floor/iron,
 /area/service/hydroponics)
+"bYd" = (
+/obj/structure/table/reinforced,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "bYg" = (
 /obj/machinery/navbeacon/wayfinding/dockarrival,
 /turf/open/floor/iron,
@@ -13294,6 +13371,10 @@
 	},
 /turf/open/floor/plating,
 /area/hallway/primary/central)
+"ciK" = (
+/obj/structure/tank_dispenser/oxygen,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "ciL" = (
 /obj/item/radio/intercom/directional/east,
 /obj/effect/turf_decal/stripes/line{
@@ -13838,6 +13919,13 @@
 	},
 /turf/open/floor/iron,
 /area/hallway/secondary/entry)
+"cmy" = (
+/obj/structure/displaycase{
+	req_one_access_txt = "150";
+	start_showpiece_type = /obj/item/gun/ballistic/automatic/pistol/deagle/camo
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "cmA" = (
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/iron/white,
@@ -14042,6 +14130,7 @@
 	dir = 8
 	},
 /obj/effect/spawner/structure/window/reinforced,
+/obj/structure/sign/warning/securearea,
 /turf/open/floor/plating,
 /area/hallway/secondary/entry)
 "coe" = (
@@ -16252,6 +16341,9 @@
 	},
 /turf/open/floor/iron,
 /area/hallway/primary/central)
+"cFc" = (
+/turf/open/space/basic,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "cFj" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -16310,6 +16402,16 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
+"cFF" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/mob/living/simple_animal/hostile/syndicate/ranged/smg/space/stormtrooper,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "cFH" = (
 /obj/machinery/space_heater,
 /turf/open/floor/plating/rust,
@@ -16357,6 +16459,13 @@
 	},
 /turf/open/floor/iron/dark,
 /area/security/execution/transfer)
+"cFU" = (
+/obj/structure/closet/crate/secure/gear{
+	req_one_access_txt = "150"
+	},
+/obj/effect/spawner/random/food_or_drink/donkpockets,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "cFV" = (
 /turf/open/misc/beach/coastline_b,
 /area/hallway/secondary/entry)
@@ -18154,6 +18263,10 @@
 "cZD" = (
 /turf/closed/wall,
 /area/maintenance/port/aft)
+"cZL" = (
+/obj/machinery/light/directional/east,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "cZV" = (
 /obj/docking_port/stationary{
 	dir = 4;
@@ -18225,6 +18338,10 @@
 /obj/effect/turf_decal/tile/red,
 /turf/open/floor/iron,
 /area/security/prison/safe)
+"daF" = (
+/obj/structure/chair/comfy/black,
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "daL" = (
 /obj/structure/chair{
 	dir = 8
@@ -18300,9 +18417,10 @@
 /turf/open/floor/carpet/red,
 /area/command/heads_quarters/hos)
 "dcd" = (
-/obj/structure/chess/whiterook,
-/turf/open/floor/engine,
-/area/maintenance/port/aft)
+/obj/machinery/computer/crew,
+/obj/item/megaphone,
+/turf/open/floor/iron,
+/area/ai_monitored/turret_protected/ai)
 "dcf" = (
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
@@ -18631,6 +18749,11 @@
 	},
 /turf/open/floor/iron/dark,
 /area/security/brig)
+"dga" = (
+/obj/structure/table/reinforced,
+/obj/item/ammo_box/c9mm,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "dgd" = (
 /turf/open/floor/iron,
 /area/service/janitor)
@@ -19218,6 +19341,12 @@
 	},
 /turf/open/floor/carpet/red,
 /area/service/library)
+"dnr" = (
+/obj/structure/shuttle/engine/propulsion{
+	dir = 8
+	},
+/turf/open/space/basic,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "dnu" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -19794,9 +19923,16 @@
 /turf/open/floor/plating/foam,
 /area/maintenance/fore/greater)
 "dvx" = (
-/obj/structure/chess/blackpawn,
-/turf/open/floor/engine,
-/area/maintenance/port/aft)
+/obj/machinery/light/directional/west,
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
+"dvB" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 6
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "dvU" = (
 /obj/structure/table/wood,
 /obj/item/food/cake/bscc,
@@ -20613,6 +20749,10 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron,
 /area/hallway/primary/fore)
+"dFW" = (
+/obj/structure/table/optable,
+/turf/open/floor/plastic,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "dFY" = (
 /obj/machinery/computer/arcade/orion_trail{
 	desc = "For gamers only. Casuals need not apply.";
@@ -22952,6 +23092,15 @@
 /obj/machinery/holopad,
 /turf/open/floor/iron,
 /area/cargo/storage)
+"egU" = (
+/obj/machinery/camera/xray{
+	c_tag = "Medbay";
+	dir = 6;
+	network = list("fsci");
+	screen_loc = ""
+	},
+/turf/open/floor/plastic,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "ehh" = (
 /obj/machinery/light/directional/west,
 /obj/structure/closet/crate,
@@ -23386,6 +23535,12 @@
 	},
 /turf/open/floor/plating,
 /area/command/bridge)
+"ema" = (
+/obj/machinery/computer/atmos_alert{
+	dir = 8
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "eme" = (
 /obj/effect/turf_decal/siding/white{
 	dir = 8
@@ -25136,6 +25291,15 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/external/port)
+"eHU" = (
+/obj/structure/cable,
+/obj/structure/fans/tiny,
+/obj/machinery/door/airlock/external/ruin{
+	name = "Syndicate ship airlock";
+	req_one_access_txt = "150"
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "eHV" = (
 /obj/machinery/computer/bookmanagement,
 /obj/structure/table/wood,
@@ -25273,6 +25437,18 @@
 	},
 /turf/open/floor/iron,
 /area/engineering/atmos/upper)
+"eIT" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "eJf" = (
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
@@ -26246,11 +26422,6 @@
 /obj/effect/landmark/start/head_of_security,
 /turf/open/floor/carpet/red,
 /area/command/heads_quarters/hos)
-"eTz" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random/maintenance,
-/turf/open/floor/plating/rust,
-/area/maintenance/port/aft)
 "eTJ" = (
 /obj/structure/cable,
 /obj/machinery/door/firedoor,
@@ -26939,6 +27110,10 @@
 	},
 /turf/open/floor/iron,
 /area/command/heads_quarters/ce)
+"far" = (
+/obj/machinery/vending/cigarette/syndicate,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "fay" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -27080,6 +27255,9 @@
 /obj/effect/turf_decal/tile/red,
 /turf/open/floor/iron,
 /area/security/prison/garden)
+"fbA" = (
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
+/area/maintenance/port/aft)
 "fcb" = (
 /obj/machinery/status_display/ai/directional/east,
 /obj/effect/turf_decal/siding/purple{
@@ -27529,10 +27707,6 @@
 	},
 /turf/open/floor/iron,
 /area/engineering/main)
-"fhS" = (
-/obj/structure/chess/whitequeen,
-/turf/open/floor/mineral/titanium/white,
-/area/maintenance/port/aft)
 "fia" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
@@ -27850,6 +28024,18 @@
 	},
 /turf/open/floor/iron,
 /area/hallway/primary/starboard)
+"flT" = (
+/obj/machinery/door/airlock/grunge{
+	name = "Captain's room";
+	req_one_access_txt = "150"
+	},
+/obj/machinery/door/poddoor{
+	id = "fscaproom";
+	name = "Captain's blast door";
+	state_open = 1
+	},
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "fmf" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
@@ -29915,6 +30101,12 @@
 	},
 /turf/open/floor/iron,
 /area/ai_monitored/command/storage/eva)
+"fKX" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "fLf" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
@@ -30124,16 +30316,8 @@
 	},
 /area/maintenance/fore/lesser)
 "fME" = (
-/obj/structure/lattice,
-/obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch"
-	},
-/obj/structure/barricade/wooden,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
-/turf/open/misc/asteroid/airless,
-/area/space/nearstation)
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "fMJ" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 9
@@ -30647,6 +30831,10 @@
 /obj/machinery/door/airlock/public/glass,
 /turf/open/floor/iron,
 /area/hallway/secondary/command)
+"fSI" = (
+/obj/effect/spawner/random/structure/girder,
+/turf/open/floor/plating,
+/area/maintenance/port/aft)
 "fTb" = (
 /obj/item/pickaxe/mini,
 /turf/open/misc/asteroid/airless,
@@ -30724,6 +30912,14 @@
 /obj/item/storage/bag/ore,
 /turf/open/misc/asteroid/airless,
 /area/space/nearstation)
+"fUW" = (
+/obj/item/stack/sheet/mineral/uranium{
+	amount = 15
+	},
+/obj/structure/cable,
+/obj/machinery/light/directional/north,
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "fVb" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -31164,6 +31360,10 @@
 	},
 /turf/open/floor/iron/white,
 /area/medical/chemistry)
+"fYo" = (
+/obj/effect/spawner/random/structure/girder,
+/turf/open/floor/mineral/titanium/white,
+/area/maintenance/port/aft)
 "fYt" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -32278,6 +32478,14 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/cargo/storage)
+"goe" = (
+/obj/machinery/door/window{
+	armor = list("melee" = 50, "bullet" = 50, "laser" = 50, "energy" = 50, "bomb" = 10, "bio" = 100, "fire" = 70, "acid" = 100);
+	name = "Control room";
+	req_one_access_txt = "150"
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "gof" = (
 /obj/structure/table/reinforced,
 /obj/effect/turf_decal/siding/purple{
@@ -32469,6 +32677,14 @@
 /obj/machinery/shieldgen,
 /turf/open/floor/iron,
 /area/engineering/main)
+"gpC" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "gpE" = (
 /obj/structure/cable,
 /obj/item/radio/intercom/directional/east{
@@ -33553,14 +33769,6 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/item/ai_module/core/full/antimov,
-/obj/item/ai_module/core/full/asimov,
-/obj/item/ai_module/core/full/asimovpp,
-/obj/item/ai_module/core/full/damaged,
-/obj/item/ai_module/core/full/liveandletlive,
-/obj/item/ai_module/core/full/paladin,
-/obj/item/ai_module/core/full/reporter,
-/obj/item/ai_module/core/full/tyrant,
 /obj/machinery/door/window/brigdoor/westright{
 	dir = 4;
 	name = "Core Modules";
@@ -33573,6 +33781,8 @@
 	network = list("aiupload")
 	},
 /obj/machinery/light/directional/west,
+/obj/item/ai_module/core/full/hulkamania,
+/obj/item/ai_module/core/full/hulkamania,
 /turf/open/floor/iron,
 /area/ai_monitored/turret_protected/ai_upload)
 "gDw" = (
@@ -33607,6 +33817,9 @@
 	},
 /turf/open/floor/iron,
 /area/cargo/miningoffice)
+"gDG" = (
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "gDJ" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 8
@@ -34810,6 +35023,14 @@
 /obj/structure/chair,
 /turf/open/floor/glass/reinforced,
 /area/hallway/secondary/construction/engineering)
+"gST" = (
+/obj/machinery/power/terminal{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/item/paper/fluff/ruins/forgottenship/powerissues,
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "gSZ" = (
 /obj/effect/turf_decal/siding/red{
 	dir = 4
@@ -36294,6 +36515,10 @@
 	},
 /turf/open/floor/iron,
 /area/cargo/office)
+"hmf" = (
+/obj/structure/chair/comfy,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "hmj" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /obj/machinery/airalarm/directional/north,
@@ -36769,6 +36994,14 @@
 /obj/item/instrument/harmonica,
 /turf/open/floor/plating,
 /area/hallway/primary/starboard)
+"hpY" = (
+/obj/structure/closet/crate/secure/gear{
+	req_one_access_txt = "150"
+	},
+/obj/effect/spawner/random/maintenance,
+/obj/effect/spawner/random/maintenance,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "hpZ" = (
 /obj/structure/showcase/cyborg/old{
 	dir = 4;
@@ -37026,6 +37259,11 @@
 	},
 /turf/open/floor/iron/grimy,
 /area/service/abandoned_gambling_den)
+"hth" = (
+/obj/structure/table/reinforced,
+/obj/item/toy/plush/nukeplushie,
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "hti" = (
 /turf/closed/wall/r_wall,
 /area/hallway/primary/tram/right)
@@ -37736,6 +37974,14 @@
 /obj/effect/turf_decal/tile/yellow,
 /turf/open/floor/iron,
 /area/cargo/storage)
+"hAm" = (
+/obj/structure/cable,
+/obj/machinery/door/airlock/external/ruin{
+	name = "Syndicate ship airlock";
+	req_one_access_txt = "150"
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "hAn" = (
 /obj/structure/rack,
 /obj/item/assembly/voice,
@@ -38206,6 +38452,15 @@
 	dir = 8
 	},
 /area/command/bridge)
+"hGq" = (
+/obj/structure/table/reinforced,
+/obj/machinery/button/door{
+	id = "fslockdown";
+	name = "Window shutters";
+	req_one_access_txt = "150"
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "hGB" = (
 /obj/structure/cable,
 /obj/machinery/rnd/production/protolathe/department/medical,
@@ -38498,6 +38753,16 @@
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/iron,
 /area/command/teleporter)
+"hJG" = (
+/obj/machinery/door/airlock/grunge{
+	name = "Bridge";
+	req_one_access_txt = "150"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "hJI" = (
 /obj/structure/table/wood,
 /obj/structure/cable,
@@ -38912,6 +39177,9 @@
 /obj/item/clothing/neck/stethoscope,
 /turf/open/floor/iron/white,
 /area/command/heads_quarters/cmo)
+"hNr" = (
+/turf/open/floor/plastic,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "hNt" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -39479,6 +39747,15 @@
 /obj/effect/turf_decal/tile/yellow,
 /turf/open/floor/iron,
 /area/cargo/storage)
+"hTt" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "hTu" = (
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/carpet/lone,
@@ -39561,10 +39838,6 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/mineral/titanium/white,
-/area/maintenance/port/aft)
-"hUg" = (
-/obj/structure/chess/whitepawn,
-/turf/open/floor/engine,
 /area/maintenance/port/aft)
 "hUj" = (
 /obj/structure/cable,
@@ -40337,11 +40610,6 @@
 "ido" = (
 /turf/open/floor/circuit/green,
 /area/engineering/gravity_generator)
-"idr" = (
-/obj/structure/chess/blackbishop,
-/obj/machinery/light/directional/north,
-/turf/open/floor/engine,
-/area/maintenance/port/aft)
 "idy" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -40618,6 +40886,13 @@
 /obj/structure/sign/poster/random,
 /turf/closed/wall,
 /area/maintenance/external/port/bow)
+"igh" = (
+/obj/machinery/button/crematorium{
+	id = "fscremate";
+	pixel_x = -32
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "igj" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
@@ -40836,6 +41111,10 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/iron,
 /area/engineering/main)
+"iiN" = (
+/obj/structure/girder/displaced,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "iiO" = (
 /obj/machinery/button/door/directional/south{
 	id = "Cargo Shipment";
@@ -41561,6 +41840,12 @@
 	},
 /turf/open/floor/iron/white,
 /area/medical/pharmacy)
+"iqh" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer2{
+	dir = 8
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "iqi" = (
 /obj/machinery/airalarm/directional/north,
 /turf/open/floor/iron,
@@ -41887,10 +42172,13 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/cargo/storage)
-"itw" = (
-/obj/structure/chess/blackknight,
-/turf/open/floor/engine,
-/area/maintenance/port/aft)
+"ito" = (
+/obj/machinery/shower{
+	dir = 1
+	},
+/obj/machinery/light/directional/south,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "itz" = (
 /obj/structure/table/wood,
 /obj/item/food/pie/cream,
@@ -42089,6 +42377,10 @@
 	},
 /turf/closed/wall/r_wall,
 /area/engineering/atmos)
+"iwm" = (
+/obj/machinery/computer/operating,
+/turf/open/floor/plastic,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "iwo" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment,
@@ -42106,6 +42398,13 @@
 	},
 /turf/open/floor/iron/stairs/left,
 /area/command/heads_quarters/captain)
+"iwE" = (
+/obj/structure/sink{
+	pixel_y = 32
+	},
+/obj/structure/mirror/directional/west,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "iwO" = (
 /obj/machinery/computer/station_alert{
 	dir = 1
@@ -42162,17 +42461,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/ai_monitored/turret_protected/aisat/foyer)
-"ixH" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/fluff/broken_flooring{
-	dir = 4;
-	icon_state = "pile"
-	},
-/obj/structure/sign/poster/contraband/random{
-	pixel_y = 32
-	},
-/turf/open/floor/plating,
-/area/maintenance/port/aft)
 "ixI" = (
 /obj/effect/turf_decal/siding/yellow,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -42236,6 +42524,15 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/solars/starboard/fore)
+"iyy" = (
+/obj/structure/closet/crate/secure/gear{
+	req_one_access_txt = "150"
+	},
+/obj/item/stack/ore/plasma{
+	amount = 19
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "iyC" = (
 /obj/structure/window/reinforced{
 	dir = 4;
@@ -43928,6 +44225,12 @@
 	},
 /turf/open/floor/iron,
 /area/hallway/primary/starboard)
+"iSm" = (
+/obj/structure/chair/comfy{
+	dir = 1
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "iSp" = (
 /obj/structure/chair{
 	dir = 4
@@ -44195,6 +44498,13 @@
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/open/misc/grass,
 /area/medical/virology)
+"iUO" = (
+/obj/machinery/airalarm/syndicate{
+	dir = 1;
+	pixel_y = 24
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "iUP" = (
 /obj/item/beacon,
 /turf/open/floor/iron,
@@ -44559,6 +44869,9 @@
 	},
 /turf/open/floor/engine,
 /area/science/xenobiology)
+"iYf" = (
+/turf/closed/wall/r_wall/syndicate,
+/area/maintenance/port/aft)
 "iYg" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/plating/rust,
@@ -44810,14 +45123,6 @@
 /obj/machinery/holopad,
 /turf/open/floor/engine,
 /area/science/research)
-"jaM" = (
-/obj/structure/fluff/broken_flooring{
-	dir = 8;
-	icon_state = "singular"
-	},
-/obj/item/storage/belt,
-/turf/open/floor/plating,
-/area/maintenance/port/aft)
 "jaN" = (
 /obj/item/book/manual/wiki/security_space_law,
 /obj/item/restraints/handcuffs,
@@ -45753,6 +46058,12 @@
 /obj/machinery/light/small/directional/north,
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
+"jnj" = (
+/obj/structure/bodycontainer/crematorium{
+	id = "fscremate"
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "jno" = (
 /obj/machinery/door/window/westleft{
 	dir = 2
@@ -46315,6 +46626,13 @@
 	},
 /turf/open/floor/iron/white,
 /area/science/xenobiology)
+"juC" = (
+/obj/structure/closet/crate/secure/gear{
+	req_one_access_txt = "150"
+	},
+/obj/effect/spawner/random/clothing/costume,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "juE" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/brown,
@@ -46329,6 +46647,10 @@
 	icon_state = "platingdmg2"
 	},
 /area/maintenance/fore/greater)
+"juL" = (
+/obj/machinery/recharge_station,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "juR" = (
 /obj/item/kirbyplants/random,
 /obj/effect/turf_decal/siding/green{
@@ -47579,9 +47901,12 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
 "jHF" = (
-/obj/item/tank/internals/oxygen,
-/turf/open/misc/asteroid/airless,
-/area/space/nearstation)
+/obj/machinery/door/airlock/external/ruin{
+	name = "Syndicate ship airlock";
+	req_one_access_txt = "150"
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "jHX" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -47976,6 +48301,15 @@
 /obj/item/radio/intercom/directional/south,
 /turf/open/floor/plating,
 /area/maintenance/port)
+"jMg" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 9
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "jMh" = (
 /obj/effect/turf_decal/siding/purple{
 	dir = 4
@@ -48802,6 +49136,11 @@
 	icon_state = "platingdmg3"
 	},
 /area/maintenance/starboard/greater)
+"jTW" = (
+/obj/machinery/light/directional/north,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer2,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "jTZ" = (
 /obj/structure/chair{
 	dir = 1
@@ -49233,6 +49572,12 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
+"jYp" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "jYs" = (
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/stripes/line{
@@ -50147,10 +50492,11 @@
 /turf/open/floor/iron,
 /area/commons/dorms)
 "kht" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/turf/closed/wall/rust,
-/area/maintenance/port/aft)
+/obj/machinery/computer/camera_advanced/syndie{
+	dir = 8
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "khu" = (
 /obj/structure/table,
 /turf/open/floor/plating,
@@ -50522,6 +50868,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/mineral/silver,
 /area/hallway/secondary/construction/engineering)
+"klJ" = (
+/obj/structure/table/reinforced,
+/turf/open/floor/plastic,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "klK" = (
 /obj/structure/rack,
 /obj/item/pickaxe,
@@ -50735,6 +51085,13 @@
 /obj/item/bedsheet/random,
 /turf/open/floor/iron,
 /area/commons/dorms)
+"knH" = (
+/obj/machinery/power/port_gen/pacman/super{
+	anchored = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "knO" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 9
@@ -50748,6 +51105,20 @@
 /obj/effect/turf_decal/tile/red,
 /turf/open/floor/iron,
 /area/security/prison/visit)
+"knQ" = (
+/obj/machinery/door/airlock/grunge{
+	name = "Syndicate Ship Airlock";
+	req_one_access_txt = "150"
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "kof" = (
 /obj/machinery/light/small/directional/south,
 /obj/effect/decal/cleanable/dirt,
@@ -51236,6 +51607,15 @@
 /obj/structure/closet/secure_closet/engineering_electrical,
 /turf/open/floor/plating,
 /area/solars/aux/starboard)
+"ksG" = (
+/obj/structure/closet/crate/secure/gear{
+	req_one_access_txt = "150"
+	},
+/obj/item/stack/ore/diamond{
+	amount = 3
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "ksT" = (
 /obj/structure/table/reinforced,
 /obj/effect/turf_decal/siding/purple{
@@ -51736,6 +52116,12 @@
 	},
 /turf/open/floor/iron/white,
 /area/medical/storage)
+"kyQ" = (
+/obj/machinery/atmospherics/components/tank/air{
+	dir = 8
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "kyR" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 5
@@ -51837,9 +52223,20 @@
 /turf/open/floor/plating,
 /area/maintenance/port)
 "kAq" = (
-/obj/structure/chess/whitepawn,
-/turf/open/floor/mineral/titanium/white,
-/area/maintenance/port/aft)
+/obj/structure/closet/syndicate{
+	anchored = 1;
+	armor = list("melee" = 70, "bullet" = 40, "laser" = 40, "energy" = 30, "bomb" = 30, "bio" = 0, "fire" = 70, "acid" = 60);
+	desc = "A basic closet for all your villainous needs.";
+	locked = 1;
+	name = "Closet";
+	req_one_access_txt = "150";
+	secure = 1
+	},
+/obj/item/clothing/under/syndicate/combat,
+/obj/item/clothing/mask/gas/syndicate,
+/obj/item/clothing/under/syndicate/skirt,
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "kAx" = (
 /obj/structure/chair/comfy{
 	dir = 1
@@ -52046,6 +52443,13 @@
 	},
 /turf/open/floor/engine,
 /area/science/xenobiology)
+"kCO" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer2{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "kCP" = (
 /obj/structure/chair/comfy/brown{
 	dir = 8
@@ -52506,6 +52910,22 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/plating,
 /area/cargo/warehouse)
+"kIp" = (
+/obj/structure/closet/syndicate{
+	anchored = 1;
+	armor = list("melee" = 70, "bullet" = 40, "laser" = 40, "energy" = 30, "bomb" = 30, "bio" = 0, "fire" = 70, "acid" = 60);
+	desc = "A basic closet for all your villainous needs.";
+	locked = 1;
+	name = "Closet";
+	req_one_access_txt = "150";
+	secure = 1
+	},
+/obj/item/clothing/head/hos/beret/syndicate,
+/obj/item/clothing/mask/gas/syndicate,
+/obj/item/clothing/under/syndicate,
+/obj/item/clothing/under/syndicate/skirt,
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "kIt" = (
 /obj/machinery/hydroponics/soil,
 /obj/item/seeds/sunflower,
@@ -52723,17 +53143,12 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/item/ai_module/core/full/balance,
-/obj/item/ai_module/core/full/corp,
-/obj/item/ai_module/core/full/custom,
-/obj/item/ai_module/core/full/cybersun,
-/obj/item/ai_module/core/full/maintain,
-/obj/item/ai_module/core/full/paladin_devotion,
-/obj/item/ai_module/core/full/robocop,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
 /obj/structure/window/reinforced,
+/obj/item/ai_module/core/full/hulkamania,
+/obj/item/ai_module/core/full/hulkamania,
 /turf/open/floor/iron,
 /area/ai_monitored/turret_protected/ai_upload)
 "kKQ" = (
@@ -53425,6 +53840,13 @@
 /obj/machinery/light/directional/north,
 /turf/open/floor/iron,
 /area/engineering/storage/tech)
+"kSE" = (
+/obj/machinery/light/directional/south,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "kSH" = (
 /obj/structure/disposalpipe/segment{
 	dir = 9
@@ -55339,6 +55761,11 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/starboard/greater)
+"lnG" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/structure/sign/warning/securearea,
+/turf/open/floor/plating,
+/area/hallway/primary/aft)
 "lnQ" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -55381,6 +55808,14 @@
 	},
 /turf/open/floor/engine,
 /area/hallway/secondary/command)
+"log" = (
+/obj/machinery/camera/xray/directional/east{
+	c_tag = "Conference room";
+	network = list("fsc");
+	screen_loc = ""
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "lor" = (
 /obj/structure/chair/sofa/corp{
 	dir = 1
@@ -56106,6 +56541,10 @@
 	},
 /turf/open/floor/iron/grimy,
 /area/service/theater)
+"lwk" = (
+/obj/machinery/light/directional/north,
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "lwn" = (
 /obj/structure/cable,
 /obj/machinery/power/solar{
@@ -56860,6 +57299,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/maintenance/department/engine)
+"lEK" = (
+/obj/machinery/door/airlock/grunge{
+	name = "Syndicate Ship Airlock";
+	req_one_access_txt = "150"
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "lEN" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 4
@@ -57806,11 +58252,6 @@
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
-"lQf" = (
-/obj/structure/chess/whitebishop,
-/obj/machinery/light/directional/south,
-/turf/open/floor/engine,
-/area/maintenance/port/aft)
 "lQk" = (
 /obj/structure/displaycase/captain,
 /turf/closed/mineral/random/low_chance,
@@ -58026,6 +58467,10 @@
 	},
 /turf/open/floor/iron,
 /area/maintenance/port/aft)
+"lRp" = (
+/obj/machinery/light/directional/north,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "lRE" = (
 /obj/structure/cable,
 /obj/effect/spawner/random/maintenance,
@@ -58306,15 +58751,12 @@
 /obj/machinery/newscaster/security_unit/directional/east{
 	dir = 4
 	},
-/obj/item/ai_module/reset,
-/obj/item/ai_module/supplied/freeform,
-/obj/item/ai_module/supplied/quarantine,
-/obj/item/ai_module/zeroth,
-/obj/item/ai_module/zeroth/onehuman,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
 /obj/structure/window/reinforced,
+/obj/item/ai_module/core/full/hulkamania,
+/obj/item/ai_module/core/full/hulkamania,
 /turf/open/floor/iron,
 /area/ai_monitored/turret_protected/ai_upload)
 "lUg" = (
@@ -59454,6 +59896,10 @@
 /obj/structure/lattice/catwalk,
 /turf/open/space/basic,
 /area/engineering/atmos)
+"mfU" = (
+/obj/structure/cable,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "mfV" = (
 /obj/structure/disposalpipe/junction{
 	dir = 1
@@ -59899,6 +60345,10 @@
 /obj/effect/turf_decal/tile/purple,
 /turf/open/floor/iron/white,
 /area/science/research)
+"mlo" = (
+/obj/machinery/light/directional/south,
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "mls" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 9
@@ -59929,10 +60379,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/maintenance/starboard/greater)
-"mly" = (
-/obj/structure/chess/blackrook,
-/turf/open/floor/mineral/titanium/white,
-/area/maintenance/port/aft)
 "mlB" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 8
@@ -61189,6 +61635,16 @@
 	},
 /turf/open/floor/iron,
 /area/hallway/primary/port)
+"mAy" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 5
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "mAE" = (
 /obj/machinery/status_display/evac/directional/west,
 /obj/structure/chair/comfy/brown{
@@ -62428,6 +62884,16 @@
 	},
 /turf/open/floor/engine/n2o,
 /area/engineering/atmos)
+"mQc" = (
+/obj/structure/table/reinforced,
+/obj/machinery/computer/security/telescreen/interrogation{
+	name = "Cameras monitor";
+	network = list("fsci");
+	req_one_access_txt = "150";
+	screen_loc = ""
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "mQe" = (
 /obj/machinery/camera{
 	c_tag = "Space -6 ";
@@ -63140,6 +63606,13 @@
 	},
 /turf/open/floor/iron,
 /area/cargo/office)
+"mXK" = (
+/obj/machinery/door/airlock/grunge{
+	name = "Syndicate Ship Airlock";
+	req_one_access_txt = "150"
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "mXM" = (
 /obj/structure/cable,
 /obj/structure/moisture_trap,
@@ -63801,12 +64274,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/medical/virology)
-"ngr" = (
-/obj/structure/cable,
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/fluff/broken_flooring,
-/turf/open/floor/plating,
-/area/maintenance/port/aft)
 "ngv" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
@@ -64140,9 +64607,8 @@
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "njj" = (
-/obj/structure/chess/whiteking,
-/turf/open/floor/engine,
-/area/maintenance/port/aft)
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "njl" = (
 /obj/machinery/power/tracker,
 /obj/structure/cable,
@@ -64320,16 +64786,6 @@
 /obj/structure/chair/comfy/brown,
 /turf/open/floor/carpet/royalblue,
 /area/command/meeting_room/council)
-"nly" = (
-/obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch"
-	},
-/obj/structure/barricade/wooden,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
-/turf/open/floor/plating,
-/area/maintenance/port/aft)
 "nlG" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 8
@@ -64459,6 +64915,10 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/maintenance/starboard/greater)
+"nne" = (
+/obj/structure/girder/displaced,
+/turf/open/floor/mineral/titanium/white,
+/area/maintenance/port/aft)
 "nnf" = (
 /obj/effect/turf_decal/siding/purple,
 /obj/structure/chair/stool,
@@ -66041,10 +66501,13 @@
 /turf/open/floor/iron,
 /area/hallway/primary/starboard)
 "nEA" = (
-/obj/structure/chess/whitebishop,
-/obj/machinery/light/directional/south,
-/turf/open/floor/mineral/titanium/white,
-/area/maintenance/port/aft)
+/obj/machinery/computer/security,
+/obj/item/autosurgeon/organ/cmo{
+	desc = "A single use autosurgeon that contains a robotic voice box augment. A screwdriver can be used to remove it, but implants can't be placed back in.";
+	starting_organ = /obj/item/organ/tongue/robot
+	},
+/turf/open/floor/iron,
+/area/ai_monitored/turret_protected/ai)
 "nEB" = (
 /obj/machinery/portable_atmospherics/canister/plasma,
 /obj/effect/turf_decal/tile/purple{
@@ -66440,6 +66903,13 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/security/warden)
+"nIo" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "nIv" = (
 /obj/effect/turf_decal/siding/yellow{
 	dir = 8
@@ -66629,11 +67099,6 @@
 	},
 /turf/open/floor/iron,
 /area/hallway/primary/port)
-"nKZ" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/reagent_dispensers/fueltank,
-/turf/open/floor/plating/rust,
-/area/maintenance/port/aft)
 "nLf" = (
 /obj/machinery/vending/cola/space_up,
 /turf/open/floor/iron,
@@ -66804,6 +67269,7 @@
 "nNk" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood,
+/obj/structure/spawner/lavaland/legion,
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "nNl" = (
@@ -66870,6 +67336,10 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/engineering/lobby)
+"nOe" = (
+/obj/machinery/light/directional/south,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "nOq" = (
 /obj/machinery/holopad,
 /obj/effect/turf_decal/bot,
@@ -67614,9 +68084,10 @@
 	},
 /area/hallway/primary/port)
 "nWW" = (
-/obj/machinery/light/directional/west,
-/turf/open/floor/engine,
-/area/maintenance/port/aft)
+/obj/machinery/computer/secure_data,
+/obj/item/door_remote/civilian,
+/turf/open/floor/iron,
+/area/ai_monitored/turret_protected/ai)
 "nXb" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 10
@@ -67824,9 +68295,11 @@
 /turf/open/floor/iron,
 /area/hallway/primary/aft)
 "nYL" = (
-/obj/structure/chess/blackking,
-/turf/open/floor/mineral/titanium/white,
-/area/maintenance/port/aft)
+/obj/machinery/computer/crew/syndie{
+	dir = 8
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "nYN" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /obj/structure/disposalpipe/segment,
@@ -67966,6 +68439,12 @@
 	},
 /turf/open/floor/iron,
 /area/cargo/office)
+"oaK" = (
+/obj/structure/sink{
+	pixel_y = 32
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "oaN" = (
 /turf/closed/wall,
 /area/maintenance/starboard/aft)
@@ -69074,15 +69553,11 @@
 /turf/open/floor/iron/white,
 /area/hallway/primary/fore)
 "okW" = (
-/obj/structure/fluff/broken_flooring{
-	dir = 4;
-	icon_state = "pile"
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
 	},
-/obj/structure/sign/poster/contraband/random{
-	pixel_y = 32
-	},
-/turf/open/floor/plating,
-/area/maintenance/port/aft)
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "ola" = (
 /obj/effect/spawner/structure/window,
 /obj/structure/sign/departments/chemistry/pharmacy,
@@ -69229,6 +69704,15 @@
 /obj/machinery/airalarm/directional/north,
 /turf/open/floor/iron/white,
 /area/medical/surgery)
+"omF" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "omG" = (
 /obj/structure/tank_dispenser/oxygen,
 /obj/effect/turf_decal/stripes/line{
@@ -69490,6 +69974,9 @@
 /obj/structure/table,
 /turf/open/floor/iron,
 /area/commons/fitness/recreation)
+"opx" = (
+/turf/closed/mineral,
+/area/space)
 "opJ" = (
 /obj/machinery/airalarm/directional/east,
 /obj/effect/decal/cleanable/dirt,
@@ -69695,6 +70182,19 @@
 /obj/effect/turf_decal/stripes/box,
 /turf/open/floor/plating/rust,
 /area/maintenance/fore/upper)
+"orv" = (
+/obj/structure/closet/syndicate{
+	anchored = 1;
+	armor = list("melee" = 70, "bullet" = 40, "laser" = 40, "energy" = 30, "bomb" = 30, "bio" = 0, "fire" = 70, "acid" = 60);
+	desc = "A basic closet for all your villainous needs.";
+	locked = 1;
+	name = "Closet";
+	req_one_access_txt = "150";
+	secure = 1
+	},
+/obj/item/crowbar/red,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "orJ" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment,
@@ -70471,6 +70971,14 @@
 /obj/structure/fluff/broken_flooring,
 /turf/open/floor/plating,
 /area/maintenance/port/greater)
+"oAz" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "oAA" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/misc/asteroid,
@@ -70868,6 +71376,16 @@
 	},
 /turf/open/floor/plating,
 /area/hallway/primary/port)
+"oFz" = (
+/obj/machinery/computer/security{
+	desc = "Used to access interrogation room camera.";
+	dir = 8;
+	name = "Ship cameras console";
+	network = list("fsc","fsci");
+	screen_loc = ""
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "oFE" = (
 /obj/structure/fluff/broken_flooring{
 	dir = 1;
@@ -72411,11 +72929,6 @@
 /obj/item/storage/medkit/o2,
 /turf/open/floor/iron/white,
 /area/medical/storage)
-"oXI" = (
-/obj/structure/chess/blackbishop,
-/obj/machinery/light/directional/north,
-/turf/open/floor/mineral/titanium/white,
-/area/maintenance/port/aft)
 "oXK" = (
 /obj/machinery/computer/cargo,
 /obj/effect/turf_decal/tile/brown{
@@ -79873,6 +80386,11 @@
 /obj/structure/cable,
 /turf/open/floor/iron/grimy,
 /area/security/office)
+"qBZ" = (
+/obj/structure/table/reinforced,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer2,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "qCa" = (
 /obj/machinery/airalarm/directional/east,
 /obj/machinery/light/directional/east,
@@ -80570,6 +81088,14 @@
 /obj/structure/sign/warning/electricshock,
 /turf/closed/wall,
 /area/solars/aux/starboard)
+"qKx" = (
+/obj/machinery/door/window{
+	dir = 1;
+	name = "Spare equipment";
+	req_one_access_txt = "150"
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "qKA" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -81162,6 +81688,15 @@
 	icon_state = "platingdmg1"
 	},
 /area/maintenance/fore/greater)
+"qRP" = (
+/obj/structure/table/reinforced,
+/obj/machinery/button/door{
+	id = "fscaproom";
+	name = "Room shutters control";
+	req_one_access_txt = "150"
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "qRR" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /obj/effect/turf_decal/siding/blue{
@@ -81422,6 +81957,11 @@
 	},
 /turf/open/floor/iron,
 /area/hallway/primary/starboard)
+"qVG" = (
+/obj/machinery/power/smes,
+/obj/structure/cable,
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "qVK" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 6
@@ -81858,6 +82398,12 @@
 	},
 /turf/open/floor/iron,
 /area/hallway/secondary/entry)
+"qZe" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 5
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "qZg" = (
 /obj/effect/turf_decal/tile/blue,
 /obj/structure/cable,
@@ -81993,6 +82539,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/rust,
 /area/maintenance/disposal)
+"raj" = (
+/obj/structure/filingcabinet,
+/obj/machinery/door/window{
+	dir = 8;
+	name = "Syndicate interior door";
+	req_one_access_txt = "150"
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "raw" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
@@ -82343,10 +82898,6 @@
 	},
 /turf/open/floor/iron,
 /area/hallway/primary/upper)
-"reC" = (
-/obj/structure/reagent_dispensers/watertank,
-/turf/open/floor/plating/rust,
-/area/maintenance/port/aft)
 "reH" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/visible{
@@ -82813,6 +83364,11 @@
 	},
 /turf/open/floor/iron,
 /area/cargo/miningoffice)
+"rkj" = (
+/obj/machinery/light/directional/north,
+/obj/structure/table/reinforced,
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "rkm" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
@@ -82852,6 +83408,12 @@
 	},
 /turf/open/floor/iron,
 /area/engineering/transit_tube)
+"rkA" = (
+/obj/structure/table/reinforced,
+/obj/item/assembly/prox_sensor,
+/obj/item/assembly/prox_sensor,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "rkL" = (
 /obj/structure/railing{
 	dir = 6
@@ -84392,6 +84954,13 @@
 /obj/machinery/vending/coffee,
 /turf/open/floor/wood,
 /area/service/library)
+"rDt" = (
+/obj/machinery/door/airlock/grunge{
+	name = "Syndicate Ship Airlock";
+	req_one_access_txt = "150"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "rDB" = (
 /obj/effect/turf_decal/tile/purple,
 /obj/effect/turf_decal/tile/purple,
@@ -85781,6 +86350,14 @@
 	},
 /turf/open/floor/engine,
 /area/science/xenobiology)
+"rUC" = (
+/obj/structure/fans/tiny,
+/obj/machinery/door/airlock/external/ruin{
+	name = "Syndicate ship airlock";
+	req_one_access_txt = "150"
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "rUT" = (
 /obj/effect/turf_decal/siding/yellow{
 	dir = 1
@@ -85928,6 +86505,13 @@
 	},
 /turf/open/floor/engine,
 /area/science/xenobiology)
+"rVU" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "rVY" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
@@ -86358,6 +86942,9 @@
 	},
 /turf/open/floor/iron,
 /area/engineering/atmos)
+"sco" = (
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "scp" = (
 /obj/structure/chair{
 	dir = 8
@@ -86717,6 +87304,10 @@
 /obj/effect/turf_decal/siding/blue,
 /turf/open/floor/iron/white,
 /area/medical/exam_room)
+"shh" = (
+/obj/machinery/light/directional/south,
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "shm" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
@@ -88251,6 +88842,20 @@
 /obj/item/instrument/trumpet,
 /turf/open/floor/wood,
 /area/service/bar/atrium)
+"syI" = (
+/obj/machinery/door/airlock/grunge{
+	name = "Syndicate Ship Airlock";
+	req_one_access_txt = "150"
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "syW" = (
 /obj/machinery/air_sensor/atmos/nitrous_tank,
 /turf/open/floor/engine/n2o,
@@ -88580,6 +89185,10 @@
 /obj/structure/filingcabinet/filingcabinet,
 /turf/open/floor/iron,
 /area/cargo/storage)
+"sCZ" = (
+/obj/structure/girder/displaced,
+/turf/open/floor/plating,
+/area/maintenance/port/aft)
 "sDg" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/siding/red{
@@ -89314,6 +89923,10 @@
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/iron/white,
 /area/medical/medbay/central)
+"sLr" = (
+/obj/structure/sign/poster/contraband/syndicate_pistol,
+/turf/closed/wall/r_wall/syndicate,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "sLv" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -89690,16 +90303,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron/vaporwave,
 /area/hallway/secondary/service)
-"sPm" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/fluff/broken_flooring{
-	dir = 8;
-	icon_state = "singular"
-	},
-/obj/item/stack/cable_coil,
-/turf/open/floor/plating,
-/area/maintenance/port/aft)
 "sPt" = (
 /obj/machinery/light/directional/east,
 /obj/structure/rack,
@@ -90544,6 +91147,15 @@
 	},
 /turf/open/floor/iron/dark,
 /area/engineering/storage_shared)
+"sZS" = (
+/obj/structure/table/reinforced,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/item/toy/cards/deck/syndicate,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "sZU" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment{
@@ -91056,6 +91668,11 @@
 	},
 /turf/open/floor/iron,
 /area/cargo/miningoffice)
+"tfx" = (
+/obj/machinery/light/directional/south,
+/mob/living/simple_animal/hostile/syndicate/ranged/shotgun/space/stormtrooper,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "tfA" = (
 /obj/machinery/firealarm/directional/west,
 /turf/open/floor/iron,
@@ -91123,6 +91740,13 @@
 	},
 /turf/open/floor/iron,
 /area/engineering/atmos)
+"tgO" = (
+/obj/machinery/atmospherics/components/unary/portables_connector/visible/layer2,
+/obj/machinery/portable_atmospherics/scrubber{
+	anchored = 1
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "tgU" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/holopad,
@@ -91884,9 +92508,16 @@
 /turf/open/floor/bluespace,
 /area/hallway/primary/central/aft)
 "tqu" = (
-/obj/structure/chess/whiterook,
-/turf/open/floor/mineral/titanium/white,
-/area/maintenance/port/aft)
+/obj/structure/cable,
+/obj/machinery/door/window{
+	base_state = "rightsecure";
+	dir = 8;
+	icon_state = "rightsecure";
+	name = "Primary AI Core Access";
+	req_access_txt = "16"
+	},
+/turf/open/floor/iron,
+/area/ai_monitored/turret_protected/ai)
 "tqz" = (
 /obj/machinery/stasis,
 /obj/machinery/defibrillator_mount/directional/north,
@@ -93674,6 +94305,13 @@
 /obj/machinery/light/directional/west,
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
+"tLH" = (
+/obj/machinery/door/airlock/grunge{
+	name = "Syndicate Ship Airlock";
+	req_one_access_txt = "150"
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "tLJ" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 5
@@ -94492,9 +95130,9 @@
 /turf/open/floor/iron/grimy,
 /area/security/office)
 "tTt" = (
-/obj/structure/chess/blackknight,
-/turf/open/floor/mineral/titanium/white,
-/area/maintenance/port/aft)
+/obj/structure/table/reinforced,
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "tTy" = (
 /obj/machinery/light/directional/south,
 /obj/machinery/button/door/directional/south{
@@ -94971,6 +95609,11 @@
 /obj/structure/extinguisher_cabinet/directional/south,
 /turf/open/floor/iron,
 /area/hallway/primary/fore)
+"tZz" = (
+/obj/machinery/light/directional/west,
+/obj/structure/cable,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "tZM" = (
 /obj/structure/table/wood/fancy/orange,
 /obj/item/reagent_containers/food/condiment/peppermill{
@@ -98123,6 +98766,12 @@
 /obj/structure/plasticflaps/opaque,
 /turf/open/floor/iron,
 /area/cargo/storage)
+"uHE" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "uHH" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 9
@@ -98892,20 +99541,18 @@
 /turf/open/floor/iron,
 /area/hallway/primary/central)
 "uPF" = (
-/obj/structure/table/reinforced,
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/item/ai_module/remove,
-/obj/item/ai_module/supplied,
-/obj/item/ai_module/supplied/protect_station,
-/obj/item/ai_module/zeroth,
 /obj/machinery/door/window/brigdoor/westright{
 	name = "Core Modules";
 	req_access_txt = "20"
 	},
 /obj/machinery/power/apc/auto_name/directional/east,
 /obj/structure/cable,
+/obj/structure/table/reinforced,
+/obj/item/ai_module/core/full/hulkamania,
+/obj/item/ai_module/core/full/hulkamania,
 /turf/open/floor/iron,
 /area/ai_monitored/turret_protected/ai_upload)
 "uPK" = (
@@ -100091,6 +100738,12 @@
 	},
 /turf/open/floor/iron,
 /area/cargo/warehouse)
+"vdV" = (
+/obj/structure/shuttle/engine/huge{
+	dir = 8
+	},
+/turf/open/space/basic,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "vea" = (
 /obj/structure/table,
 /obj/item/reagent_containers/syringe,
@@ -100461,6 +101114,10 @@
 	},
 /turf/open/floor/carpet/red,
 /area/security/warden)
+"vgG" = (
+/obj/effect/spawner/random/structure/girder,
+/turf/open/floor/plating/airless,
+/area/space/nearstation)
 "vgJ" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/poddoor/shutters{
@@ -100895,9 +101552,8 @@
 /turf/open/floor/iron,
 /area/maintenance/disposal/incinerator)
 "vli" = (
-/obj/structure/chess/whiteknight,
-/turf/open/floor/mineral/titanium/white,
-/area/maintenance/port/aft)
+/turf/closed/wall/r_wall/syndicate,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "vll" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -101212,6 +101868,13 @@
 	dir = 8
 	},
 /area/ai_monitored/turret_protected/ai)
+"vpC" = (
+/obj/structure/table/reinforced,
+/obj/item/paper,
+/obj/item/pen,
+/obj/machinery/light/directional/south,
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "vpJ" = (
 /obj/effect/turf_decal/siding/purple{
 	dir = 5
@@ -102279,6 +102942,11 @@
 /obj/structure/cable,
 /turf/open/floor/engine,
 /area/hallway/primary/tram/center)
+"vBE" = (
+/obj/structure/table/reinforced,
+/obj/item/paper/fluff/ruins/forgottenship/missionobj,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "vBI" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 4
@@ -102586,6 +103254,14 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/port/greater)
+"vFO" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "vFQ" = (
 /obj/effect/turf_decal/tile/purple,
 /obj/effect/turf_decal/tile/purple{
@@ -103976,13 +104652,22 @@
 /turf/open/floor/iron,
 /area/hallway/primary/fore)
 "vWN" = (
-/obj/structure/cable,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
+/obj/machinery/requests_console/directional/east{
+	department = "AI";
+	departmentType = 5;
+	name = "AI RC";
+	pixel_y = -30
 	},
-/area/maintenance/port/aft)
+/obj/machinery/ai_slipper{
+	uses = 10
+	},
+/obj/structure/cable,
+/obj/structure/chair/comfy{
+	dir = 1
+	},
+/obj/effect/landmark/start/assistant,
+/turf/open/floor/iron,
+/area/ai_monitored/turret_protected/ai)
 "vWV" = (
 /obj/machinery/light/directional/south,
 /turf/open/floor/plating,
@@ -104386,6 +105071,10 @@
 	},
 /turf/open/floor/iron/white,
 /area/medical/morgue)
+"wda" = (
+/obj/structure/sign/warning/vacuum/external,
+/turf/closed/wall/r_wall/syndicate,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "wdd" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
@@ -105557,6 +106246,13 @@
 /obj/effect/spawner/random/maintenance,
 /turf/open/floor/plating,
 /area/maintenance/starboard/lesser)
+"wrM" = (
+/obj/structure/toilet{
+	dir = 1
+	},
+/obj/machinery/light/directional/south,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "wrN" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 4
@@ -105980,6 +106676,11 @@
 	},
 /turf/open/floor/iron/dark,
 /area/security/warden)
+"wxs" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/structure/girder,
+/turf/open/floor/plating,
+/area/maintenance/port/aft)
 "wxC" = (
 /obj/structure/cable,
 /turf/open/floor/iron,
@@ -107587,6 +108288,10 @@
 	},
 /turf/open/floor/engine,
 /area/science/research)
+"wOY" = (
+/obj/structure/chair/comfy/shuttle,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "wPc" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/turf_decal/siding/yellow{
@@ -108734,6 +109439,11 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
 /turf/open/floor/engine,
 /area/science/mixing/chamber)
+"xcj" = (
+/obj/structure/table/reinforced,
+/obj/machinery/atmospherics/components/unary/vent_pump,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "xcx" = (
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 1
@@ -109286,10 +109996,27 @@
 	},
 /turf/open/floor/iron/dark,
 /area/security/brig)
+"xhM" = (
+/obj/machinery/power/apc/syndicate{
+	dir = 1;
+	name = "Syndicate Forgotten Ship APC";
+	pixel_y = 25;
+	start_charge = 0
+	},
+/obj/structure/cable,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "xhT" = (
-/obj/structure/chess/whiteknight,
-/turf/open/floor/engine,
-/area/maintenance/port/aft)
+/obj/structure/cable,
+/obj/machinery/door/window{
+	base_state = "leftsecure";
+	dir = 4;
+	icon_state = "leftsecure";
+	name = "Primary AI Core Access";
+	req_access_txt = "16"
+	},
+/turf/open/floor/iron,
+/area/ai_monitored/turret_protected/ai)
 "xhU" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/machinery/light/directional/north,
@@ -109409,9 +110136,8 @@
 /turf/open/floor/iron,
 /area/cargo/qm)
 "xjt" = (
-/obj/structure/chess/blackpawn,
-/turf/open/floor/mineral/titanium/white,
-/area/maintenance/port/aft)
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "xju" = (
 /turf/closed/wall/rust,
 /area/maintenance/port/lesser)
@@ -110208,6 +110934,10 @@
 	},
 /turf/open/floor/carpet,
 /area/security/detectives_office)
+"xsk" = (
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "xsm" = (
 /obj/effect/turf_decal/siding/blue{
 	dir = 8
@@ -111454,7 +112184,6 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/greater)
 "xDc" = (
-/obj/effect/landmark/start/ai/secondary,
 /obj/machinery/button/door/directional/west{
 	id = "AI Chamber entrance shutters";
 	name = "AI Chamber entrance shutters control";
@@ -111466,12 +112195,6 @@
 	listening = 0;
 	name = "Custom Channel"
 	},
-/obj/item/radio/intercom/directional/west{
-	freerange = 1;
-	frequency = 1447;
-	name = "Private Channel";
-	pixel_y = -7
-	},
 /obj/item/radio/intercom/directional/east{
 	freerange = 1;
 	name = "Common Channel";
@@ -111482,6 +112205,14 @@
 	name = "AI Chamber turret control";
 	pixel_x = 20;
 	pixel_y = -25
+	},
+/obj/structure/rack,
+/obj/item/storage/toolbox/mechanical,
+/obj/item/radio/intercom/directional/west{
+	freerange = 1;
+	frequency = 1447;
+	name = "Private Channel";
+	pixel_y = -7
 	},
 /turf/open/floor/iron,
 /area/ai_monitored/turret_protected/ai)
@@ -112282,6 +113013,19 @@
 	},
 /turf/open/floor/iron/white,
 /area/science/mixing)
+"xKq" = (
+/obj/structure/closet/syndicate{
+	anchored = 1;
+	armor = list("melee" = 70, "bullet" = 40, "laser" = 40, "energy" = 30, "bomb" = 30, "bio" = 0, "fire" = 70, "acid" = 60);
+	desc = "A basic closet for all your villainous needs.";
+	locked = 1;
+	name = "Closet";
+	req_one_access_txt = "150";
+	secure = 1
+	},
+/obj/item/clothing/under/syndicate/bloodred/sleepytime,
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "xKu" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
@@ -112381,6 +113125,16 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/fore/greater)
+"xLr" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "xLE" = (
 /obj/effect/turf_decal/siding/blue{
 	dir = 8
@@ -113651,6 +114405,10 @@
 /obj/item/bodybag,
 /turf/open/floor/plating/rust,
 /area/maintenance/starboard/greater)
+"yan" = (
+/obj/machinery/stasis,
+/turf/open/floor/plastic,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "yap" = (
 /obj/structure/table/reinforced,
 /turf/open/floor/plating,
@@ -113698,6 +114456,10 @@
 /obj/structure/bed/dogbed,
 /turf/open/floor/carpet/royalblue,
 /area/command/bridge)
+"yaS" = (
+/obj/machinery/atmospherics/components/unary/vent_pump,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "yaU" = (
 /obj/structure/industrial_lift/tram{
 	icon_state = "titanium_white"
@@ -114423,6 +115185,15 @@
 	},
 /turf/open/floor/cult,
 /area/maintenance/starboard/aft)
+"ykX" = (
+/obj/machinery/door/airlock/grunge{
+	name = "Syndicate Ship Airlock";
+	req_one_access_txt = "150"
+	},
+/turf/open/floor/iron/dark/side{
+	dir = 1
+	},
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "ykZ" = (
 /obj/machinery/light/directional/west,
 /obj/effect/turf_decal/siding/blue{
@@ -118593,15 +119364,15 @@ cFp
 cFp
 cFp
 cFp
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+cFp
+cFp
+cFp
+cFp
+cFp
+cFp
+cFp
+cFp
+cFp
 cFp
 cFp
 cFp
@@ -118850,15 +119621,15 @@ cFp
 cFp
 cFp
 cFp
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+cFp
+cFp
+cFp
+cFp
+cFp
+cFp
+cFp
+cFp
+cFp
 cFp
 cFp
 cFp
@@ -119107,7 +119878,6 @@ cFp
 cFp
 cFp
 cFp
-aaa
 cFp
 cFp
 cFp
@@ -119115,9 +119885,10 @@ cFp
 cFp
 cFp
 cFp
-aaa
-aaa
-aaa
+cFp
+cFp
+cFp
+cFp
 aaa
 aaa
 cFp
@@ -119361,21 +120132,21 @@ aaa
 cFp
 cFp
 cFp
+cFc
+cFc
+vdV
 cFp
 cFp
-cFp
-aaa
-cFp
-cFp
-cFp
+cFc
+cFc
+vdV
 cFp
 cFp
+cFc
+cFc
+vdV
 cFp
 cFp
-aaa
-aaa
-aaa
-aaa
 aaa
 cFp
 cFp
@@ -119618,21 +120389,21 @@ aaa
 cFp
 cFp
 cFp
+cFc
+cFc
+cFc
 cFp
 cFp
-cFp
-aaa
-cFp
-cFp
-cFp
+cFc
+cFc
+cFc
 cFp
 cFp
+cFc
+cFc
+cFc
 cFp
 cFp
-aaa
-cFp
-aaa
-aaa
 aaa
 cFp
 cFp
@@ -119872,24 +120643,24 @@ aaa
 cFp
 cFp
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
 cFp
 cFp
+dnr
+cFc
+cFc
+cFc
+dnr
+dnr
+cFc
+cFc
+cFc
+dnr
+dnr
+cFc
+cFc
+cFc
+dnr
 cFp
-cFp
-cFp
-cFp
-cFp
-aaa
-cFp
-aaa
-aaa
 aaa
 cFp
 cFp
@@ -120129,24 +120900,24 @@ aaa
 cFp
 cFp
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
 cFp
 cFp
+vli
+vli
+vli
+vli
+vli
+vli
+vli
+vli
+vli
+vli
+vli
+vli
+vli
+vli
+vli
 cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-aaa
-cFp
-aaa
-aaa
 aaa
 cFp
 cFp
@@ -120386,24 +121157,24 @@ aaa
 cFp
 cFp
 aaa
-aaa
-aaa
 cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-aaa
-cFp
-aaa
-aaa
+vli
+vli
+cFU
+xsk
+fME
+fME
+ksG
+xsk
+fME
+iyy
+hpY
+fME
+fME
+xsk
+juC
+vli
+vli
 aaa
 cFp
 cFp
@@ -120644,24 +121415,24 @@ cFp
 cFp
 cFp
 cFp
+vli
+fME
+fME
+fME
+fME
+fME
+fME
+fME
+fME
+fME
+fME
+fME
+fME
+fME
+fME
+fME
+vli
 cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-aaa
-aaa
-aaa
 cFp
 cFp
 cFp
@@ -120901,24 +121672,24 @@ cFp
 cFp
 cFp
 cFp
+vli
+vli
+vli
+vli
+vli
+vli
+vli
+vli
+rDt
+vli
+vli
+vli
+rDt
+vli
+vli
+vli
+vli
 cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-aaa
-aaa
-aaa
 cFp
 cFp
 cFp
@@ -121158,24 +121929,24 @@ cFp
 cFp
 cFp
 cFp
+vli
+vli
+tTt
+vli
+sco
+aAS
+vli
+qVG
+gST
+knH
+vli
+rkA
+iSm
+fME
+orv
+fME
+vli
 cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-aaa
-aaa
-aaa
 cFp
 cFp
 cFp
@@ -121415,24 +122186,24 @@ cFp
 cFp
 cFp
 cFp
+vli
+rkj
+xjt
+vli
+sco
+mlo
+vli
+fUW
+afg
+shh
+vli
+orv
+fME
+fME
+fME
+nOe
+vli
 cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-aaa
-aaa
-aaa
-aaa
-aaa
 cFp
 cFp
 cFp
@@ -121672,24 +122443,24 @@ cFp
 cFp
 cFp
 cFp
+vli
+cmy
+xjt
+bRG
+sco
+sco
+flT
+dvB
+nIo
+qZe
+lEK
+fME
+fME
+fME
+hmf
+vBE
+vli
 cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-aaa
-aaa
-aaa
-aaa
-aaa
 cFp
 cFp
 cFp
@@ -121929,24 +122700,24 @@ cFp
 cFp
 cFp
 cFp
+vli
+xKq
+xjt
+vli
+sco
+sco
+flT
+fKX
+kCO
+fKX
+lEK
+fME
+fME
+fME
+hmf
+dga
+vli
 cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-aaa
-aaa
-aaa
-aaa
-aaa
 cFp
 cFp
 cFp
@@ -122186,24 +122957,24 @@ cFp
 cFp
 cFp
 cFp
+vli
+rkj
+xjt
+vli
+daF
+vpC
+vli
+auG
+mAy
+kSE
+vli
+orv
+fME
+fME
+fME
+nOe
+vli
 cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-aaa
-aaa
-aaa
 cFp
 cFp
 cFp
@@ -122443,24 +123214,24 @@ cFp
 cFp
 cFp
 cFp
-ccW
+njj
+vli
+raj
+vli
+qRP
+mQc
+sLr
+tgO
+oAz
+kyQ
+vli
+bYd
+iSm
+fME
+orv
+vli
+njj
 cFp
-cFp
-cFp
-ccX
-ccW
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-cFp
-aaa
-aaa
 cFp
 cFp
 cFp
@@ -122694,30 +123465,30 @@ cFp
 cFp
 cFp
 ccW
+aNQ
 cFp
-cFp
-ccW
-cFp
-aaa
-ccW
-ccW
-ccW
-ccW
-ccW
-ccW
-cFp
-ccW
-ccX
-cFp
-cFp
-aaa
-aaa
-aaa
+iDR
 cFp
 cFp
 cFp
-aaa
-aaa
+cFp
+vli
+vli
+vli
+vli
+vli
+vli
+vli
+knQ
+vli
+vli
+vli
+vli
+vli
+vli
+vli
+cFp
+cFp
 cFp
 cFp
 cFp
@@ -122953,28 +123724,28 @@ ccX
 cFp
 ccW
 ccW
-ccX
-ccX
-ccW
-ccW
-lyf
-lyf
-lyf
+iDR
 aae
-aae
-ccW
-aae
-ccX
-ccX
-ccW
-ccW
-cFp
-ccX
-ccW
+iDR
 cFp
 cFp
-aaa
-aaa
+vli
+iwm
+hNr
+hNr
+hNr
+vli
+fME
+xLr
+fME
+vli
+iwE
+gDG
+ykX
+wrM
+vli
+cFp
+cFp
 cFp
 cFp
 cFp
@@ -123210,28 +123981,28 @@ ccX
 aae
 aae
 aae
-lyf
-lyf
-lyf
-uMv
-lyf
-ccW
-jTI
-lyf
-lyf
-aae
-lyf
-lyf
-lyf
-lyf
-ccW
-sYy
+iDR
+iDR
+iDR
 cFp
 cFp
+vli
+dFW
+hNr
+hNr
+yan
+vli
+jTW
+vFO
+nOe
+vli
+oaK
+tfx
+vli
+vli
+vli
 cFp
 cFp
-aaa
-aaa
 cFp
 cFp
 cFp
@@ -123467,28 +124238,28 @@ aae
 ojy
 vRv
 aae
-lyf
-aae
-xJO
-fTb
-ccW
-aae
-aae
-aae
-lyf
-lyf
-lyf
-xJO
-aae
-lyf
-uMv
-sYy
-ccW
-ccX
-ccW
-ccW
-aaa
-aaa
+iDR
+iDR
+iDR
+cFp
+cFp
+vli
+klJ
+egU
+hNr
+hNr
+tLH
+yaS
+gpC
+fME
+mXK
+gDG
+gDG
+ykX
+ito
+vli
+cFp
+cFp
 cFp
 cFp
 cFp
@@ -123725,27 +124496,27 @@ lyf
 lyf
 lyf
 lyf
-aae
-ccW
-ccW
-ccX
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-lyf
-lyf
-lyf
-ccW
-ccW
-ccX
-aaa
-aaa
+iDR
+iDR
+cFp
+vli
+vli
+vli
+vli
+vli
+vli
+vli
+vli
+syI
+vli
+vli
+vli
+vli
+vli
+vli
+vli
+vli
+cFp
 cFp
 cFp
 cFp
@@ -123981,28 +124752,28 @@ xJO
 lyf
 tUY
 ccX
-ccW
-aae
-ccW
-aae
-ccX
-ccX
-ccX
-ccX
-aae
-ccX
-ccW
-aae
-aae
-aae
 lyf
-sYy
-lyf
-ccW
+xJO
+iDR
 cFp
+vli
+jnj
+igh
+vli
+xhM
+mfU
+tZz
+mfU
+xLr
+mfU
+tZz
+mfU
+fME
+vli
+fME
+fME
+vli
 cFp
-cFp
-aaa
 cFp
 cFp
 cFp
@@ -124238,27 +125009,27 @@ ccW
 lyf
 aae
 aae
-aae
-ccW
-ccW
-ccW
-aae
-ojy
-ihX
+lyf
 xJO
-aae
-ccW
-ccW
-ccW
-vRv
-aae
-lyf
-sYy
-lyf
-ccX
+iDR
 cFp
-cFp
-cFp
+vli
+lRp
+fME
+vli
+iUO
+fME
+jYp
+jYp
+eIT
+jYp
+jYp
+mfU
+fME
+vli
+fME
+nOe
+vli
 cFp
 cFp
 cFp
@@ -124495,28 +125266,28 @@ ccW
 lyf
 xJO
 aae
-aae
-ccW
-ccW
-ccW
-aae
-bzf
+lyf
 xJO
+xJO
+cFp
+rUC
+fME
+fME
 jHF
-aae
-ccW
-ccW
-ccX
-lyf
-lyf
-lyf
-ccW
-lyf
-ccW
-cFp
-cFp
-cFp
-cFp
+fME
+wOY
+bYd
+qBZ
+bxb
+bYd
+bYd
+rVU
+mfU
+hAm
+mfU
+mfU
+eHU
+xJO
 cFp
 cFp
 cFp
@@ -124753,27 +125524,27 @@ jTI
 lyf
 lyf
 lyf
-lyf
-lyf
-ccX
-ccX
-rRs
-lyf
-rRs
-lyf
-lyf
-ccX
-ccX
-pyP
-ccX
-jTI
-ccX
+xJO
+xJO
+cFp
+vli
+lRp
 fME
-ccW
-cFp
-cFp
-cFp
-cFp
+wda
+fME
+wOY
+bYd
+xcj
+sZS
+bYd
+bYd
+uHE
+fME
+wda
+fME
+nOe
+vli
+xJO
 cFp
 cFp
 cFp
@@ -125009,29 +125780,29 @@ ccW
 aae
 aae
 aae
-aae
-aae
-lyf
-lyf
-uMv
-lyf
-ccW
-aae
-aae
 lyf
 lyf
 lyf
 lyf
-aae
-lyf
-lla
-lyf
-ccW
-cFp
-cFp
-cFp
-cFp
-cFp
+vli
+juL
+fME
+vli
+fME
+fME
+fME
+bYd
+cFF
+bYd
+fME
+fME
+fME
+vli
+fME
+ciK
+vli
+xJO
+xJO
 cFp
 cFp
 cFp
@@ -125266,29 +126037,29 @@ aae
 aae
 ccW
 ccW
-ccW
-ccW
-aae
-ccX
-aae
-aae
-aae
-ccW
-aae
-aae
-ccX
-aae
-aae
-aae
-ccX
-aae
 lyf
-ccW
-cFp
-cFp
-cFp
-cFp
-cFp
+aae
+aae
+xJO
+njj
+vli
+bYd
+vli
+far
+fME
+cZL
+fME
+hTt
+log
+cZL
+fME
+fME
+vli
+bYd
+vli
+njj
+xJO
+xJO
 cFp
 cFp
 cFp
@@ -125528,24 +126299,24 @@ oNZ
 oNZ
 oNZ
 oNZ
-oNZ
-oNZ
-oNZ
-oNZ
-oNZ
-oNZ
-oNZ
-oNZ
-oNZ
-oNZ
-oNZ
-nly
-oNZ
-oNZ
-oNZ
-oNZ
-oNZ
-cFp
+vli
+vli
+vli
+vli
+vli
+vli
+vli
+hJG
+vli
+vli
+vli
+vli
+vli
+vli
+vli
+xJO
+xJO
+xJO
 cFp
 cFp
 cFp
@@ -125785,24 +126556,24 @@ qMQ
 ehG
 eMO
 qMQ
-qMQ
-trw
-qMQ
-cZD
-qMQ
-dPZ
-qMQ
-cZD
-mly
+bfu
+iiN
+adc
+aAM
+aAM
+dvx
+xjt
+omF
+xjt
 dvx
 aAM
-xfu
-oPy
-nWW
-kAq
-dcd
-oNZ
-cFp
+aAM
+vli
+xJO
+xJO
+tKt
+bFJ
+xJO
 cFp
 cFp
 cFp
@@ -126041,26 +126812,26 @@ nOV
 bYk
 cQC
 ycl
-bYk
-ixH
-bYk
-aQK
-pQN
-dPZ
-pQN
-reC
-cZD
-itw
-xjt
-xfu
-oPy
-xfu
-oPy
-hUg
+iYf
 vli
-oNZ
-cFp
-cFp
+vli
+vli
+xjt
+xjt
+xjt
+xjt
+omF
+xjt
+xjt
+xjt
+xjt
+vli
+vli
+vli
+vli
+cZD
+xJO
+opx
 cFp
 cFp
 cFp
@@ -126298,26 +127069,26 @@ kkf
 kkf
 exH
 moM
-kkf
-qMQ
-cZD
-kkf
-dPZ
-qMQ
-pQN
-bYk
-cZD
-oXI
-dvx
-oPy
-xfu
-oPy
-xfu
+iYf
+xjt
+xjt
+vli
+xjt
+xjt
+xjt
+aRb
+jMg
+xjt
+xjt
+xjt
+xjt
+vli
 kAq
-lQf
+kAq
+vli
 oNZ
-cFp
-cFp
+opx
+opx
 cFp
 cFp
 cFp
@@ -126554,27 +127325,27 @@ kkf
 eVE
 gVr
 dPZ
-kkf
-kkf
-cZD
-cZD
-bYk
-cZD
-okW
-dPZ
-nKZ
-cZD
-bki
+wxs
+iYf
+lwk
 xjt
-xfu
-oPy
-xfu
-oPy
-hUg
-fhS
+goe
+xjt
+okW
+xjt
+okW
+iqh
+okW
+xjt
+okW
+xjt
+qKx
+xjt
+shh
+vli
 oNZ
-cFp
-cFp
+opx
+opx
 cFp
 cFp
 cFp
@@ -126812,26 +127583,26 @@ btg
 vPv
 vPv
 cZD
-qMQ
-arl
-cZD
-kkf
-cZD
-iEe
-eTz
+fbA
+vli
+xjt
+vli
+xjt
+oFz
+xjt
 kht
-cZD
+xjt
 nYL
-dvx
-oPy
-xfu
-oPy
-xfu
-kAq
+xjt
+ema
+xjt
+vli
+kIp
+vli
 njj
 oNZ
-cFp
-cFp
+opx
+opx
 cFp
 cFp
 cFp
@@ -127069,26 +127840,26 @@ cZD
 qMQ
 vPv
 hne
-hne
-cZD
-cZD
-ngr
-cZD
-cZD
-kkf
-bYk
-cZD
-idr
+fSI
+vli
+vli
+vli
 xjt
-xfu
+xjt
+xjt
+xjt
+xjt
+xjt
+xjt
+xjt
+xjt
+vli
+vli
+vli
 oPy
-xfu
-oPy
-hUg
-nEA
 oNZ
-cFp
-cFp
+opx
+opx
 cFp
 cFp
 cFp
@@ -127326,25 +128097,25 @@ qTJ
 qMQ
 cZD
 kkf
-hne
-cZD
-jaM
-xDk
-sPm
-bYk
-cQC
-kkf
-cZD
+qMQ
+qMQ
+vli
+vli
 tTt
-dvx
+tTt
+hth
+tTt
+hGq
+tTt
+tTt
+tTt
+tTt
+vli
+vli
 oPy
-xfu
 oPy
-xfu
-kAq
-xhT
 oNZ
-cFp
+opx
 cFp
 cFp
 cFp
@@ -127583,25 +128354,25 @@ qMQ
 ehG
 nIU
 bYk
-vWN
-bYk
-cZD
-dnk
-bYk
-bYk
-kqv
-cZD
-cZD
+qMQ
+qMQ
+sCZ
+njj
 bBs
-xjt
-flP
-awq
-bRA
-awq
-hUg
-tqu
+bBs
+bBs
+bBs
+bBs
+bBs
+bBs
+bBs
+bBs
+njj
+fYo
+nne
+oPy
 oNZ
-cFp
+opx
 cFp
 cFp
 cFp
@@ -127844,15 +128615,15 @@ hne
 cQC
 bYk
 hne
-hne
+aIV
 hne
 jws
-vPv
+aTV
 cZD
 cZD
 elR
 elR
-bRA
+aeI
 oVB
 hUf
 noZ
@@ -144005,7 +144776,7 @@ cFp
 cFp
 sBz
 wzS
-wzS
+lnG
 wzS
 pwp
 rLq
@@ -144260,10 +145031,10 @@ wTi
 cFp
 cFp
 cFp
-cFp
-cFp
-cFp
-cFp
+vgG
+pvH
+pvH
+pvH
 pwp
 biF
 pwp
@@ -144517,10 +145288,10 @@ wTi
 cFp
 cFp
 cFp
+vgG
+pvH
 cFp
-cFp
-cFp
-cFp
+pvH
 pwp
 eDB
 pwp
@@ -144774,10 +145545,10 @@ cFp
 cFp
 cFp
 cFp
+pvH
+bhv
 cFp
-cFp
-cFp
-cFp
+bhv
 cFp
 cFp
 cFp
@@ -145032,9 +145803,9 @@ qwl
 cFp
 cFp
 cFp
-cFp
-cFp
-cFp
+bhv
+bhv
+bhv
 cFp
 cFp
 cFp
@@ -145289,10 +146060,10 @@ jUp
 cFp
 cFp
 cFp
+bhv
 cFp
-cFp
-cFp
-cFp
+bhv
+vgG
 cFp
 cFp
 cFp
@@ -145548,7 +146319,7 @@ cFp
 cFp
 cFp
 cFp
-cFp
+bhv
 cFp
 cFp
 cFp
@@ -145804,8 +146575,8 @@ cFp
 cFp
 cFp
 cFp
-cFp
-cFp
+bhv
+bhv
 cFp
 cFp
 cFp
@@ -153515,8 +154286,8 @@ cFp
 cFp
 cFp
 cFp
-cFp
-cFp
+bhv
+bhv
 cFp
 cFp
 cFp
@@ -153770,10 +154541,10 @@ cFp
 cFp
 cFp
 cFp
+bhv
 cFp
 cFp
-cFp
-cFp
+bhv
 cFp
 cFp
 cFp
@@ -154027,10 +154798,10 @@ cFp
 cFp
 cFp
 cFp
+bhv
+bhv
 cFp
-cFp
-cFp
-cFp
+bhv
 cFp
 cFp
 cFp
@@ -154284,10 +155055,10 @@ cFp
 cFp
 cFp
 cFp
+bhv
 cFp
 cFp
-cFp
-cFp
+bhv
 cFp
 cFp
 cFp
@@ -154541,10 +155312,10 @@ cFp
 cFp
 cFp
 cFp
-cFp
-cFp
-cFp
-cFp
+pvH
+bhv
+bhv
+bhv
 cFp
 cFp
 cFp
@@ -154798,10 +155569,10 @@ cFp
 cFp
 cFp
 cFp
+pvH
 cFp
-cFp
-cFp
-cFp
+pvH
+vgG
 cFp
 cFp
 cFp
@@ -154881,8 +155652,8 @@ xMf
 xMf
 gqK
 shN
-gPs
-trJ
+dcd
+tqu
 gPs
 gPs
 oud
@@ -155054,11 +155825,11 @@ cFp
 cFp
 cFp
 cFp
-cFp
-cFp
-cFp
-cFp
-cFp
+vgG
+pvH
+pvH
+pvH
+pvH
 cFp
 cFp
 cFp
@@ -155138,8 +155909,8 @@ xMf
 xMf
 vJf
 shN
-rGi
-oVC
+nEA
+vWN
 xDc
 gPs
 shN
@@ -155311,11 +156082,11 @@ cFp
 cFp
 cFp
 cFp
-cFp
-cFp
-cFp
-cFp
-cFp
+vgG
+pvH
+pvH
+pvH
+vgG
 cFp
 cFp
 cFp
@@ -155395,8 +156166,8 @@ xMf
 xMf
 yhr
 shN
-gPs
-taV
+nWW
+xhT
 gPs
 gPs
 shN
