@@ -8,6 +8,6 @@
 	. = ..()
 	if(!icon_path || !worn_icon_path)
 		return
-	for(var/obj/item/clothing as anything in mod_parts)
-		clothing.icon = icon_path
-		clothing.worn_icon = worn_icon_path
+	for(var/obj/item/clothing/part as anything in mod_parts)
+		part.icon = icon_path
+		part.worn_icon = worn_icon_path
