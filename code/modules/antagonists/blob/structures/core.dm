@@ -27,7 +27,8 @@
 	if(overmind)
 		overmind.blobstrain.on_gain()
 		update_appearance()
-	. = ..()
+	AddComponent(/datum/component/stationloving, FALSE, TRUE)
+	return ..()
 
 /obj/structure/blob/special/core/Destroy()
 	GLOB.blob_cores -= src
@@ -49,8 +50,8 @@
 	. += mutable_appearance('icons/mob/blob.dmi', "blob_core_overlay")
 
 /obj/structure/blob/special/core/update_icon()
+	. = ..()
 	color = null
-	return ..()
 
 /obj/structure/blob/special/core/ex_act(severity, target)
 	var/damage = 10 * (severity + 1) //remember, the core takes half brute damage, so this is 20/15/10 damage based on severity
@@ -74,10 +75,6 @@
 	reinforce_area(delta_time)
 	produce_spores()
 	..()
-
-/obj/structure/blob/special/core/ComponentInitialize()
-	. = ..()
-	AddComponent(/datum/component/stationloving, FALSE, TRUE)
 
 /obj/structure/blob/special/core/on_changed_z_level(turf/old_turf, turf/new_turf)
 	if(overmind && is_station_level(new_turf?.z))

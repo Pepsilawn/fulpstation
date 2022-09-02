@@ -2,7 +2,8 @@
 	name = "Fake Virus"
 	typepath = /datum/round_event/fake_virus
 	weight = 20
-	alert_observers = FALSE
+	category = EVENT_CATEGORY_HEALTH
+	description = "Some crewmembers suffer from temporary hypochondria."
 
 /datum/round_event/fake_virus/start()
 	var/list/fake_virus_victims = list()
@@ -16,7 +17,7 @@
 	if(defacto_min)// event will hit 1-3 people by default, but will do 1-2 or just 1 if only those many candidates are available
 		for(var/i in 1 to rand(1,defacto_min))
 			var/mob/living/carbon/human/hypochondriac = pick(fake_virus_victims)
-			hypochondriac.apply_status_effect(STATUS_EFFECT_FAKE_VIRUS)
+			hypochondriac.apply_status_effect(/datum/status_effect/fake_virus)
 			fake_virus_victims -= hypochondriac
 			announce_to_ghosts(hypochondriac)
 

@@ -87,7 +87,10 @@
 /datum/ai_behavior/use_on_object/setup(datum/ai_controller/controller, target_key)
 	. = ..()
 	var/datum/weakref/target_ref = controller.blackboard[target_key]
-	controller.current_movement_target = target_ref?.resolve()
+	var/target = target_ref?.resolve()
+	if(!target)
+		return FALSE
+	controller.current_movement_target = target
 
 /datum/ai_behavior/use_on_object/perform(delta_time, datum/ai_controller/controller, target_key)
 	. = ..()
@@ -210,7 +213,7 @@
 	var/mob/living/living_pawn = controller.pawn
 	if(!living_pawn.get_num_held_items())
 		return //we want to fail the search if we don't have something held
-	. = ..()
+	return ..()
 
 /**
  * Variant of find and set that also requires the item to be edible. checks hands too

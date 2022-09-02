@@ -7,7 +7,9 @@
 		BB_FETCH_IGNORE_LIST = list(),\
 		BB_DOG_ORDER_MODE = DOG_COMMAND_NONE,\
 		BB_DOG_PLAYING_DEAD = FALSE,\
-		BB_DOG_HARASS_TARGET = null)
+		BB_DOG_HARASS_TARGET = null,\
+		BB_DOG_HARASS_FRUSTRATION = null,\
+		BB_VISION_RANGE = AI_DOG_VISION_RANGE)
 	ai_movement = /datum/ai_movement/jps
 	planning_subtrees = list(/datum/ai_planning_subtree/dog)
 
@@ -38,7 +40,8 @@
 		pawn.visible_message(span_danger("[pawn] drops [carried_item]"))
 		carried_item.forceMove(pawn.drop_location())
 		blackboard[BB_SIMPLE_CARRY_ITEM] = null
-	UnregisterSignal(pawn, list(COMSIG_ATOM_ATTACK_HAND, COMSIG_PARENT_EXAMINE, COMSIG_CLICK_ALT, COMSIG_LIVING_DEATH, COMSIG_GLOB_CARBON_THROW_THING, COMSIG_PARENT_QDELETING))
+	UnregisterSignal(pawn, list(COMSIG_ATOM_ATTACK_HAND, COMSIG_PARENT_EXAMINE, COMSIG_CLICK_ALT, COMSIG_LIVING_DEATH, COMSIG_PARENT_QDELETING))
+	UnregisterSignal(SSdcs, COMSIG_GLOB_CARBON_THROW_THING)
 	return ..() //Run parent at end
 
 /datum/ai_controller/dog/able_to_run()
@@ -202,7 +205,7 @@
 	var/command
 	if(findtext(spoken_text, "heel") || findtext(spoken_text, "sit") || findtext(spoken_text, "stay"))
 		command = COMMAND_HEEL
-	else if(findtext(spoken_text, "fetch") || findtext(spoken_text, "get it"))
+	else if(findtext(spoken_text, "fetch"))
 		command = COMMAND_FETCH
 	else if(findtext(spoken_text, "attack") || findtext(spoken_text, "sic"))
 		command = COMMAND_ATTACK

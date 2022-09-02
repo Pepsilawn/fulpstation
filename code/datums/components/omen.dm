@@ -39,10 +39,10 @@
 /datum/component/omen/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, .proc/check_accident)
 	RegisterSignal(parent, COMSIG_LIVING_STATUS_KNOCKDOWN, .proc/check_slip)
-	RegisterSignal(parent, COMSIG_ADD_MOOD_EVENT, .proc/check_bless)
+	RegisterSignal(parent, COMSIG_CARBON_MOOD_UPDATE, .proc/check_bless)
 
 /datum/component/omen/UnregisterFromParent()
-	UnregisterSignal(parent, list(COMSIG_LIVING_STATUS_KNOCKDOWN, COMSIG_MOVABLE_MOVED, COMSIG_ADD_MOOD_EVENT))
+	UnregisterSignal(parent, list(COMSIG_LIVING_STATUS_KNOCKDOWN, COMSIG_MOVABLE_MOVED, COMSIG_CARBON_MOOD_UPDATE))
 
 /**
  * check_accident() is called each step we take
@@ -65,7 +65,7 @@
 		if(istype(turf_content, /obj/machinery/door/airlock))
 			to_chat(living_guy, span_warning("A malevolent force launches your body to the floor..."))
 			var/obj/machinery/door/airlock/darth_airlock = turf_content
-			living_guy.apply_status_effect(STATUS_EFFECT_PARALYZED, 10)
+			living_guy.apply_status_effect(/datum/status_effect/incapacitating/paralyzed, 10)
 			INVOKE_ASYNC(darth_airlock, /obj/machinery/door/airlock.proc/close, TRUE)
 			if(!permanent)
 				qdel(src)
@@ -112,7 +112,7 @@
 	if(permanent)
 		return
 
-	if(category != "blessing")
+	if (!("blessing" in our_guy.mob_mood.mood_events))
 		return
 
 	qdel(src)

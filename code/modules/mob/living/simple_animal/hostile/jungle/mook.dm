@@ -29,7 +29,7 @@
 	stat_attack = HARD_CRIT
 	attack_sound = 'sound/weapons/rapierhit.ogg'
 	attack_vis_effect = ATTACK_EFFECT_SLASH
-	deathsound = 'sound/voice/mook_death.ogg'
+	death_sound = 'sound/voice/mook_death.ogg'
 	aggro_vision_range = 15 //A little more aggressive once in combat to balance out their really low HP
 	var/attack_state = MOOK_ATTACK_NEUTRAL
 	var/struck_target_leap = FALSE
@@ -220,6 +220,7 @@
 	icon = 'icons/mob/jungle/mook.dmi'
 	icon_state = "mook_leap_cloud"
 	layer = BELOW_MOB_LAYER
+	plane = GAME_PLANE
 	pixel_x = -16
 	base_pixel_x = -16
 	pixel_y = -16

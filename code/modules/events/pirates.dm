@@ -5,6 +5,8 @@
 	max_occurrences = 1
 	min_players = 20
 	dynamic_should_hijack = TRUE
+	category = EVENT_CATEGORY_INVASION
+	description = "The crew will either pay up, or face a pirate assault."
 
 #define PIRATES_ROGUES "Rogues"
 #define PIRATES_SILVERSCALES "Silverscales"
@@ -292,6 +294,8 @@
 	var/sending_timer
 	///This is the cargo hold ID used by the piratepad machine. Match these two to link them together.
 	var/cargo_hold_id
+	///Interface name for the ui_interact call for different subtypes.
+	var/interface_type = "CargoHoldTerminal"
 
 /obj/machinery/computer/piratepad_control/Initialize(mapload)
 	..()
@@ -316,9 +320,10 @@
 		pad_ref = WEAKREF(pad)
 
 /obj/machinery/computer/piratepad_control/ui_interact(mob/user, datum/tgui/ui)
+	. = ..()
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "CargoHoldTerminal", name)
+		ui = new(user, src, interface_type, name)
 		ui.open()
 
 /obj/machinery/computer/piratepad_control/ui_data(mob/user)

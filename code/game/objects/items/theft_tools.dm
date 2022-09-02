@@ -94,8 +94,11 @@
 	greyscale_config_inhand_left = null
 	greyscale_config_inhand_right = null
 
+/obj/item/screwdriver/nuke/get_belt_overlay()
+	return mutable_appearance('icons/obj/clothing/belt_overlays.dmi', "screwdriver_nuke")
+
 /obj/item/paper/guides/antag/nuke_instructions
-	info = "How to break into a Nanotrasen self-destruct terminal and remove its plutonium core:<br>\
+	default_raw_text = "How to break into a Nanotrasen self-destruct terminal and remove its plutonium core:<br>\
 	<ul>\
 	<li>Use a screwdriver with a very thin tip (provided) to unscrew the terminal's front panel</li>\
 	<li>Dislodge and remove the front panel with a crowbar</li>\
@@ -106,7 +109,7 @@
 	</ul>"
 
 /obj/item/paper/guides/antag/hdd_extraction
-	info = "<h1>Source Code Theft & You - The Idiot's Guide to Crippling Nanotrasen Research & Development</h1><br>\
+	default_raw_text = "<h1>Source Code Theft & You - The Idiot's Guide to Crippling Nanotrasen Research & Development</h1><br>\
 	Rumour has it that Nanotrasen are using their R&D Servers to create something awful! They've codenamed it Project Goon, whatever that means.<br>\
 	This cannot be allowed to stand. Below is all our intel for stealing their source code and crippling their research efforts:<br>\
 	<ul>\
@@ -142,8 +145,9 @@
 // STEALING SUPERMATTER
 
 /obj/item/paper/guides/antag/supermatter_sliver
-	info = "How to safely extract a supermatter sliver:<br>\
+	default_raw_text = "How to safely extract a supermatter sliver:<br>\
 	<ul>\
+	<li>You must have active magnetic anchoring at all times near an active supermatter crystal.</li>\
 	<li>Approach an active supermatter crystal with radiation shielded personal protective equipment. DO NOT MAKE PHYSICAL CONTACT.</li>\
 	<li>Use a supermatter scalpel (provided) to slice off a sliver of the crystal.</li>\
 	<li>Use supermatter extraction tongs (also provided) to safely pick up the sliver you sliced off.</li>\
@@ -160,6 +164,7 @@
 	inhand_icon_state = "supermattersliver"
 	pulseicon = "supermatter_sliver_pulse"
 	layer = ABOVE_MOB_LAYER
+	plane = GAME_PLANE_UPPER
 
 
 /obj/item/nuke_core/supermatter_sliver/attack_tk(mob/user) // no TK dusting memes
@@ -198,10 +203,10 @@
 		var/mob/user = throwingdatum.thrower
 		log_combat(throwingdatum?.thrower, hit_atom, "consumed", src)
 		message_admins("[src] has consumed [key_name_admin(victim)] [ADMIN_JMP(src)], thrown by [key_name_admin(user)].")
-		investigate_log("has consumed [key_name(victim)], thrown by [key_name(user)]", INVESTIGATE_SUPERMATTER)
+		investigate_log("has consumed [key_name(victim)], thrown by [key_name(user)]", INVESTIGATE_ENGINE)
 	else
 		message_admins("[src] has consumed [key_name_admin(victim)] [ADMIN_JMP(src)] via throw impact.")
-		investigate_log("has consumed [key_name(victim)] via throw impact.", INVESTIGATE_SUPERMATTER)
+		investigate_log("has consumed [key_name(victim)] via throw impact.", INVESTIGATE_ENGINE)
 	victim.visible_message(span_danger("As [victim] is hit by [src], both flash into dust and silence fills the room..."),\
 		span_userdanger("You're hit by [src] and everything suddenly goes silent.\n[src] flashes into dust, and soon as you can register this, you do as well."),\
 		span_hear("Everything suddenly goes silent."))
@@ -316,11 +321,11 @@
 			return
 		victim.dust()
 		message_admins("[src] has consumed [key_name_admin(victim)] [ADMIN_JMP(src)].")
-		investigate_log("has consumed [key_name(victim)].", INVESTIGATE_SUPERMATTER)
+		investigate_log("has consumed [key_name(victim)].", INVESTIGATE_ENGINE)
 	else if(istype(AM, /obj/singularity))
 		return
 	else
-		investigate_log("has consumed [AM].", INVESTIGATE_SUPERMATTER)
+		investigate_log("has consumed [AM].", INVESTIGATE_ENGINE)
 		qdel(AM)
 	if (user)
 		log_combat(user, AM, "consumed", sliver, "via [src]")

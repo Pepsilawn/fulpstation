@@ -53,6 +53,8 @@
 	var/purchasable_from = ALL
 	/// If this uplink item is only available to certain roles. Roles are dependent on the frequency chip or stored ID.
 	var/list/restricted_roles = list()
+	/// The species able to purchase this uplink item.
+	var/restricted_species = list()
 	/// The minimum amount of progression needed for this item to be added to uplinks.
 	var/progression_minimum = 0
 	/// Whether this purchase is visible in the purchase log.
@@ -61,6 +63,8 @@
 	var/restricted = FALSE
 	/// Can this item be deconstructed to unlock certain techweb research nodes?
 	var/illegal_tech = TRUE
+	// String to be shown instead of the price, e.g for the Random item.
+	var/cost_override_string = ""
 
 /datum/uplink_category
 	/// Name of the category
@@ -85,7 +89,7 @@
 		A = new spawn_path(get_turf(user))
 	else
 		A = spawn_path
-	if(ishuman(user) && istype(A, /obj/item))
+	if(ishuman(user) && isitem(A))
 		var/mob/living/carbon/human/H = user
 		if(H.put_in_hands(A))
 			to_chat(H, span_boldnotice("[A] materializes into your hands!"))

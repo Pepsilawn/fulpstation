@@ -4,7 +4,7 @@
 	category = PROGRAM_CATEGORY_CREW
 	program_icon_state = "id"
 	extended_desc = "Program for programming employee ID cards to access parts of the station."
-	transfer_access = ACCESS_HEADS
+	transfer_access = list(ACCESS_COMMAND)
 	requires_ntnet = 0
 	size = 8
 	tgui_id = "NtosCard"
@@ -59,7 +59,7 @@
 	var/list/managers = SSid_access.sub_department_managers_tgui
 	for(var/access_as_text in managers)
 		var/list/info = managers[access_as_text]
-		var/access = text2num(access_as_text)
+		var/access = access_as_text
 		if((access in id_card.access) && ((target_dept in info["regions"]) || !target_dept))
 			region_access |= info["regions"]
 			job_templates |= info["templates"]
@@ -141,7 +141,7 @@
 				return card_slot.try_eject(user)
 			else
 				var/obj/item/I = user.get_active_held_item()
-				if(istype(I, /obj/item/card/id))
+				if(isidcard(I))
 					return card_slot.try_insert(I, user)
 		// Eject the ID being modified.
 		if("PRG_ejectmodid")
@@ -152,7 +152,7 @@
 				return card_slot2.try_eject(user)
 			else
 				var/obj/item/I = user.get_active_held_item()
-				if(istype(I, /obj/item/card/id))
+				if(isidcard(I))
 					return card_slot2.try_insert(I, user)
 			return TRUE
 		// Used to fire someone. Wipes all access from their card and modifies their assignment.
@@ -183,7 +183,7 @@
 
 			if(!new_name)
 				target_id_card.registered_name = null
-				playsound(computer, "terminal_type", 50, FALSE)
+				playsound(computer, SFX_TERMINAL_TYPE, 50, FALSE)
 				target_id_card.update_label()
 				// We had a name before and now we have no name, so this will unassign the card and we update the icon.
 				if(old_name)
@@ -198,7 +198,7 @@
 				return TRUE
 
 			target_id_card.registered_name = new_name
-			playsound(computer, "terminal_type", 50, FALSE)
+			playsound(computer, SFX_TERMINAL_TYPE, 50, FALSE)
 			target_id_card.update_label()
 			// Card wasn't assigned before and now it is, so update the icon accordingly.
 			if(!old_name)
@@ -215,7 +215,7 @@
 				return TRUE
 
 			target_id_card.registered_age = new_age
-			playsound(computer, "terminal_type", 50, FALSE)
+			playsound(computer, SFX_TERMINAL_TYPE, 50, FALSE)
 			return TRUE
 		// Change assignment
 		if("PRG_assign")
@@ -223,14 +223,14 @@
 				return TRUE
 			var/new_asignment = sanitize(params["assignment"])
 			target_id_card.assignment = new_asignment
-			playsound(computer, "terminal_type", 50, FALSE)
+			playsound(computer, SFX_TERMINAL_TYPE, 50, FALSE)
 			target_id_card.update_label()
 			return TRUE
 		// Add/remove access.
 		if("PRG_access")
 			if(!computer || !authenticated_card || !target_id_card)
 				return TRUE
-			playsound(computer, "terminal_type", 50, FALSE)
+			playsound(computer, SFX_TERMINAL_TYPE, 50, FALSE)
 			var/access_type = params["access_target"]
 			var/try_wildcard = params["access_wildcard"]
 			if(!(access_type in valid_access))
@@ -256,7 +256,7 @@
 			if(!computer || !authenticated_card || !target_id_card)
 				return TRUE
 
-			playsound(computer, "terminal_type", 50, FALSE)
+			playsound(computer, SFX_TERMINAL_TYPE, 50, FALSE)
 			var/template_name = params["name"]
 
 			if(!template_name)

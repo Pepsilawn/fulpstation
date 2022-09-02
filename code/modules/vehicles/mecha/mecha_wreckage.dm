@@ -64,7 +64,7 @@
 	var/type = pick(welder_salvage)
 	var/N = new type(get_turf(user))
 	user.visible_message(span_notice("[user] cuts [N] from [src]."), span_notice("You cut [N] from [src]."))
-	if(!istype(N, /obj/item/stack))
+	if(!isstack(N))
 		welder_salvage -= type
 	salvage_num--
 
@@ -89,7 +89,7 @@
 		return
 	to_chat(user, span_notice("You don't see anything that can be cut with [I]!"))
 
-/obj/structure/mecha_wreckage/transfer_ai(interaction, mob/user, null, obj/item/aicard/card)
+/obj/structure/mecha_wreckage/transfer_ai(interaction, mob/user, mob/living/silicon/ai/ai_mob, obj/item/aicard/card)
 	if(!..())
 		return
 

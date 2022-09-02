@@ -68,6 +68,7 @@
 	return GLOB.not_incapacitated_state
 
 /obj/machinery/computer/operating/ui_interact(mob/user, datum/tgui/ui)
+	. = ..()
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "OperatingComputer", name)
@@ -90,10 +91,10 @@
 		return data
 
 	data["table"] = table
-	if(!table.check_eligible_patient())
-		return data
 	data["patient"] = list()
-	var/mob/living/carbon/human/patient = table.patient
+	if(!table.patient)
+		return data
+	var/mob/living/carbon/patient = table.patient
 
 	switch(patient.stat)
 		if(CONSCIOUS)
@@ -109,7 +110,7 @@
 			data["patient"]["stat"] = "Dead"
 			data["patient"]["statstate"] = "bad"
 	data["patient"]["health"] = patient.health
-	data["patient"]["blood_type"] = patient.dna.blood_type
+	data["patient"]["blood_type"] = patient.dna?.blood_type
 	data["patient"]["maxHealth"] = patient.maxHealth
 	data["patient"]["minHealth"] = HEALTH_THRESHOLD_DEAD
 	data["patient"]["bruteLoss"] = patient.getBruteLoss()

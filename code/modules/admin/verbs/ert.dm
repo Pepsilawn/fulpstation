@@ -1,6 +1,9 @@
 /// If we spawn an ERT with the "choose experienced leader" option, select the leader from the top X playtimes
 #define ERT_EXPERIENCED_LEADER_CHOOSE_TOP 3
 
+///Dummy mob reserve slot for admin use
+#define DUMMY_HUMAN_SLOT_ADMIN "admintools"
+
 // CENTCOM RESPONSE TEAM
 
 /datum/admins/proc/makeERTTemplateModified(list/settings)
@@ -197,7 +200,7 @@
 			ert_operative.mind.set_assigned_role(SSjob.GetJobType(ert_antag.ert_job_path))
 
 			//Logging and cleanup
-			log_game("[key_name(ert_operative)] has been selected as an [ert_antag.name]")
+			ert_operative.log_message("has been selected as \a [ert_antag.name].", LOG_GAME)
 			numagents--
 			teamSpawned++
 
@@ -227,3 +230,4 @@
 		log_admin("[key_name(usr)] failed to create a CentCom response team.")
 
 #undef ERT_EXPERIENCED_LEADER_CHOOSE_TOP
+#undef DUMMY_HUMAN_SLOT_ADMIN

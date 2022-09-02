@@ -21,9 +21,8 @@
 
 	progression_minimum = 30 MINUTES
 
-	//this is a prototype so this progression is for all basic level kill objectives
-	progression_reward = list(5 MINUTES, 7 MINUTES)
-	telecrystal_reward = list(2, 4)
+	progression_reward = 2 MINUTES
+	telecrystal_reward = list(1, 2)
 
 	// The code below is for limiting how often you can get this objective. You will get this objective at a maximum of maximum_objectives_in_period every objective_period
 	/// The objective period at which we consider if it is an 'objective'. Set to 0 to accept all objectives.
@@ -52,8 +51,8 @@
 	var/obj/item/paper/calling_card/card
 
 /datum/traitor_objective/assassinate/calling_card/heads_of_staff
-	progression_reward = list(7 MINUTES, 10 MINUTES)
-	telecrystal_reward = list(4, 8)
+	progression_reward = 4 MINUTES
+	telecrystal_reward = list(3, 4)
 
 	heads_of_staff = TRUE
 
@@ -67,8 +66,8 @@
 	var/obj/item/bodypart/head/behead_goal
 
 /datum/traitor_objective/assassinate/behead/heads_of_staff
-	progression_reward = list(7 MINUTES, 15 MINUTES)
-	telecrystal_reward = list(4, 8)
+	progression_reward = 4 MINUTES
+	telecrystal_reward = list(3, 4)
 
 	heads_of_staff = TRUE
 
@@ -252,7 +251,7 @@
 	icon_state = "syndicate_calling_card"
 	color = "#ff5050"
 	show_written_words = FALSE
-	info = {"
+	default_raw_text = {"
 	<b>**Death to Nanotrasen.**</b><br><br>
 
 	Only through the inviolable cooperation of corporations known as The Syndicate, can Nanotrasen and its autocratic tyrants be silenced.

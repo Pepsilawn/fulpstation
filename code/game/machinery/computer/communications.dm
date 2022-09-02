@@ -13,7 +13,7 @@
 	desc = "A console used for high-priority announcements and emergencies."
 	icon_screen = "comm"
 	icon_keyboard = "tech_key"
-	req_access = list(ACCESS_HEADS)
+	req_access = list(ACCESS_COMMAND)
 	circuit = /obj/item/circuitboard/computer/communications
 	light_color = LIGHT_COLOR_BLUE
 
@@ -110,7 +110,7 @@
 	return authenticated
 
 /obj/machinery/computer/communications/attackby(obj/I, mob/user, params)
-	if(istype(I, /obj/item/card/id))
+	if(isidcard(I))
 		attack_hand(user)
 	else
 		return ..()
@@ -126,7 +126,7 @@
 			return
 		battlecruiser_called = TRUE
 		caller_card.use_charge(user)
-		addtimer(CALLBACK(GLOBAL_PROC, /proc/summon_battlecruiser), rand(20 SECONDS, 1 MINUTES))
+		addtimer(CALLBACK(GLOBAL_PROC, /proc/summon_battlecruiser, caller_card.team), rand(20 SECONDS, 1 MINUTES))
 		playsound(src, 'sound/machines/terminal_alert.ogg', 50, FALSE)
 		return
 
@@ -141,6 +141,7 @@
 /obj/machinery/computer/communications/ui_act(action, list/params)
 	var/static/list/approved_states = list(STATE_BUYING_SHUTTLE, STATE_CHANGING_STATUS, STATE_MAIN, STATE_MESSAGES)
 	var/static/list/approved_status_pictures = list("biohazard", "blank", "default", "lockdown", "redalert", "shuttle")
+	var/static/list/state_status_pictures = list("blank", "shuttle")
 
 	. = ..()
 	if (.)
@@ -196,19 +197,19 @@
 					playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
 					return
 
-			var/new_sec_level = seclevel2num(params["newSecurityLevel"])
+			var/new_sec_level = SSsecurity_level.text_level_to_number(params["newSecurityLevel"])
 			if (new_sec_level != SEC_LEVEL_GREEN && new_sec_level != SEC_LEVEL_BLUE)
 				return
-			if (SSsecurity_level.current_level == new_sec_level)
+			if (SSsecurity_level.get_current_level_as_number() == new_sec_level)
 				return
 
-			set_security_level(new_sec_level)
+			SSsecurity_level.set_level(new_sec_level)
 
 			to_chat(usr, span_notice("Authorization confirmed. Modifying security level."))
 			playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
 
 			// Only notify people if an actual change happened
-			log_game("[key_name(usr)] has changed the security level to [params["newSecurityLevel"]] with [src] at [AREACOORD(usr)].")
+			usr.log_message("changed the security level to [params["newSecurityLevel"]] with [src].", LOG_GAME)
 			message_admins("[ADMIN_LOOKUPFLW(usr)] has changed the security level to [params["newSecurityLevel"]] with [src] at [AREACOORD(usr)].")
 			deadchat_broadcast(" has changed the security level to [params["newSecurityLevel"]] with [src] at [span_name("[get_area_name(usr, TRUE)]")].", span_name("[usr.real_name]"), usr, message_type=DEADCHAT_ANNOUNCEMENT)
 
@@ -328,7 +329,7 @@
 
 			var/destination = params["destination"]
 
-			log_game("[key_name(usr)] is about to send the following message to [destination]: [message]")
+			usr.log_message("is about to send the following message to [destination]: [message]", LOG_GAME)
 			to_chat(
 				GLOB.admins,
 				span_adminnotice( \
@@ -350,7 +351,7 @@
 			if (state == STATE_BUYING_SHUTTLE && can_buy_shuttles(usr) != TRUE)
 				return
 			set_state(usr, params["state"])
-			playsound(src, "terminal_type", 50, FALSE)
+			playsound(src, SFX_TERMINAL_TYPE, 50, FALSE)
 		if ("setStatusMessage")
 			if (!authenticated(usr))
 				return
@@ -359,15 +360,18 @@
 			post_status("alert", "blank")
 			post_status("message", line_one, line_two)
 			last_status_display = list(line_one, line_two)
-			playsound(src, "terminal_type", 50, FALSE)
+			playsound(src, SFX_TERMINAL_TYPE, 50, FALSE)
 		if ("setStatusPicture")
 			if (!authenticated(usr))
 				return
 			var/picture = params["picture"]
 			if (!(picture in approved_status_pictures))
 				return
-			post_status("alert", picture)
-			playsound(src, "terminal_type", 50, FALSE)
+			if(picture in state_status_pictures)
+				post_status(picture)
+			else
+				post_status("alert", picture)
+			playsound(src, SFX_TERMINAL_TYPE, 50, FALSE)
 		if ("toggleAuthentication")
 			// Log out if we're logged in
 			if (authorize_name)
@@ -400,12 +404,12 @@
 				return
 			if (GLOB.emergency_access)
 				revoke_maint_all_access()
-				log_game("[key_name(usr)] disabled emergency maintenance access.")
+				usr.log_message("disabled emergency maintenance access.", LOG_GAME)
 				message_admins("[ADMIN_LOOKUPFLW(usr)] disabled emergency maintenance access.")
 				deadchat_broadcast(" disabled emergency maintenance access at [span_name("[get_area_name(usr, TRUE)]")].", span_name("[usr.real_name]"), usr, message_type = DEADCHAT_ANNOUNCEMENT)
 			else
 				make_maint_all_access()
-				log_game("[key_name(usr)] enabled emergency maintenance access.")
+				usr.log_message("enabled emergency maintenance access.", LOG_GAME)
 				message_admins("[ADMIN_LOOKUPFLW(usr)] enabled emergency maintenance access.")
 				deadchat_broadcast(" enabled emergency maintenance access at [span_name("[get_area_name(usr, TRUE)]")].", span_name("[usr.real_name]"), usr, message_type = DEADCHAT_ANNOUNCEMENT)
 		// Request codes for the Captain's Spare ID safe.
@@ -513,10 +517,10 @@
 				data["shuttleCalled"] = FALSE
 				data["shuttleLastCalled"] = FALSE
 				data["aprilFools"] = SSevents.holidays && SSevents.holidays[APRIL_FOOLS]
-				data["alertLevel"] = get_security_level()
+				data["alertLevel"] = SSsecurity_level.get_current_level_as_text()
 				data["authorizeName"] = authorize_name
 				data["canLogOut"] = !issilicon(user)
-				data["shuttleCanEvacOrFailReason"] = SSshuttle.canEvac(user)
+				data["shuttleCanEvacOrFailReason"] = SSshuttle.canEvac()
 				if(syndicate)
 					data["shuttleCanEvacOrFailReason"] = "You cannot summon the shuttle from this console!"
 
@@ -598,6 +602,7 @@
 	return data
 
 /obj/machinery/computer/communications/ui_interact(mob/user, datum/tgui/ui)
+	. = ..()
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
 		ui = new(user, src, "CommunicationsConsole")
@@ -613,7 +618,7 @@
 /obj/machinery/computer/communications/Topic(href, href_list)
 	if (href_list["reject_cross_comms_message"])
 		if (!usr.client?.holder)
-			log_game("[key_name(usr)] tried to reject a cross-comms message without being an admin.")
+			usr.log_message("tried to reject a cross-comms message without being an admin.", LOG_ADMIN)
 			message_admins("[key_name(usr)] tried to reject a cross-comms message without being an admin.")
 			return
 
@@ -759,6 +764,133 @@
 /obj/machinery/computer/communications/proc/add_message(datum/comm_message/new_message)
 	LAZYADD(messages, new_message)
 
+/// Defines for the various hack results.
+#define HACK_PIRATE "Pirates"
+#define HACK_FUGITIVES "Fugitives"
+#define HACK_SLEEPER "Sleeper Agents"
+#define HACK_THREAT "Threat Boost"
+
+/// The minimum number of ghosts / observers to have the chance of spawning pirates.
+#define MIN_GHOSTS_FOR_PIRATES 4
+/// The minimum number of ghosts / observers to have the chance of spawning fugitives.
+#define MIN_GHOSTS_FOR_FUGITIVES 6
+/// The maximum percentage of the population to be ghosts before we no longer have the chance of spawning Sleeper Agents.
+#define MAX_PERCENT_GHOSTS_FOR_SLEEPER 0.2
+
+/// Begin the process of hacking into the comms console to call in a threat.
+/obj/machinery/computer/communications/proc/try_hack_console(mob/living/hacker, duration = 30 SECONDS)
+	if(!can_hack())
+		return FALSE
+
+	AI_notify_hack()
+	if(!do_after(hacker, duration, src, extra_checks = CALLBACK(src, .proc/can_hack)))
+		return FALSE
+
+	hack_console(hacker)
+	return TRUE
+
+/// Checks if this console is hackable. Used as a callback during try_hack_console's doafter as well.
+/obj/machinery/computer/communications/proc/can_hack()
+	if(machine_stat & (NOPOWER|BROKEN))
+		return FALSE
+
+	return TRUE
+
+/**
+ * The communications console hack,
+ * called by certain antagonist actions.
+ *
+ * Brings in additional threats to the round.
+ *
+ * hacker - the mob that caused the hack
+ */
+/obj/machinery/computer/communications/proc/hack_console(mob/living/hacker)
+	// All hack results we'll choose from.
+	var/list/hack_options = list(HACK_THREAT)
+
+	// If we have a certain amount of ghosts, we'll add some more !!fun!! options to the list
+	var/num_ghosts = length(GLOB.current_observers_list) + length(GLOB.dead_player_list)
+
+	// Pirates require empty space for the ship, and ghosts for the pirates obviously
+	if(SSmapping.empty_space && (num_ghosts >= MIN_GHOSTS_FOR_PIRATES))
+		hack_options += HACK_PIRATE
+	// Fugitives require empty space for the hunter's ship, and ghosts for both fugitives and hunters (Please no waldo)
+	if(SSmapping.empty_space && (num_ghosts >= MIN_GHOSTS_FOR_FUGITIVES))
+		hack_options += HACK_FUGITIVES
+	// If less than a certain percent of the population is ghosts, consider sleeper agents
+	if(num_ghosts < (length(GLOB.clients) * MAX_PERCENT_GHOSTS_FOR_SLEEPER))
+		hack_options += HACK_SLEEPER
+
+	var/picked_option = pick(hack_options)
+	message_admins("[ADMIN_LOOKUPFLW(hacker)] hacked a [name] located at [ADMIN_VERBOSEJMP(src)], resulting in: [picked_option]!")
+	hacker.log_message("hacked a communications console, resulting in: [picked_option].", LOG_GAME, log_globally = TRUE)
+	switch(picked_option)
+		if(HACK_PIRATE) // Triggers pirates, which the crew may be able to pay off to prevent
+			priority_announce(
+				"Attention crew: sector monitoring reports a massive jump-trace from an enemy vessel destined for your system. Prepare for imminent hostile contact.",
+				"[command_name()] High-Priority Update",
+			)
+
+			var/datum/round_event_control/pirates/pirate_event = locate() in SSevents.control
+			if(!pirate_event)
+				CRASH("hack_console() attempted to run pirates, but could not find an event controller!")
+			addtimer(CALLBACK(pirate_event, /datum/round_event_control.proc/runEvent), rand(20 SECONDS, 1 MINUTES))
+
+		if(HACK_FUGITIVES) // Triggers fugitives, which can cause confusion / chaos as the crew decides which side help
+			priority_announce(
+				"Attention crew: sector monitoring reports a jump-trace from an unidentified vessel destined for your system. Prepare for probable contact.",
+				"[command_name()] High-Priority Update",
+			)
+
+			var/datum/round_event_control/fugitives/fugitive_event = locate() in SSevents.control
+			if(!fugitive_event)
+				CRASH("hack_console() attempted to run fugitives, but could not find an event controller!")
+			addtimer(CALLBACK(fugitive_event, /datum/round_event_control.proc/runEvent), rand(20 SECONDS, 1 MINUTES))
+
+		if(HACK_THREAT) // Force an unfavorable situation on the crew
+			priority_announce(
+				"Attention crew, the Nanotrasen Department of Intelligence has received intel suggesting increased enemy activity in your sector beyond that initially reported in today's threat advisory.",
+				"[command_name()] High-Priority Update",
+			)
+
+			for(var/mob/crew_member as anything in GLOB.player_list)
+				if(!is_station_level(crew_member.z))
+					continue
+				shake_camera(crew_member, 15, 1)
+
+			var/datum/game_mode/dynamic/dynamic = SSticker.mode
+			dynamic.unfavorable_situation()
+
+		if(HACK_SLEEPER) // Trigger one or multiple sleeper agents with the crew (or for latejoining crew)
+			var/datum/dynamic_ruleset/midround/sleeper_agent_type = /datum/dynamic_ruleset/midround/from_living/autotraitor
+			var/datum/game_mode/dynamic/dynamic = SSticker.mode
+			var/max_number_of_sleepers = clamp(round(length(GLOB.alive_player_list) / 20), 1, 3)
+			var/num_agents_created = 0
+			for(var/num_agents in 1 to rand(1, max_number_of_sleepers))
+				if(!dynamic.picking_specific_rule(sleeper_agent_type, forced = TRUE, ignore_cost = TRUE))
+					break
+				num_agents_created++
+
+			if(num_agents_created <= 0)
+				// We failed to run any midround sleeper agents, so let's be patient and run latejoin traitor
+				dynamic.picking_specific_rule(/datum/dynamic_ruleset/latejoin/infiltrator, forced = TRUE, ignore_cost = TRUE)
+
+			else
+				// We spawned some sleeper agents, nice - give them a report to kickstart the paranoia
+				priority_announce(
+					"Attention crew, it appears that someone on your station has hijacked your telecommunications and broadcasted an unknown signal.",
+					"[command_name()] High-Priority Update",
+				)
+
+#undef HACK_PIRATE
+#undef HACK_FUGITIVES
+#undef HACK_SLEEPER
+#undef HACK_THREAT
+
+#undef MIN_GHOSTS_FOR_PIRATES
+#undef MIN_GHOSTS_FOR_FUGITIVES
+#undef MAX_PERCENT_GHOSTS_FOR_SLEEPER
+
 /datum/comm_message
 	var/title
 	var/content
@@ -777,7 +909,6 @@
 
 #undef IMPORTANT_ACTION_COOLDOWN
 #undef EMERGENCY_ACCESS_COOLDOWN
-#undef MAX_STATUS_LINE_LENGTH
 #undef STATE_BUYING_SHUTTLE
 #undef STATE_CHANGING_STATUS
 #undef STATE_MAIN

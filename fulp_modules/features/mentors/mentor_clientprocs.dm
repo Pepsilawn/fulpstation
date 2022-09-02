@@ -11,7 +11,7 @@
 /client/Topic(href, href_list, hsrc)
 	if(mentor_client_procs(href_list))
 		return
-	. = ..()
+	return ..()
 
 /client/proc/mentor_client_procs(href_list)
 	if(href_list["mentor_msg"])
@@ -36,9 +36,14 @@
 		GLOB.mentors |= src
 		mentor_datum.owner = src
 		add_mentor_verbs()
-		var/list/cdatums = world.file2list("[global.config.directory]/contributors.txt")
-		if(ckey in cdatums)
-			mentor_datum.is_contributor = TRUE
+		var/list/contributors = world.file2list("[global.config.directory]/contributors.txt")
+		for(var/line in contributors)
+			if(!length(line))
+				continue
+			if(findtextEx(line, "#", 1, 2))
+				continue
+			if(ckey == ckey(contributors))
+				mentor_datum.is_contributor = TRUE
 
 /// Admins are Mentors, too
 /client/proc/is_mentor()

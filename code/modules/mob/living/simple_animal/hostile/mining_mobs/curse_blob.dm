@@ -23,6 +23,7 @@
 	environment_smash = ENVIRONMENT_SMASH_NONE
 	sentience_type = SENTIENCE_BOSS
 	layer = LARGE_MOB_LAYER
+	plane = GAME_PLANE_UPPER_FOV_HIDDEN
 	var/mob/living/set_target
 	var/datum/move_loop/has_target/force_move/our_loop
 
@@ -100,7 +101,7 @@
 	. = ..()
 	if(mover == set_target)
 		return FALSE
-	if(istype(mover, /obj/projectile))
+	if(isprojectile(mover))
 		var/obj/projectile/P = mover
 		if(P.firer == set_target)
 			return FALSE

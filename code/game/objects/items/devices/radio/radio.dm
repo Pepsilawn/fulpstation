@@ -67,7 +67,7 @@
 	var/translate_binary = FALSE
 	/// If true, can say/hear on the special CentCom channel.
 	var/independent = FALSE
-	/// If true, hears all well-known channels automatically, and can say/hear on the Syndicate channel.
+	/// If true, hears all well-known channels automatically, and can say/hear on the Syndicate channel. Also protects from radio jammers.
 	var/syndie = FALSE
 	/// associative list of the encrypted radio channels this radio is currently set to listen/broadcast to, of the form: list(channel name = TRUE or FALSE)
 	var/list/channels
@@ -110,9 +110,9 @@
 	resetChannels()
 
 	if(keyslot)
-		for(var/ch_name in keyslot.channels)
-			if(!(ch_name in channels))
-				channels[ch_name] = keyslot.channels[ch_name]
+		for(var/channel_name in keyslot.channels)
+			if(!(channel_name in channels))
+				channels[channel_name] = keyslot.channels[channel_name]
 
 		if(keyslot.translate_binary)
 			translate_binary = TRUE
@@ -121,8 +121,8 @@
 		if(keyslot.independent)
 			independent = TRUE
 
-	for(var/ch_name in channels)
-		secure_radio_connections[ch_name] = add_radio(src, GLOB.radiochannels[ch_name])
+	for(var/channel_name in channels)
+		secure_radio_connections[channel_name] = add_radio(src, GLOB.radiochannels[channel_name])
 
 // Used for cyborg override
 /obj/item/radio/proc/resetChannels()
@@ -131,6 +131,13 @@
 	translate_binary = FALSE
 	syndie = FALSE
 	independent = FALSE
+
+///goes through all radio channels we should be listening for and readds them to the global list
+/obj/item/radio/proc/readd_listening_radio_channels()
+	for(var/channel_name in channels)
+		add_radio(src, GLOB.radiochannels[channel_name])
+
+	add_radio(src, FREQ_COMMON)
 
 /obj/item/radio/proc/make_syndie() // Turns normal radios into Syndicate radios!
 	qdel(keyslot)
@@ -179,8 +186,7 @@
 		should_be_listening = listening
 
 	if(listening && on)
-		recalculateChannels()
-		add_radio(src, frequency)
+		readd_listening_radio_channels()
 	else if(!listening)
 		remove_radio_all(src)
 
@@ -271,7 +277,7 @@
 	var/turf/position = get_turf(src)
 	for(var/obj/item/jammer/jammer as anything in GLOB.active_jammers)
 		var/turf/jammer_turf = get_turf(jammer)
-		if(position?.z == jammer_turf.z && (get_dist(position, jammer_turf) <= jammer.range))
+		if(position?.z == jammer_turf.z && (get_dist(position, jammer_turf) <= jammer.range) && !syndie)
 			return
 
 	// Determine the identity information which will be attached to the signal.
@@ -540,6 +546,6 @@
 /obj/item/radio/off // Station bounced radios, their only difference is spawning with the speakers off, this was made to help the lag.
 	dog_fashion = /datum/dog_fashion/back
 
-/obj/item/radio/off/Initialize()
+/obj/item/radio/off/Initialize(mapload)
 	. = ..()
 	set_listening(FALSE)

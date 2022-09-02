@@ -21,8 +21,11 @@
 		return FALSE
 	AddComponent(/datum/component/traitor_objective_mind_tracker, generating_for, \
 		signals = list(COMSIG_HUMAN_EARLY_UNARMED_ATTACK = .proc/on_unarmed_attack))
-	RegisterSignal(generating_for, COMSIG_GLOB_TRAITOR_OBJECTIVE_COMPLETED, .proc/on_global_obj_completed)
+	RegisterSignal(SSdcs, COMSIG_GLOB_TRAITOR_OBJECTIVE_COMPLETED, .proc/on_global_obj_completed)
 	return TRUE
+
+/datum/traitor_objective/hack_comm_console/ungenerate_objective()
+	UnregisterSignal(SSdcs, COMSIG_GLOB_TRAITOR_OBJECTIVE_COMPLETED)
 
 /datum/traitor_objective/hack_comm_console/proc/on_global_obj_completed(datum/source, datum/traitor_objective/objective)
 	SIGNAL_HANDLER
@@ -37,14 +40,11 @@
 		return
 	if(!istype(target))
 		return
-	target.AI_notify_hack()
 	INVOKE_ASYNC(src, .proc/begin_hack, user, target)
 	return COMPONENT_CANCEL_ATTACK_CHAIN
 
 /datum/traitor_objective/hack_comm_console/proc/begin_hack(mob/user, obj/machinery/computer/communications/target)
-	if(!do_after(user, 30 SECONDS, target))
+	if(!target.try_hack_console(user))
 		return
+
 	succeed_objective()
-	priority_announce("Attention crew, it appears that someone on your station has made unexpected communication with a syndicate ship in nearby space.", "[command_name()] High-Priority Update")
-	var/datum/round_event_control/pirates/pirate_event = new/datum/round_event_control/pirates
-	pirate_event.runEvent()

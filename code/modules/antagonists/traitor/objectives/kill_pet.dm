@@ -11,7 +11,7 @@
 /datum/traitor_objective/kill_pet
 	name = "Kill the %DEPARTMENT HEAD%'s beloved %PET%"
 	description = "The %DEPARTMENT HEAD% has particularly annoyed us by sending us spam emails and we want their %PET% dead to show them what happens when they cross us. "
-	telecrystal_reward = list(1, 3)
+	telecrystal_reward = list(1, 2)
 
 	progression_reward = list(3 MINUTES, 6 MINUTES)
 
@@ -24,6 +24,11 @@
 		JOB_CAPTAIN = /mob/living/simple_animal/pet/fox/renault,
 		JOB_CHIEF_MEDICAL_OFFICER = /mob/living/simple_animal/pet/cat/runtime,
 		JOB_CHIEF_ENGINEER = /mob/living/simple_animal/parrot/poly,
+		JOB_QUARTERMASTER = list(
+			/mob/living/simple_animal/sloth/citrus,
+			/mob/living/simple_animal/sloth/paperwork,
+			/mob/living/simple_animal/hostile/gorilla/cargo_domestic,
+		)
 	)
 	/// The head that we are targetting
 	var/datum/job/target
@@ -40,7 +45,7 @@
 /datum/traitor_objective/kill_pet/high_risk
 	progression_minimum = 25 MINUTES
 	progression_reward = list(14 MINUTES, 18 MINUTES)
-	telecrystal_reward = list(3, 5)
+	telecrystal_reward = list(2, 3)
 
 	limited_to_department_head = FALSE
 	possible_heads = list(
@@ -66,7 +71,7 @@
 	var/pet_type = possible_heads[target.title]
 	if(islist(pet_type))
 		for(var/type in pet_type)
-			target_pet = locate(pet_type) in GLOB.mob_living_list
+			target_pet = locate(type) in GLOB.mob_living_list
 			if(target_pet)
 				break
 	else

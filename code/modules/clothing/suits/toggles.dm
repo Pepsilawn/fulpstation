@@ -44,7 +44,7 @@
 		if(ishuman(hood.loc))
 			var/mob/living/carbon/human/H = hood.loc
 			H.transferItemToLoc(hood, src, TRUE)
-			H.update_inv_wear_suit()
+			H.update_worn_oversuit()
 		else
 			hood.forceMove(src)
 
@@ -77,14 +77,14 @@
 				return
 			hood_up = TRUE
 			icon_state = "[initial(icon_state)]_t"
-			H.update_inv_wear_suit()
+			H.update_worn_oversuit()
 			update_action_buttons()
 	else
 		RemoveHood()
 
 /obj/item/clothing/head/hooded
 	var/obj/item/clothing/suit/hooded/suit
-	dynamic_hair_suffix = ""
+
 
 /obj/item/clothing/head/hooded/Destroy()
 	suit = null
