@@ -9221,7 +9221,6 @@
 /obj/item/shovel/spade,
 /obj/item/storage/bag/plants/portaseeder,
 /obj/item/seeds/wheat/rice,
-/obj/item/seeds/replicapod,
 /obj/item/seeds/carrot,
 /obj/item/seeds/tomato,
 /obj/item/reagent_containers/cup/bottle/nutrient/ez,
