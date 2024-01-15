@@ -1818,7 +1818,7 @@
 /area/station/command/heads_quarters/hop)
 "kW" = (
 /obj/structure/bed/medical/emergency,
-/obj/structure/window/reinforced/spawner,
+/obj/structure/window/reinforced/spawner/directional/south,
 /obj/structure/curtain,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
@@ -2679,7 +2679,7 @@
 	pixel_x = -4;
 	pixel_y = 3
 	},
-/obj/item/stamp/hop{
+/obj/item/stamp/head/hop{
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -2757,7 +2757,7 @@
 /obj/machinery/status_display/ai/directional/east,
 /obj/machinery/camera/directional/north,
 /obj/machinery/pdapainter/security,
-/obj/item/stamp/hos{
+/obj/item/stamp/head/hos{
 	pixel_x = 1;
 	pixel_y = 10
 	},
@@ -3018,7 +3018,7 @@
 /obj/machinery/status_display/evac/directional/west,
 /obj/machinery/light/directional/north,
 /obj/structure/table/optable,
-/obj/item/storage/backpack/duffelbag/med/surgery,
+/obj/item/surgery_tray/full,
 /turf/open/floor/iron/white,
 /area/station/medical/surgery/theatre)
 "sn" = (
@@ -3291,7 +3291,7 @@
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "tZ" = (
-/mob/living/simple_animal/pet/fox/renault,
+/mob/living/basic/pet/fox/renault,
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/captain)
 "ua" = (
@@ -5814,7 +5814,7 @@
 "IY" = (
 /obj/machinery/airalarm/directional/north,
 /obj/machinery/light/directional/north,
-/obj/structure/sign/delamination_counter/directional/west,
+/obj/machinery/incident_display/delam/directional/west,
 /obj/machinery/shower/directional/east,
 /obj/effect/turf_decal/trimline/blue/end{
 	dir = 4
@@ -6824,7 +6824,7 @@
 /area/station/engineering/atmos)
 "OC" = (
 /obj/structure/bed/medical/emergency,
-/obj/structure/window/reinforced/spawner,
+/obj/structure/window/reinforced/spawner/directional/south,
 /obj/structure/curtain,
 /obj/item/clothing/suit/jacket/straight_jacket,
 /turf/open/floor/iron,
@@ -8301,7 +8301,7 @@
 	pixel_x = 9;
 	pixel_y = 7
 	},
-/obj/structure/sign/delamination_counter/directional/west,
+/obj/machinery/incident_display/delam/directional/west,
 /obj/effect/turf_decal/tile/engineering/opposingcorners,
 /turf/open/floor/iron/dark,
 /area/station/engineering/lobby)
@@ -8328,7 +8328,7 @@
 "XQ" = (
 /obj/structure/table/reinforced,
 /obj/machinery/keycard_auth,
-/obj/item/stamp/ce{
+/obj/item/stamp/head/ce{
 	pixel_x = -4;
 	pixel_y = 11
 	},
