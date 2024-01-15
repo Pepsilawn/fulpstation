@@ -1388,7 +1388,7 @@
 /area/space)
 "id" = (
 /obj/machinery/power/apc/auto_name/directional/south,
-/obj/machinery/modular_computer/console/preset/id{
+/obj/machinery/modular_computer/preset/id{
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/engineering{
@@ -1817,7 +1817,7 @@
 /turf/closed/wall,
 /area/station/command/heads_quarters/hop)
 "kW" = (
-/obj/structure/bed/roller,
+/obj/structure/bed/medical/emergency,
 /obj/structure/window/reinforced/spawner,
 /obj/structure/curtain,
 /obj/effect/decal/cleanable/dirt,
@@ -2164,7 +2164,7 @@
 /area/station/command/bridge)
 "mX" = (
 /obj/machinery/power/apc/auto_name/directional/south,
-/obj/machinery/modular_computer/console/preset/id{
+/obj/machinery/modular_computer/preset/id{
 	dir = 4
 	},
 /obj/machinery/button/door/directional/west{
@@ -2287,9 +2287,7 @@
 /turf/open/floor/iron,
 /area/space)
 "nx" = (
-/obj/structure/fluff/broken_flooring{
-	icon_state = "singular"
-	},
+/obj/structure/broken_flooring/singular/directional/south,
 /obj/effect/decal/remains/human,
 /obj/structure/cable,
 /turf/open/floor/plating,
@@ -2645,7 +2643,7 @@
 /turf/open/floor/plating,
 /area/station/maintenance/solars/port/aft)
 "qe" = (
-/obj/structure/fluff/broken_flooring,
+/obj/structure/broken_flooring/corner/directional/south,
 /obj/item/restraints/handcuffs,
 /obj/item/restraints/legcuffs/beartrap/prearmed,
 /obj/effect/decal/cleanable/dirt,
@@ -2653,7 +2651,7 @@
 /area/station/medical/abandoned)
 "qh" = (
 /obj/machinery/power/apc/auto_name/directional/south,
-/obj/machinery/modular_computer/console/preset/engineering{
+/obj/machinery/modular_computer/preset/engineering{
 	dir = 1
 	},
 /obj/structure/cable,
@@ -3031,10 +3029,7 @@
 /turf/open/floor/iron/dark,
 /area/station/engineering/storage_shared)
 "so" = (
-/obj/structure/fluff/broken_flooring{
-	dir = 4;
-	icon_state = "pile"
-	},
+/obj/structure/broken_flooring/pile/directional/east,
 /obj/effect/decal/cleanable/greenglow,
 /obj/structure/cable,
 /turf/open/floor/plating,
@@ -3346,7 +3341,7 @@
 "um" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/modular_computer/console/preset/cargochat/medical{
+/obj/machinery/modular_computer/preset/cargochat/medical{
 	dir = 8
 	},
 /turf/open/floor/iron/white,
@@ -3693,10 +3688,7 @@
 /area/station/command/gateway)
 "ws" = (
 /obj/item/broken_bottle,
-/obj/structure/fluff/broken_flooring{
-	dir = 4;
-	icon_state = "singular"
-	},
+/obj/structure/broken_flooring/singular/directional/east,
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/plating,
 /area/station/medical/abandoned)
@@ -4077,7 +4069,7 @@
 "ym" = (
 /obj/machinery/airalarm/directional/north,
 /obj/machinery/light/directional/north,
-/obj/machinery/modular_computer/console/preset/id,
+/obj/machinery/modular_computer/preset/id,
 /turf/open/floor/iron/dark,
 /area/space)
 "yn" = (
@@ -4165,7 +4157,7 @@
 /turf/open/floor/plating,
 /area/station/medical/abandoned)
 "yM" = (
-/obj/structure/bed/roller,
+/obj/structure/bed/medical/emergency,
 /obj/structure/curtain,
 /obj/item/clothing/suit/jacket/straight_jacket,
 /obj/item/reagent_containers/syringe/contraband/saturnx,
@@ -4842,7 +4834,7 @@
 /turf/open/floor/iron/dark,
 /area/station/command/gateway)
 "Cs" = (
-/obj/machinery/modular_computer/console/preset/id,
+/obj/machinery/modular_computer/preset/id,
 /obj/effect/turf_decal/trimline/yellow/filled,
 /turf/open/floor/iron/white,
 /area/station/command/heads_quarters/cmo)
@@ -4946,7 +4938,7 @@
 /obj/machinery/airalarm/directional/north,
 /obj/machinery/status_display/evac/directional/west,
 /obj/machinery/light/directional/north,
-/obj/machinery/atmospherics/components/unary/cryo_cell,
+/obj/machinery/cryo_cell,
 /turf/open/floor/iron/white,
 /area/station/medical/cryo)
 "Df" = (
@@ -5004,10 +4996,8 @@
 "Dv" = (
 /obj/machinery/status_display/evac/directional/west,
 /obj/machinery/light/directional/north,
-/obj/machinery/airalarm/unlocked{
-	dir = 1;
-	pixel_y = 26
-	},
+/obj/machinery/airalarm/directional/north,
+/obj/effect/mapping_helpers/airalarm/unlocked,
 /turf/open/floor/iron/dark/herringbone,
 /area/station/maintenance/disposal/incinerator)
 "DA" = (
@@ -6681,10 +6671,8 @@
 /turf/open/floor/plating,
 /area/station/service/hydroponics/garden/abandoned)
 "NQ" = (
-/obj/machinery/airalarm/engine{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/airalarm/directional/east,
+/obj/effect/mapping_helpers/airalarm/engine_access,
 /obj/machinery/atmospherics/components/binary/pump/layer2{
 	name = "Gas to Chamber"
 	},
@@ -6835,7 +6823,7 @@
 /turf/open/floor/engine/n2,
 /area/station/engineering/atmos)
 "OC" = (
-/obj/structure/bed/roller,
+/obj/structure/bed/medical/emergency,
 /obj/structure/window/reinforced/spawner,
 /obj/structure/curtain,
 /obj/item/clothing/suit/jacket/straight_jacket,
@@ -7551,11 +7539,11 @@
 /obj/machinery/status_display/ai/directional/east,
 /obj/machinery/camera/directional/north,
 /obj/structure/table/reinforced,
-/obj/item/roller,
-/obj/item/roller{
+/obj/item/emergency_bed,
+/obj/item/emergency_bed{
 	pixel_y = 3
 	},
-/obj/item/roller{
+/obj/item/emergency_bed{
 	pixel_y = 6
 	},
 /turf/open/floor/iron/white,
