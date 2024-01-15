@@ -20,6 +20,8 @@
 	// we never want to hide a turf because it's not lit
 	// We can rely on the lighting plane to handle that for us
 	see_in_dark = 1e6
+	// A list of factions that this mob is currently in, for hostile mob targeting, amongst other things
+	faction = list(FACTION_NEUTRAL)
 	/// The current client inhabiting this mob. Managed by login/logout
 	/// This exists so we can do cleanup in logout for occasions where a client was transfere rather then destroyed
 	/// We need to do this because the mob on logout never actually has a reference to client
@@ -59,14 +61,8 @@
 	var/cached_multiplicative_actions_slowdown
 	/// List of action hud items the user has
 	var/list/datum/action/actions
-	/// A list of chameleon actions we have specifically
-	/// This can be unified with the actions list
-	var/list/datum/action/item_action/chameleon/chameleon_item_actions
 	///Cursor icon used when holding shift over things
 	var/examine_cursor_icon = 'icons/effects/mouse_pointers/examine_pointer.dmi'
-
-	///Whether this mob has or is in the middle of committing suicide.
-	var/suiciding = FALSE
 
 	/// Whether a mob is alive or dead. TODO: Move this to living - Nodrak (2019, still here)
 	var/stat = CONSCIOUS
@@ -89,14 +85,6 @@
 
 	/// Tick time the mob can next move
 	var/next_move = null
-
-	/**
-	  * Magic var that stops you moving and interacting with anything
-	  *
-	  * Set when you're being turned into something else and also used in a bunch of places
-	  * it probably shouldn't really be
-	  */
-	var/notransform = null //Carbon
 
 	/// What is the mobs real name (name is overridden for disguises etc)
 	var/real_name = null
@@ -122,9 +110,6 @@
 
 	/// How many ticks this mob has been over reating
 	var/overeatduration = 0 // How long this guy is overeating //Carbon
-
-	/// The movement intent of the mob (run/wal)
-	var/m_intent = MOVE_INTENT_RUN//Living
 
 	/// The last known IP of the client who was in this mob
 	var/lastKnownIP = null
@@ -160,9 +145,6 @@
 
 	/// What job does this mob have
 	var/job = null//Living
-
-	/// A list of factions that this mob is currently in, for hostile mob targetting, amongst other things
-	var/list/faction = list(FACTION_NEUTRAL)
 
 	/// Can this mob enter shuttles
 	var/move_on_shuttle = 1
@@ -233,5 +215,5 @@
 	/// User is thinking in character. Used to revert to thinking state after stop_typing
 	var/thinking_IC = FALSE
 
-	///how much gravity is slowing us down
-	var/gravity_slowdown = 0
+	/// Whether invisimin is enabled on this mob
+	var/invisimin = FALSE

@@ -4,7 +4,7 @@
 [![Percentage of issues still open](https://isitmaintained.com/badge/open/fulpstation/fulpstation.svg)](https://isitmaintained.com/project/fulpstation/fulpstation "Percentage of issues still open")
 [![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/fulpstation/fulpstation.svg)](https://isitmaintained.com/project/fulpstation/fulpstation "Average time to resolve an issue")
 
-[![forthebadge](https://forthebadge.com/images/badges/built-with-resentment.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/contains-technical-debt.svg)](https://user-images.githubusercontent.com/8171642/50290880-ffef5500-043a-11e9-8270-a2e5b697c86c.png) [![forinfinityandbyond](https://user-images.githubusercontent.com/5211576/29499758-4efff304-85e6-11e7-8267-62919c3688a9.gif)](https://www.reddit.com/r/SS13/comments/5oplxp/what_is_the_main_problem_with_byond_as_an_engine/dclbu1a)
+[![resentment](.github/images/badges/built-with-resentment.svg)](.github/images/comics/131-bug-free.png) [![technical debt](.github/images/badges/contains-technical-debt.svg)](.github/images/comics/106-tech-debt-modified.png) [![forinfinityandbyond](.github/images/badges/made-in-byond.gif)](https://www.reddit.com/r/SS13/comments/5oplxp/what_is_the_main_problem_with_byond_as_an_engine/dclbu1a)
 
 * **Code:** https://github.com/fulpstation/fulpstation
 * **Forum:** https://forum.fulp.gg/
@@ -17,11 +17,11 @@ This is the codebase for Fulpstation, a custom fork of the [/tg/station](https:/
 Space Station 13 is a paranoia-laden round-based roleplaying game set against the backdrop of a nonsensical, metal death trap masquerading as a space station, with charming spritework designed to represent the sci-fi setting and its dangerous undertones. Have fun, and survive!
 
 ## DOWNLOADING
-[Downloading](.github/DOWNLOADING.md)
+[Downloading](.github/guides/DOWNLOADING.md)
 
-[Running on the server](.github/RUNNING_A_SERVER.md)
+[Running on the server](.github/guides/RUNNING_A_SERVER.md)
 
-[Maps and Away Missions](.github/MAPS_AND_AWAY_MISSIONS.md)
+[Maps and Away Missions](.github/guides/MAPS_AND_AWAY_MISSIONS.md)
 
 ## :exclamation: How to compile :exclamation:
 
@@ -29,7 +29,7 @@ On **2021-01-04** we have changed the way to compile the codebase.
 
 Find `BUILD.bat` here in the root folder of tgstation, and double click it to initiate the build. It consists of multiple steps and might take around 1-5 minutes to compile.
 
-After it finishes, you can then [setup the server](.github/RUNNING_A_SERVER.md) normally by opening `tgstation.dmb` in DreamDaemon.
+After it finishes, you can then [setup the server](.github/guides/RUNNING_A_SERVER.md) normally by opening `tgstation.dmb` in DreamDaemon.
 
 **Building tgstation in DreamMaker directly is now deprecated and might produce errors**, such as `'tgui.bundle.js': cannot find file`.
 

@@ -9,6 +9,7 @@
 	maxHealth = 5
 	melee_damage_lower = 5
 	melee_damage_upper = 5
+	faction = list(FACTION_RABBITS)
 	ai_controller = /datum/ai_controller/basic_controller/killer_rabbit
 	basic_mob_flags = DEL_ON_DEATH
 
@@ -29,7 +30,7 @@
  */
 /datum/ai_controller/basic_controller/killer_rabbit
 	blackboard = list(
-		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic(),
+		BB_TARGETING_STRATEGY = /datum/targeting_strategy/basic,
 	)
 
 	ai_movement = /datum/ai_movement/basic_avoidance

@@ -1,4 +1,4 @@
-/datum/antagonist/traitor/infiltrator
+/datum/antagonist/traitor/fulp_infiltrator
 	name = "Infiltrator"
 	antagpanel_category = "Infiltrator"
 	job_rank = ROLE_INFILTRATOR
@@ -19,7 +19,7 @@
 		INFILTRATOR_FACTION_SELF
 	)
 
-/datum/antagonist/traitor/infiltrator/proc/equip_infiltrator(mob/living/carbon/human/infiltrator = owner.current)
+/datum/antagonist/traitor/fulp_infiltrator/proc/equip_infiltrator(mob/living/carbon/human/infiltrator = owner.current)
 	switch(employer)
 		if(INFILTRATOR_FACTION_CORPORATE_CLIMBER)
 			return infiltrator.equipOutfit(/datum/outfit/infiltrator/cc)
@@ -30,7 +30,7 @@
 		if(INFILTRATOR_FACTION_SELF)
 			return infiltrator.equipOutfit(/datum/outfit/infiltrator/self)
 
-/datum/antagonist/traitor/infiltrator/on_gain()
+/datum/antagonist/traitor/fulp_infiltrator/on_gain()
 	. = ..()
 	owner.current.mind.set_assigned_role(SSjob.GetJobType(/datum/job/infiltrator))
 	owner.current.mind.special_role = ROLE_INFILTRATOR
@@ -38,14 +38,14 @@
 	uplink_handler.has_objectives = FALSE
 	uplink_handler.maximum_potential_objectives = 0
 
-/datum/antagonist/traitor/infiltrator/admin_add(datum/mind/new_owner, mob/admin)
+/datum/antagonist/traitor/fulp_infiltrator/admin_add(datum/mind/new_owner, mob/admin)
 	var/choice = tgui_input_list(admin, "What affiliation would you like [new_owner] to have?", "Affiliation", possible_employers)
 	if(!choice)
 		return
 	admin_selected = choice
 	return ..()
 
-/datum/antagonist/traitor/infiltrator/pick_employer()
+/datum/antagonist/traitor/fulp_infiltrator/pick_employer()
 	if(admin_selected)
 		employer = admin_selected
 	else
@@ -71,7 +71,7 @@
 	ears = /obj/item/radio/headset
 	back = /obj/item/storage/backpack
 	backpack_contents = list(
-		/obj/item/storage/box/survival/syndie = 1,
+		/obj/item/storage/box/survival/infil = 1,
 		/obj/item/knife/combat/survival = 1,
 		/obj/item/infiltrator_radio = 1,
 	)
@@ -121,7 +121,7 @@
 	show_name_in_check_antagonists = TRUE
 	show_to_ghosts = TRUE
 	///the owner of this kid
-	var/datum/antagonist/traitor/infiltrator/purchaser
+	var/datum/antagonist/traitor/fulp_infiltrator/purchaser
 
 /datum/antagonist/infiltrator_backup/on_gain()
 	if(!purchaser)
@@ -146,6 +146,21 @@
 	ears = /obj/item/radio/headset
 	back = /obj/item/storage/backpack
 	backpack_contents = list(
-		/obj/item/storage/box/survival/syndie = 1,
+		/obj/item/storage/box/survival/infil = 1,
 		/obj/item/knife/combat/survival = 1,
 	)
+/obj/item/storage/box/survival/infil
+	// This is just like /box/survival/syndie, but without the misleading paper about explosive implants.
+	name = "infiltration-ready survival box"
+	desc = "A box with the essentials for your infiltration. This one is labelled to contain an extended-capacity tank."
+	icon_state = "syndiebox"
+	illustration = "extendedtank"
+	mask_type = /obj/item/clothing/mask/gas/syndicate
+	internal_type = /obj/item/tank/internals/emergency_oxygen/engi
+	medipen_type = /obj/item/reagent_containers/hypospray/medipen/atropine
+
+/obj/item/storage/box/survival/infil/PopulateContents()
+	..()
+	new /obj/item/crowbar/red(src)
+	new /obj/item/screwdriver/red(src)
+	new /obj/item/weldingtool/mini(src)

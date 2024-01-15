@@ -5,7 +5,7 @@
 	icon_state = "revolver"
 	name = "\improper Bolt Action pistol"
 	desc = "The most powerful handgun in Olathe. It's best not to waste the only bullet. Examine again for more information."
-	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/c22
+	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/cylinder/c22
 	custom_premium_price = PAYCHECK_CREW * 2.5
 	///Cooldown between ability uses
 	var/used_ability = FALSE
@@ -96,7 +96,7 @@
 		for(var/mob/living/carbon/human/victims in viewers(7, user))
 			if(prob(15) && !(victims == user) && !(victims.stat) && !velvet_check(victims))
 				to_chat(victims, span_warning("Seeing [src] revealed in such a manner disgusts you!"))
-				victims.vomit(0, FALSE, FALSE, 3, TRUE, harm = FALSE)
+				victims.vomit(MOB_VOMIT_STUN|MOB_VOMIT_MESSAGE, lost_nutrition=0, distance=3)
 		playsound(src, 'fulp_modules/features/lisa/sounds/gunreveal.ogg', 20, FALSE, -5)
 
 	// No holster? Use mind games instead

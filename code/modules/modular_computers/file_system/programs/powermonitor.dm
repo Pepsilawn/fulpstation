@@ -7,7 +7,7 @@
 	program_icon_state = "power_monitor"
 	extended_desc = "This program connects to sensors around the station to provide information about electrical systems"
 	ui_header = "power_norm.gif"
-	transfer_access = list(ACCESS_ENGINEERING)
+	download_access = list(ACCESS_ENGINEERING)
 	usage_flags = PROGRAM_CONSOLE
 	requires_ntnet = FALSE
 	size = 8
@@ -31,7 +31,7 @@
 	history["demand"] = list()
 
 
-/datum/computer_file/program/power_monitor/process_tick(delta_time)
+/datum/computer_file/program/power_monitor/process_tick(seconds_per_tick)
 	if(!get_powernet())
 		search()
 	else

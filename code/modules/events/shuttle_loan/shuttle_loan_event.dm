@@ -7,7 +7,7 @@
 	category = EVENT_CATEGORY_BUREAUCRATIC
 	description = "If cargo accepts the offer, fills the shuttle with loot and/or enemies."
 	///The types of loan events already run (and to be excluded if the event triggers).
-	admin_setup = /datum/event_admin_setup/listed_options/shuttle_loan
+	admin_setup = list(/datum/event_admin_setup/listed_options/shuttle_loan)
 	var/list/run_situations = list()
 
 /datum/round_event_control/shuttle_loan/can_spawn_event(players_amt, allow_magic = FALSE)
@@ -43,7 +43,7 @@
 	SSshuttle.shuttle_loan = src
 
 /datum/round_event/shuttle_loan/proc/loan_shuttle()
-	priority_announce(situation.thanks_msg, "Cargo shuttle commandeered by CentCom.")
+	priority_announce(situation.thanks_msg, "Cargo shuttle commandeered by [command_name()].")
 
 	dispatched = TRUE
 	var/datum/bank_account/dep_account = SSeconomy.get_dep_account(ACCOUNT_CAR)

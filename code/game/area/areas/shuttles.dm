@@ -68,13 +68,10 @@
 
 /area/shuttle/hunter
 	name = "Hunter Shuttle"
-	static_lighting = FALSE
-	base_lighting_alpha = 255
 
 /area/shuttle/hunter/russian
 	name = "Russian Cargo Hauler"
 	requires_power = TRUE
-	static_lighting = TRUE
 
 ////////////////////////////White Ship////////////////////////////
 
@@ -121,8 +118,7 @@
 	if(SSshuttle.arrivals?.mode == SHUTTLE_CALL)
 		var/atom/movable/screen/splash/Spl = new(null, boarder.client, TRUE)
 		Spl.Fade(TRUE)
-//		boarder.playsound_local(get_turf(boarder), 'sound/voice/ApproachingTG.ogg', 25)
-		boarder.playsound_local(get_turf(boarder), 'fulp_modules/sounds/sound/arrival/ApproachingFulp.ogg', 25) // Fulp edit - Music
+		boarder.playsound_local(get_turf(boarder), 'fulp_modules/sounds/sound/arrival/ApproachingFulp.ogg', 25) // Fulp edit - Adding our music instead.
 	boarder.update_parallax_teleport()
 
 

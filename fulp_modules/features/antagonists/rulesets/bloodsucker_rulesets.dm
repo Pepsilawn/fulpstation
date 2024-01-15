@@ -16,7 +16,10 @@
 		// Curator
 		JOB_CURATOR,
 	)
-	restricted_roles = list(JOB_AI, JOB_CYBORG)
+	restricted_roles = list(
+		JOB_AI,
+		JOB_CYBORG,
+	)
 	required_candidates = 1
 	weight = 5
 	cost = 10
@@ -33,6 +36,7 @@
 			break
 		var/mob/selected_mobs = pick_n_take(candidates)
 		assigned += selected_mobs.mind
+		selected_mobs.mind.special_role = ROLE_BLOODSUCKER
 		selected_mobs.mind.restricted_roles = restricted_roles
 		GLOB.pre_setup_antags += selected_mobs.mind
 	return TRUE
@@ -44,7 +48,6 @@
 			assigned -= candidate_minds
 			continue
 		GLOB.pre_setup_antags -= candidate_minds
-		candidate_minds.special_role = ROLE_BLOODSUCKER
 	return TRUE
 
 //////////////////////////////////////////////
@@ -64,7 +67,11 @@
 		JOB_WARDEN, JOB_SECURITY_OFFICER, JOB_DETECTIVE,
 		JOB_CURATOR,
 	)
-	restricted_roles = list(JOB_AI, JOB_CYBORG, "Positronic Brain")
+	restricted_roles = list(
+		JOB_AI,
+		JOB_CYBORG,
+		ROLE_POSITRONIC_BRAIN,
+	)
 	required_candidates = 1
 	weight = 5
 	cost = 10
@@ -72,17 +79,12 @@
 	repeatable = FALSE
 
 /datum/dynamic_ruleset/midround/bloodsucker/trim_candidates()
-	. = ..()
-	for(var/mob/living/player in living_players)
-		// Your assigned role doesn't change when you are turned into a silicon.
-		if(issilicon(player))
-			living_players -= player
-		// Only people on-station are allowed
-		else if(!is_station_level(player.z) || !is_mining_level(player.z))
-			living_players -= player
-		// We don't allow people with roles already
-		else if(player.mind.special_role || player.mind.antag_datums.len)
-			living_players -= player
+	candidates = living_players
+	for(var/mob/living/player in candidates)
+		if(!is_station_level(player.z))
+			candidates.Remove(player)
+		else if(player.mind && (player.mind.special_role || length(player.mind.antag_datums) > 0))
+			candidates.Remove(player)
 
 /datum/dynamic_ruleset/midround/bloodsucker/execute()
 	var/mob/selected_mobs = pick(living_players)
@@ -115,7 +117,10 @@
 		JOB_WARDEN, JOB_SECURITY_OFFICER, JOB_DETECTIVE,
 		JOB_CURATOR,
 	)
-	restricted_roles = list(JOB_AI, JOB_CYBORG)
+	restricted_roles = list(
+		JOB_AI,
+		JOB_CYBORG,
+	)
 	required_candidates = 1
 	weight = 5
 	cost = 10

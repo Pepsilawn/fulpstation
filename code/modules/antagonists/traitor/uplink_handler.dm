@@ -44,12 +44,25 @@
 	var/assigned_role
 	/// The species this uplink handler is associated to.
 	var/assigned_species
-	/// Whether this is in debug mode or not. If in debug mode, allows all purchases
+	/// Whether this is in debug mode or not. If in debug mode, allows all purchases. Bypasses the shop lock.
 	var/debug_mode = FALSE
+	/// Whether the shop is locked or not. If set to true, nothing can be purchased.
+	var/shop_locked = FALSE
+	/// Callback which returns true if you can choose to replace your objectives with different ones
+	var/datum/callback/can_replace_objectives
+	/// Callback which performs that operation
+	var/datum/callback/replace_objectives
+	///Reference to a contractor hub that the infiltrator can run, if they purchase it.
+	var/datum/contractor_hub/contractor_hub
 
 /datum/uplink_handler/New()
 	. = ..()
 	maximum_potential_objectives = CONFIG_GET(number/maximum_potential_objectives)
+
+/datum/uplink_handler/Destroy(force, ...)
+	can_replace_objectives = null
+	replace_objectives = null
+	return ..()
 
 /// Called whenever an update occurs on this uplink handler. Used for UIs
 /datum/uplink_handler/proc/on_update()
@@ -62,6 +75,8 @@
 
 /// Checks for uplink flags as well as items restricted to roles and species
 /datum/uplink_handler/proc/check_if_restricted(datum/uplink_item/to_purchase)
+	if(!to_purchase.can_be_bought(src))
+		return FALSE
 	if((to_purchase in extra_purchasable))
 		return TRUE
 	if(!(to_purchase.purchasable_from & uplink_flag))
@@ -76,11 +91,19 @@
 	if(debug_mode)
 		return TRUE
 
+	if(shop_locked)
+		return FALSE
+
+	if(to_purchase.lock_other_purchases)
+		// Can't purchase an uplink item that locks other purchases if you've already purchased something
+		if(length(purchase_log.purchase_log) > 0)
+			return FALSE
+
 	if(!check_if_restricted(to_purchase))
 		return FALSE
 
 	var/current_stock = item_stock[to_purchase.stock_key]
-	var/stock = current_stock != null? current_stock : INFINITY
+	var/stock = current_stock != null ? current_stock : INFINITY
 	if(telecrystals < to_purchase.cost || stock <= 0 || not_enough_reputation(to_purchase))
 		return FALSE
 

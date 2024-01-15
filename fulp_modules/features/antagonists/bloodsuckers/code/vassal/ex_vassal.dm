@@ -20,7 +20,7 @@
 
 /datum/antagonist/ex_vassal/on_gain()
 	. = ..()
-	RegisterSignal(owner.current, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
+	RegisterSignal(owner.current, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine))
 
 /datum/antagonist/ex_vassal/on_removal()
 	if(revenge_vassal)
@@ -42,7 +42,7 @@
 	team_hud_ref = WEAKREF(target.add_alt_appearance(
 		/datum/atom_hud/alternate_appearance/basic/has_antagonist,
 		"antag_team_hud_[REF(src)]",
-		image(hud_icon, target, antag_hud_name),
+		hud_image_on(target),
 	))
 
 	var/datum/atom_hud/alternate_appearance/basic/has_antagonist/hud = team_hud_ref.resolve()
@@ -71,7 +71,7 @@
 
 	RegisterSignal(src, COMSIG_LIVING_LIFE, PROC_REF(on_life))
 
-/datum/antagonist/ex_vassal/proc/on_life(datum/source, delta_time, times_fired)
+/datum/antagonist/ex_vassal/proc/on_life(datum/source, seconds_per_tick, times_fired)
 	SIGNAL_HANDLER
 
 	if(COOLDOWN_TIMELEFT(src, blood_timer) <= BLOOD_TIMER_HALWAY + 2 && COOLDOWN_TIMELEFT(src, blood_timer) >= BLOOD_TIMER_HALWAY - 2) //just about halfway

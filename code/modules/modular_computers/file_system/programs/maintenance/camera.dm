@@ -5,7 +5,7 @@
 	category = PROGRAM_CATEGORY_MISC
 	extended_desc = "This program allows the taking of pictures."
 	size = 4
-	usage_flags = PROGRAM_TABLET
+	usage_flags = PROGRAM_PDA
 	tgui_id = "NtosCamera"
 	program_icon = "camera"
 
@@ -49,9 +49,6 @@
 	return data
 
 /datum/computer_file/program/maintenance/camera/ui_act(action, params, datum/tgui/ui)
-	. = ..()
-	if(.)
-		return
 	var/mob/living/user = usr
 	switch(action)
 		if("print_photo")

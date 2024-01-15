@@ -1,4 +1,4 @@
-/datum/antagonist/traitor/infiltrator/forge_traitor_objectives()
+/datum/antagonist/traitor/fulp_infiltrator/forge_traitor_objectives()
 	if(!employer)
 		return
 	switch(employer)
@@ -45,7 +45,7 @@
 
 			var/mob/living/carbon/human/infil = owner.current
 			var/obj/item/gorilla_serum/serum = infil.l_store
-			serum.set_objective(owner.has_antag_datum(/datum/antagonist/traitor/infiltrator))
+			serum.set_objective(owner.has_antag_datum(/datum/antagonist/traitor/fulp_infiltrator))
 
 		if(INFILTRATOR_FACTION_GORLEX_MARAUDERS)
 			for(var/i = 0, i < rand(3,5) , i++)
@@ -79,6 +79,10 @@
 			bomb.set_bombing_zone()
 			wormhole.explanation_text = "Summon a cyborg rift in [bomb.bombing_zone]!"
 			objectives += wormhole
+
+
+/datum/antagonist/traitor/fulp_infiltrator/forge_ending_objective()
+	return
 
 
 //Corporate Climber objectives
@@ -145,12 +149,14 @@
 		/mob/living/basic/pet/dog/corgi/puppy/ian,
 		/mob/living/basic/pet/dog/pug/mcgriff,
 		/mob/living/basic/carp/pet/lia,
-		/mob/living/basic/giant_spider/sgt_araneus,
-		/mob/living/simple_animal/pet/fox/renault,
- 		/mob/living/simple_animal/pet/cat/runtime,
+		/mob/living/basic/spider/giant/sgt_araneus,
+		/mob/living/basic/pet/fox/renault,
+		/mob/living/basic/sloth/paperwork,
+		/mob/living/basic/sloth/citrus,
+
+		// le sad simple animals (let's kill them)
+		/mob/living/simple_animal/pet/cat/runtime,
 		/mob/living/simple_animal/parrot/poly,
-		/mob/living/simple_animal/sloth/paperwork,
-		/mob/living/simple_animal/sloth/citrus,
  	)
 
 	remove_duplicate(possible_target_pets) //removes pets from the list that are already in the owner's objective

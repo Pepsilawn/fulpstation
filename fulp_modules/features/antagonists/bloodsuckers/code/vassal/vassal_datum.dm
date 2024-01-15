@@ -44,7 +44,7 @@
 	team_hud_ref = WEAKREF(target.add_alt_appearance(
 		/datum/atom_hud/alternate_appearance/basic/has_antagonist,
 		"antag_team_hud_[REF(src)]",
-		image(hud_icon, target, antag_hud_name),
+		hud_image_on(target),
 	))
 
 	var/datum/atom_hud/alternate_appearance/basic/has_antagonist/hud = team_hud_ref.resolve()
@@ -81,7 +81,7 @@
 		examine_text += vassal_examine
 
 /datum/antagonist/vassal/on_gain()
-	RegisterSignal(owner.current, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
+	RegisterSignal(owner.current, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine))
 	RegisterSignal(SSsunlight, COMSIG_SOL_WARNING_GIVEN, PROC_REF(give_warning))
 	/// Enslave them to their Master
 	if(!master || !istype(master, master))
@@ -94,9 +94,9 @@
 	owner.enslave_mind_to_creator(master.owner.current)
 	owner.current.log_message("has been vassalized by [master.owner.current]!", LOG_ATTACK, color="#960000")
 	/// Give Recuperate Power
-	BuyPower(new /datum/action/bloodsucker/recuperate)
+	BuyPower(new /datum/action/cooldown/bloodsucker/recuperate)
 	/// Give Objectives
-	var/datum/objective/bloodsucker/vassal/vassal_objective = new
+	var/datum/objective/vassal_objective/vassal_objective = new
 	vassal_objective.owner = owner
 	objectives += vassal_objective
 	/// Give Vampire Language & Hud
@@ -105,7 +105,7 @@
 	return ..()
 
 /datum/antagonist/vassal/on_removal()
-	UnregisterSignal(owner.current, COMSIG_PARENT_EXAMINE)
+	UnregisterSignal(owner.current, COMSIG_ATOM_EXAMINE)
 	UnregisterSignal(SSsunlight, COMSIG_SOL_WARNING_GIVEN)
 	//Free them from their Master
 	if(master && master.owner)
@@ -114,11 +114,11 @@
 		master.vassals -= src
 		owner.enslaved_to = null
 	//Remove ALL Traits, as long as its from BLOODSUCKER_TRAIT's source.
-	for(var/all_status_traits in owner.current.status_traits)
+	for(var/all_status_traits in owner.current._status_traits)
 		REMOVE_TRAIT(owner.current, all_status_traits, BLOODSUCKER_TRAIT)
 	//Remove Recuperate Power
 	while(powers.len)
-		var/datum/action/bloodsucker/power = pick(powers)
+		var/datum/action/cooldown/bloodsucker/power = pick(powers)
 		powers -= power
 		power.Remove(owner.current)
 	//Remove Language & Hud
@@ -127,7 +127,7 @@
 
 /datum/antagonist/vassal/on_body_transfer(mob/living/old_body, mob/living/new_body)
 	. = ..()
-	for(var/datum/action/bloodsucker/all_powers as anything in powers)
+	for(var/datum/action/cooldown/bloodsucker/all_powers as anything in powers)
 		all_powers.Remove(old_body)
 		all_powers.Grant(new_body)
 
@@ -158,3 +158,34 @@
 	if(master && master.owner)
 		to_chat(master.owner, span_cultbold("You feel the bond with your vassal [owner.current] has somehow been broken!"))
 
+/datum/antagonist/vassal/admin_add(datum/mind/new_owner, mob/admin)
+	var/list/datum/mind/possible_vampires = list()
+	for(var/datum/antagonist/bloodsucker/bloodsuckerdatums in GLOB.antagonists)
+		var/datum/mind/vamp = bloodsuckerdatums.owner
+		if(!vamp)
+			continue
+		if(!vamp.current)
+			continue
+		if(vamp.current.stat == DEAD)
+			continue
+		possible_vampires += vamp
+	if(!length(possible_vampires))
+		message_admins("[key_name_admin(usr)] tried vassalizing [key_name_admin(new_owner)], but there were no bloodsuckers!")
+		return
+	var/datum/mind/choice = input("Which bloodsucker should this vassal belong to?", "Bloodsucker") in possible_vampires
+	if(!choice)
+		return
+	log_admin("[key_name_admin(usr)] turned [key_name_admin(new_owner)] into a vassal of [key_name_admin(choice)]!")
+	var/datum/antagonist/bloodsucker/vampire = choice.has_antag_datum(/datum/antagonist/bloodsucker)
+	master = vampire
+	new_owner.add_antag_datum(src)
+	to_chat(choice, span_notice("Through divine intervention, you've gained a new vassal!"))
+
+/datum/objective/vassal_objective
+	name = "vassal objective"
+	explanation_text = "Help your Master with whatever is requested of you."
+	martyr_compatible = TRUE
+
+/datum/objective/vassal_objective/check_completion()
+	var/datum/antagonist/vassal/antag_datum = owner.has_antag_datum(/datum/antagonist/vassal)
+	return antag_datum.master?.owner?.current?.stat != DEAD

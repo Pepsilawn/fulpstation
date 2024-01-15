@@ -7,7 +7,7 @@
 	size = 2
 	tgui_id = "NtosSkillTracker"
 	program_icon = "medal"
-	usage_flags = PROGRAM_TABLET // Must be a handheld device to read read your chakras or whatever
+	usage_flags = PROGRAM_PDA // Must be a handheld device to read read your chakras or whatever
 
 /datum/computer_file/program/skill_tracker/ui_data(mob/user)
 	var/list/data = list()
@@ -51,9 +51,6 @@
 	return null
 
 /datum/computer_file/program/skill_tracker/ui_act(action, params, datum/tgui/ui)
-	. = ..()
-	if(.)
-		return
 	switch(action)
 		if("PRG_reward")
 			var/skill_type = find_skilltype(params["skill"])
