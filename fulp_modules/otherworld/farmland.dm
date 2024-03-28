@@ -16,6 +16,8 @@
 
 	var/obj/item/stack/fertilizer/current_fertilizer
 	var/water_modifier = 0
+	
+	var/mutable_appearance/plant_overlay
 
 /datum/component/farmland/Initialize()
 	if(!isturf(parent))
@@ -108,11 +110,10 @@
 
 /datum/component/farmland/proc/update_plant_overlay()
 	var/turf/open/our_parent = parent
-
-	our_parent.overlays = null
+	our_parent.cut_overlay(plant_overlay)
 	if (!myseed)
 		return
-	var/mutable_appearance/plant_overlay = mutable_appearance(myseed.growing_icon, layer = OBJ_LAYER + 0.01)
+	plant_overlay = mutable_appearance(myseed.growing_icon, layer = OBJ_LAYER + 0.01)
 	var/t_growthstate = clamp(round((age / myseed.maturation) * myseed.growthstages), 1, myseed.growthstages)
 	plant_overlay.icon_state = "[myseed.icon_grow][t_growthstate]"
 	plant_overlay.pixel_y = myseed.plant_icon_offset
