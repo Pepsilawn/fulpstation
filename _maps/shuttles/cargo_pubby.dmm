@@ -2,14 +2,9 @@
 "a" = (
 /turf/closed/wall/mineral/titanium,
 /area/shuttle/supply)
-"d" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/small/directional/north,
-/obj/machinery/conveyor{
-	dir = 4;
-	id = "ShuttleLoad"
-	},
-/turf/open/floor/iron,
+"b" = (
+/obj/effect/spawner/structure/window/reinforced/shuttle,
+/turf/open/floor/plating,
 /area/shuttle/supply)
 "e" = (
 /obj/effect/decal/cleanable/dirt,
@@ -17,20 +12,20 @@
 	dir = 4;
 	id = "ShuttleLoad"
 	},
-/turf/open/floor/iron,
+/turf/open/floor/iron/dark,
 /area/shuttle/supply)
 "f" = (
 /obj/machinery/conveyor{
 	dir = 4;
 	id = "ShuttleLoad"
 	},
-/turf/open/floor/iron,
+/turf/open/floor/iron/dark,
 /area/shuttle/supply)
 "g" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/button/door/directional/west{
-	id = "cargoload";
-	name = "Loading Doors"
+/obj/machinery/conveyor/inverted{
+	dir = 10;
+	id = "ShuttleLoad"
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/supply)
@@ -41,7 +36,7 @@
 "k" = (
 /obj/machinery/door/poddoor{
 	id = "cargoload";
-	name = "supply dock loading door"
+	name = "Supply Dock Loading Door"
 	},
 /obj/machinery/conveyor{
 	dir = 4;
@@ -55,31 +50,25 @@
 	dir = 4
 	},
 /area/shuttle/supply)
-"o" = (
-/obj/machinery/light/directional/west,
-/turf/open/floor/iron/chapel{
-	dir = 8
-	},
-/area/shuttle/supply)
 "q" = (
 /obj/machinery/light/directional/east,
 /turf/open/floor/iron/dark,
 /area/shuttle/supply)
-"r" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/closed/wall/mineral/titanium,
-/area/shuttle/supply)
 "s" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/oil,
+/obj/machinery/button/door/directional/west{
+	id = "cargoload";
+	name = "Loading Doors"
+	},
 /turf/open/floor/iron/chapel{
 	dir = 1
 	},
 /area/shuttle/supply)
 "t" = (
-/obj/machinery/button/door/directional/west{
-	id = "cargounload";
-	name = "Loading Doors"
+/obj/machinery/conveyor/inverted{
+	dir = 6;
+	id = "ShuttleUnload"
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/supply)
@@ -92,28 +81,24 @@
 	dir = 8;
 	id = "ShuttleUnload"
 	},
-/turf/open/floor/iron,
+/turf/open/floor/iron/dark,
 /area/shuttle/supply)
 "y" = (
 /obj/machinery/conveyor{
 	dir = 8;
 	id = "ShuttleUnload"
 	},
-/turf/open/floor/iron,
+/turf/open/floor/iron/dark,
 /area/shuttle/supply)
 "z" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/shuttle/engine/heater,
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/machinery/power/shuttle_engine/heater,
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plating/airless,
 /area/shuttle/supply)
 "A" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/shuttle/engine/heater,
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/machinery/power/shuttle_engine/heater,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plating/airless,
@@ -122,24 +107,47 @@
 /turf/template_noop,
 /area/template_noop)
 "C" = (
-/obj/structure/shuttle/engine/propulsion/burst/left,
+/obj/machinery/power/shuttle_engine/propulsion/burst/left,
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plating/airless,
 /area/shuttle/supply)
 "D" = (
-/obj/structure/shuttle/engine/propulsion,
+/obj/machinery/power/shuttle_engine/propulsion,
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plating/airless,
 /area/shuttle/supply)
 "E" = (
-/obj/structure/shuttle/engine/propulsion/burst/right,
+/obj/machinery/power/shuttle_engine/propulsion/burst/right,
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plating/airless,
+/area/shuttle/supply)
+"F" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/directional/east,
+/turf/open/floor/iron/dark,
+/area/shuttle/supply)
+"H" = (
+/obj/machinery/conveyor_switch/oneway{
+	id = "ShuttleLoad";
+	name = "Shuttle Load";
+	pixel_x = -5;
+	pixel_y = 16
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/supply)
+"I" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/conveyor{
+	dir = 5;
+	id = "ShuttleLoad"
+	},
+/obj/machinery/light/small/directional/west,
+/turf/open/floor/iron/dark,
 /area/shuttle/supply)
 "J" = (
 /obj/machinery/door/poddoor{
 	id = "cargounload";
-	name = "supply dock loading door"
+	name = "Supply Dock Loading Door"
 	},
 /obj/machinery/conveyor{
 	dir = 8;
@@ -152,23 +160,45 @@
 	dir = 1
 	},
 /area/shuttle/supply)
-"N" = (
-/obj/machinery/light/directional/west,
-/turf/open/floor/iron/chapel{
-	dir = 1
+"O" = (
+/obj/machinery/button/door/directional/west{
+	id = "cargounload";
+	name = "Loading Doors"
 	},
+/turf/open/floor/iron/chapel{
+	dir = 8
+	},
+/area/shuttle/supply)
+"Q" = (
+/obj/machinery/conveyor_switch/oneway{
+	dir = 8;
+	id = "ShuttleUnload";
+	name = "Shuttle Unload";
+	pixel_x = -5
+	},
+/turf/open/floor/iron/dark,
 /area/shuttle/supply)
 "R" = (
 /obj/docking_port/mobile/supply{
-	dir = 4
+	dir = 4;
+	port_direction = 8
 	},
 /obj/machinery/door/airlock/shuttle{
-	name = "Supply Shuttle Airlock";
-	req_access_txt = "31"
+	name = "Supply Shuttle Airlock"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron,
+/obj/effect/mapping_helpers/airlock/access/all/supply/general,
+/turf/open/floor/iron/dark/textured_large,
+/area/shuttle/supply)
+"T" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/conveyor{
+	dir = 9;
+	id = "ShuttleUnload"
+	},
+/obj/machinery/light/small/directional/west,
+/turf/open/floor/iron/dark,
 /area/shuttle/supply)
 "U" = (
 /turf/open/floor/iron/chapel,
@@ -181,49 +211,49 @@
 
 (1,1,1) = {"
 a
+a
 k
 a
 a
-r
 R
-r
 a
 a
 J
+a
 a
 B
 "}
 (2,1,1) = {"
 a
-e
+I
 g
 s
-o
-w
-N
 X
+w
+K
+O
 t
-x
+T
 a
 C
 "}
 (3,1,1) = {"
 a
 f
-w
+H
 m
 U
 w
 m
 U
-w
+Q
 x
 z
 D
 "}
 (4,1,1) = {"
 a
-d
+e
 j
 j
 w
@@ -252,13 +282,13 @@ D
 (6,1,1) = {"
 a
 f
-j
-m
-U
-q
+F
 m
 U
 w
+m
+U
+q
 y
 a
 E
@@ -267,11 +297,11 @@ E
 a
 a
 a
-a
-a
-a
-a
-a
+b
+b
+b
+b
+b
 a
 a
 a

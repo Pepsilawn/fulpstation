@@ -100,7 +100,7 @@
 				drip.vars[slot] = null
 
 		if("rename")
-			var/newname = tgui_input_text(owner, "What do you want to name this outfit?", OUTFIT_EDITOR_NAME)
+			var/newname = tgui_input_text(owner, "What do you want to name this outfit?", OUTFIT_EDITOR_NAME, max_length = MAX_NAME_LEN)
 			if(newname)
 				drip.name = newname
 		if("save")
@@ -179,6 +179,10 @@
 			choose_any_item(slot)
 		if("back")
 			options = typesof(/obj/item/storage/backpack)
+			for(var/obj/item/mod/control/pre_equipped/potential_mod as anything in subtypesof(/obj/item/mod/control/pre_equipped))
+				if(!(initial(potential_mod.slot_flags) == ITEM_SLOT_BACK))
+					continue
+				options |= potential_mod
 		if("r_hand")
 			choose_any_item(slot)
 

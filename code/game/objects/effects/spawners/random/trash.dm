@@ -6,25 +6,63 @@
 /obj/effect/spawner/random/trash/garbage
 	name = "garbage spawner"
 	loot = list(
-		/obj/effect/spawner/random/trash/food_packaging = 56,
-		/obj/item/trash/can = 8,
-		/obj/item/shard = 8,
-		/obj/effect/spawner/random/trash/botanical_waste = 8,
-		/obj/effect/spawner/random/trash/cigbutt = 8,
-		/obj/item/reagent_containers/syringe = 5,
-		/obj/item/light/tube/broken = 3,
-		/obj/item/food/deadmouse = 2,
-		/obj/item/light/tube/broken = 1,
+		/obj/effect/spawner/random/trash/food_packaging = 20,
+		/obj/item/trash/can = 15,
+		/obj/item/shard = 10,
+		/obj/effect/spawner/random/trash/cigbutt = 10,
+		/obj/effect/spawner/random/trash/bacteria = 5,
+		/obj/effect/spawner/random/trash/botanical_waste = 5,
+		/obj/item/reagent_containers/cup/glass/drinkingglass = 5,
+		/obj/item/broken_bottle = 5,
+		/obj/item/light/tube/broken = 5,
+		/obj/item/light/bulb/broken = 5,
+		/obj/item/assembly/mousetrap/armed = 5,
+		/obj/item/stack/cable_coil = 5,
+		/obj/item/food/deadmouse = 1,
 		/obj/item/trash/candle = 1,
+		/obj/item/reagent_containers/cup/rag = 1,
+		/obj/item/trash/flare = 1,
+		/obj/item/popsicle_stick = 1,
+		/obj/item/reagent_containers/syringe = 1,
+		/obj/item/reagent_containers/cup/glass/sillycup = 1,
+		/obj/item/shard/plasma = 1,
+	)
+
+/obj/effect/spawner/random/trash/deluxe_garbage
+	name = "fancy deluxe garbage spawner"
+	loot = list(
+		/obj/effect/spawner/random/trash/garbage = 25,
+		/obj/effect/spawner/random/trash/food_packaging = 10,
+		/obj/effect/spawner/random/entertainment/money = 10,
+		/obj/effect/spawner/random/trash/crushed_can = 10,
+		/obj/item/shard/plasma = 5,
+		/obj/item/reagent_containers/pill/maintenance = 5,
+		/obj/item/mail/junkmail = 5,
+		/obj/effect/spawner/random/food_or_drink/snack = 5,
+		/obj/effect/spawner/random/trash/soap = 3,
+		/obj/item/reagent_containers/cup/glass/sillycup = 3,
+		/obj/item/broken_bottle = 3,
+		/obj/item/reagent_containers/cup/soda_cans/grey_bull = 1,
+		/obj/effect/spawner/random/engineering/tool = 1,
+		/mob/living/basic/mouse = 1,
+		/obj/item/food/grown/cannabis = 1,
+		/obj/item/reagent_containers/cup/rag = 1,
+		/obj/effect/spawner/random/entertainment/drugs= 1,
+		/obj/item/modular_computer/pda = 1,
+		/obj/item/reagent_containers/syringe = 1,
+		/obj/effect/spawner/random/entertainment/cigar = 1,
+		/obj/item/stack/ore/gold = 1,
 	)
 
 /obj/effect/spawner/random/trash/cigbutt
 	name = "cigarette butt spawner"
 	loot = list(
-		/obj/item/cigbutt = 50,
-		/obj/item/cigbutt/roach = 30,
-		/obj/item/food/candy_trash = 10,
-		/obj/item/cigbutt/cigarbutt = 10,
+		/obj/item/cigbutt = 25,
+		/obj/item/cigbutt/roach = 25,
+		/obj/effect/decal/cleanable/ash = 25,
+		/obj/item/cigbutt/cigarbutt = 15,
+		/obj/item/food/candy_trash = 5,
+		/obj/item/food/candy_trash/nicotine = 5,
 	)
 
 /obj/effect/spawner/random/trash/food_packaging
@@ -38,13 +76,20 @@
 		/obj/item/trash/pistachios = 2,
 		/obj/item/trash/peanuts = 2,
 		/obj/item/trash/boritos = 1,
+		/obj/item/trash/boritos/green = 1,
+		/obj/item/trash/boritos/purple = 1,
+		/obj/item/trash/boritos/red = 1,
 		/obj/item/trash/can/food/beans = 1,
+		/obj/item/trash/can/food/peaches = 1,
+		/obj/item/trash/can/food/envirochow = 1,
 		/obj/item/trash/popcorn = 1,
 		/obj/item/trash/energybar = 1,
 		/obj/item/trash/can/food/peaches/maint = 1,
 		/obj/item/trash/semki = 1,
 		/obj/item/trash/cnds = 1,
 		/obj/item/trash/syndi_cakes = 1,
+		/obj/item/trash/shrimp_chips = 1,
+		/obj/item/trash/tray = 1,
 	)
 
 /obj/effect/spawner/random/trash/botanical_waste
@@ -62,6 +107,7 @@
 	loot = list(
 		/obj/structure/grille = 5,
 		/obj/effect/spawner/random/trash/food_packaging = 3,
+		/obj/effect/spawner/random/trash/bacteria = 1,
 		/obj/effect/spawner/random/trash/cigbutt = 1,
 		/obj/item/food/deadmouse = 1,
 	)
@@ -113,6 +159,13 @@
 		/obj/effect/spawner/random/trash/cigbutt = 2,
 	)
 
+/obj/effect/spawner/random/trash/grime/Initialize(mapload)
+	if(mapload)
+		var/turf/location = get_turf(loc)
+		if(location.initial_gas_mix != OPENTURF_DEFAULT_ATMOS && location.initial_gas_mix != OPENTURF_DIRTY_ATMOS)
+			loot -= /mob/living/basic/cockroach
+	return ..()
+
 /obj/effect/spawner/random/trash/moisture
 	name = "water hazard spawner"
 	icon_state = "caution"
@@ -121,12 +174,20 @@
 	loot = list( // This spawner will scatter water related items around a moist site.
 		/obj/item/clothing/head/cone = 7,
 		/obj/item/clothing/suit/caution = 3,
-		/mob/living/simple_animal/hostile/retaliate/frog = 2,
-		/obj/item/reagent_containers/glass/rag = 2,
-		/obj/item/reagent_containers/glass/bucket = 2,
+		/mob/living/basic/frog = 2,
+		/obj/item/reagent_containers/cup/rag = 2,
+		/obj/item/reagent_containers/cup/bucket = 2,
 		/obj/effect/decal/cleanable/blood/old = 2,
-		/obj/structure/mopbucket = 2,
+		/obj/structure/mop_bucket = 2,
+		/mob/living/basic/axolotl = 1,
 	)
+
+/obj/effect/spawner/random/trash/moisture/Initialize(mapload)
+	if(mapload)
+		var/turf/location = get_turf(loc)
+		if(location.initial_gas_mix != OPENTURF_DEFAULT_ATMOS && location.initial_gas_mix != OPENTURF_DIRTY_ATMOS)
+			loot -= list(/mob/living/basic/frog, /mob/living/basic/axolotl)
+	return ..()
 
 /obj/effect/spawner/random/trash/graffiti
 	name = "random graffiti spawner"
@@ -135,7 +196,7 @@
 	var/graffiti_icons = list(
 		"rune1", "rune2", "rune3", "rune4", "rune5", "rune6",
 		"amyjon", "face", "matt", "revolution", "engie", "guy",
-		"end", "dwarf", "uboa", "body", "cyka", "star", "poseur tag",
+		"end", "dwarf", "uboa", "body", "cyka", "star",
 		"prolizard", "antilizard", "danger", "firedanger", "electricdanger",
 		"biohazard", "radiation", "safe", "evac", "space", "med", "trade", "shop",
 		"food", "peace", "like", "skull", "nay", "heart", "credit",
@@ -145,17 +206,23 @@
 		"shotgun", "arrow", "line", "thinline", "shortline", "body", "chevron",
 		"footprint", "clawprint", "pawprint",
 	)
-	color = COLOR_WHITE //sets the color of the graffiti (used for mapedits)
-	var/random_color = TRUE //whether the graffiti will spawn with a random color (used for mapedits)
-	var/random_icon = TRUE // whether the graffiti will spawn with the same icon
+	// This sets the color of the graffiti (used for mapedits)
+	color = COLOR_WHITE
+	/// Whether the graffiti will spawn with a random color (used for mapedits)
+	var/random_color = TRUE
+	/// Whether the graffiti will spawn with this spawner's icon_state instead of a random one (used for mapedits)
+	var/random_icon = TRUE
 
-/obj/effect/spawner/random/trash/graffiti/proc/select_graffiti(graffiti_decal)
-	var/obj/effect/decal/cleanable/crayon/decal = graffiti_decal
-	color = random_color && "#[random_short_color()]" || color
-	icon_state = random_icon && pick(graffiti_icons) || icon_state
+/obj/effect/spawner/random/trash/graffiti/make_item(spawn_loc, type_path_to_make)
+	var/obj/effect/decal/cleanable/crayon/graffiti_decal = ..()
+	if(istype(graffiti_decal))
+		color = random_color && "#[random_short_color()]" || color
+		icon_state = random_icon && pick(graffiti_icons) || icon_state
 
-	decal.add_atom_colour(color, FIXED_COLOUR_PRIORITY)
-	decal.icon_state = icon_state
+		graffiti_decal.add_atom_colour(color, FIXED_COLOUR_PRIORITY)
+		graffiti_decal.icon_state = icon_state
+
+	return graffiti_decal
 
 /obj/effect/spawner/random/trash/mopbucket
 	name = "mop bucket spawner"
@@ -163,11 +230,11 @@
 	spawn_loot_count = 2
 	spawn_loot_double = FALSE
 	loot = list(
-		/obj/structure/mopbucket = 10,
+		/obj/structure/mop_bucket = 10,
 		/obj/item/mop = 5,
 		/obj/item/clothing/suit/caution = 3,
-		/obj/item/reagent_containers/glass/bucket = 1,
-		/obj/item/reagent_containers/glass/bucket/wooden = 1,
+		/obj/item/reagent_containers/cup/bucket = 1,
+		/obj/item/reagent_containers/cup/bucket/wooden = 1,
 	)
 
 /obj/effect/spawner/random/trash/caution_sign
@@ -181,12 +248,12 @@
 	)
 
 
-/obj/effect/spawner/random/structure/bucket
+/obj/effect/spawner/random/trash/bucket
 	name = "bucket spawner"
 	icon_state = "caution"
 	loot = list(
-		/obj/item/reagent_containers/glass/bucket,
-		/obj/item/reagent_containers/glass/bucket/wooden,
+		/obj/item/reagent_containers/cup/bucket,
+		/obj/item/reagent_containers/cup/bucket/wooden,
 	)
 
 /obj/effect/spawner/random/trash/soap
@@ -230,4 +297,45 @@
 		/obj/item/storage/box/lights/tubes,
 		/obj/item/storage/box/lights/mixed,
 		/obj/item/storage/box/lights/bulbs,
+	)
+
+/obj/effect/spawner/random/trash/bacteria
+	name = "moldy food spawner"
+	loot = list(
+		/obj/item/food/breadslice/moldy/bacteria,
+		/obj/item/food/pizzaslice/moldy/bacteria,
+	)
+
+/obj/effect/spawner/random/trash/crushed_can
+	name = "crushed can spawner"
+	icon_state = "crushed_can"
+	loot = list(/obj/item/trash/can)
+	/// Whether the can will spawn with this spawner's icon_state instead of a random one (used for mapedits)
+	var/soda_icons = list(
+		"energy_drink", "monkey_energy", "thirteen_loko", "space_mountain_wind", "dr_gibb", "starkist",
+		"sodawater", "tonic", "cola", "purple_can", "ice_tea_can",
+		"sol_dry", "wellcheers", "space beer", "ebisu", "shimauma", "moonlabor",
+		"space_up", "lemon_lime", "shamblers", "shamblerseldritch", "air", "laughter",
+		"volt_energy", "melon_soda",
+	)
+
+/obj/effect/spawner/random/trash/crushed_can/make_item(spawn_loc, type_path_to_make)
+	var/obj/item/trash/can/crushed_can = .. ()
+	if(istype(crushed_can))
+		crushed_can.icon_state = pick(soda_icons)
+	return crushed_can
+
+/obj/effect/spawner/random/trash/ghetto_containers
+	name = "ghetto container spawner"
+	loot = list(
+		/obj/item/reagent_containers/cup/bucket = 5,
+		/obj/item/reagent_containers/cup/glass/bottle = 5,
+		/obj/item/reagent_containers/cup/glass/bottle/small = 5,
+		/obj/item/reagent_containers/cup/glass/mug = 5,
+		/obj/item/reagent_containers/cup/glass/shaker = 5,
+		/obj/item/reagent_containers/cup/watering_can/wood = 5,
+		/obj/item/reagent_containers/cup/mortar = 2,
+		/obj/item/reagent_containers/cup/soup_pot = 2,
+		/obj/item/reagent_containers/cup/blastoff_ampoule = 1,
+		/obj/item/reagent_containers/cup/maunamug = 1,
 	)

@@ -3,46 +3,46 @@
  * We're only setting the most commonly used items to use it.
  */
 /obj/item/clothing/under/costume_2021
-	icon = 'fulp_modules/features/halloween/2021/2021_icons.dmi'
-	worn_icon = 'fulp_modules/features/halloween/2021/2021_icons_worn.dmi'
-	fitted = NO_FEMALE_UNIFORM
+	icon = 'fulp_modules/icons/halloween/2021_icons.dmi'
+	worn_icon = 'fulp_modules/icons/halloween/2021_icons_worn.dmi'
+	female_sprite_flags = NO_FEMALE_UNIFORM
 	can_adjust = FALSE
 
 /obj/item/clothing/suit/costume_2021
-	icon = 'fulp_modules/features/halloween/2021/2021_icons.dmi'
-	worn_icon = 'fulp_modules/features/halloween/2021/2021_icons_worn.dmi'
+	icon = 'fulp_modules/icons/halloween/2021_icons.dmi'
+	worn_icon = 'fulp_modules/icons/halloween/2021_icons_worn.dmi'
 
 /obj/item/clothing/suit/hooded/costume_2021
-	icon = 'fulp_modules/features/halloween/2021/2021_icons.dmi'
-	worn_icon = 'fulp_modules/features/halloween/2021/2021_icons_worn.dmi'
+	icon = 'fulp_modules/icons/halloween/2021_icons.dmi'
+	worn_icon = 'fulp_modules/icons/halloween/2021_icons_worn.dmi'
 
 /obj/item/clothing/head/costume_2021
-	icon = 'fulp_modules/features/halloween/2021/2021_icons.dmi'
-	worn_icon = 'fulp_modules/features/halloween/2021/2021_icons_worn.dmi'
+	icon = 'fulp_modules/icons/halloween/2021_icons.dmi'
+	worn_icon = 'fulp_modules/icons/halloween/2021_icons_worn.dmi'
 
 /obj/item/clothing/head/hooded/costume_2021
-	icon = 'fulp_modules/features/halloween/2021/2021_icons.dmi'
-	worn_icon = 'fulp_modules/features/halloween/2021/2021_icons_worn.dmi'
+	icon = 'fulp_modules/icons/halloween/2021_icons.dmi'
+	worn_icon = 'fulp_modules/icons/halloween/2021_icons_worn.dmi'
 
 /obj/item/clothing/neck/costume_2021
-	icon = 'fulp_modules/features/halloween/2021/2021_icons.dmi'
-	worn_icon = 'fulp_modules/features/halloween/2021/2021_icons_worn.dmi'
+	icon = 'fulp_modules/icons/halloween/2021_icons.dmi'
+	worn_icon = 'fulp_modules/icons/halloween/2021_icons_worn.dmi'
 
 /obj/item/clothing/shoes/costume_2021
-	icon = 'fulp_modules/features/halloween/2021/2021_icons.dmi'
-	worn_icon = 'fulp_modules/features/halloween/2021/2021_icons_worn.dmi'
+	icon = 'fulp_modules/icons/halloween/2021_icons.dmi'
+	worn_icon = 'fulp_modules/icons/halloween/2021_icons_worn.dmi'
 
 /obj/item/clothing/gloves/costume_2021
-	icon = 'fulp_modules/features/halloween/2021/2021_icons.dmi'
-	worn_icon = 'fulp_modules/features/halloween/2021/2021_icons_worn.dmi'
+	icon = 'fulp_modules/icons/halloween/2021_icons.dmi'
+	worn_icon = 'fulp_modules/icons/halloween/2021_icons_worn.dmi'
 
 /obj/item/clothing/mask/costume_2021
-	icon = 'fulp_modules/features/halloween/2021/2021_icons.dmi'
-	worn_icon = 'fulp_modules/features/halloween/2021/2021_icons_worn.dmi'
+	icon = 'fulp_modules/icons/halloween/2021_icons.dmi'
+	worn_icon = 'fulp_modules/icons/halloween/2021_icons_worn.dmi'
 
 /obj/item/clothing/glasses/costume_2021
-	icon = 'fulp_modules/features/halloween/2021/2021_icons.dmi'
-	worn_icon = 'fulp_modules/features/halloween/2021/2021_icons_worn.dmi'
+	icon = 'fulp_modules/icons/halloween/2021_icons.dmi'
+	worn_icon = 'fulp_modules/icons/halloween/2021_icons_worn.dmi'
 
 
 /**
@@ -126,7 +126,7 @@
 /obj/item/clothing/suit/hooded/costume_2021/chef_knight_body
 	name = "chef knight's suit"
 	desc = "A hulking suit of armour fit with gauntlets, a pair of boots and a pretty apron with a bow."
-	worn_icon = 'fulp_modules/features/halloween/2021/2021_icons_worn_64.dmi'
+	worn_icon = 'fulp_modules/icons/halloween/2021_icons_worn_64.dmi'
 	icon_state = "chef_knight_body"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS|FEET
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDENECK|HIDEFACIALHAIR
@@ -135,7 +135,7 @@
 /obj/item/clothing/head/hooded/costume_2021/chef_knight_hat
 	name = "chef knight's helmet"
 	desc = "A steel helmet with a tall chef's hat ontop."
-	worn_icon = 'fulp_modules/features/halloween/2021/2021_icons_worn_64.dmi'
+	worn_icon = 'fulp_modules/icons/halloween/2021_icons_worn_64.dmi'
 	icon_state = "chef_knight_head"
 	body_parts_covered = HEAD
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEFACIALHAIR|HIDEHAIR
@@ -163,11 +163,12 @@
 	desc = "A pair of dark blue sandals, fit with light socks. The leather is falling apart."
 	icon_state = "deadcells_feet"
 
-/obj/item/clothing/head/hardhat/costume_2021/deadcells_hat
+/obj/item/clothing/head/utility/hardhat/deadcells_hat
 	name = "homonculus mask"
 	desc = "May possess you if you aren't careful."
+	icon = 'fulp_modules/icons/halloween/2021_icons.dmi'
+	worn_icon = 'fulp_modules/icons/halloween/2021_icons_worn.dmi'
 	icon_state = "hardhat0_deadcells"
-	on = FALSE
 	hat_type = "deadcells"
 	flags_cover = HEADCOVERSEYES
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEFACIALHAIR|HIDESNOUT|HIDENECK
@@ -177,7 +178,7 @@
 	costume_contents = list(
 		/obj/item/clothing/under/costume_2021/deadcells_suit,
 		/obj/item/clothing/shoes/costume_2021/deadcells_shoes,
-		/obj/item/clothing/head/hardhat/costume_2021/deadcells_hat,
+		/obj/item/clothing/head/utility/hardhat/deadcells_hat,
 	)
 
 /**
@@ -242,19 +243,22 @@
 	if(!ishuman(user))
 		return
 	if(slot == ITEM_SLOT_GLOVES)
-		user.dna.species.punchdamagelow += 0.2
-		user.dna.species.punchdamagehigh += 0.1
+		var/obj/item/bodypart/user_active_arm = user.get_active_hand()
+		user_active_arm.unarmed_damage_low += 0.2
+		user_active_arm.unarmed_damage_high += 0.1
 
 /obj/item/clothing/gloves/costume_2021/infinity_gloves/dropped(mob/living/carbon/user)
 	. = ..()
 	if(!ishuman(user))
 		return
 	if(user.get_item_by_slot(ITEM_SLOT_GLOVES) == src)
-		user.dna.species.punchdamagelow -= 0.2
-		user.dna.species.punchdamagehigh -= 0.1
+		var/obj/item/bodypart/user_active_arm = user.get_active_hand()
+		user_active_arm.unarmed_damage_low -= 0.2
+		user_active_arm.unarmed_damage_high -= 0.1
 
 /obj/item/clothing/gloves/costume_2021/infinity_gloves/examine_more(mob/user)
-	. = list(span_notice("Wearing these will <i>very slightly</i> increase your punching damage."))
+	. = ..()
+	. += list(span_notice("Wearing these will <i>very slightly</i> increase your punching damage."))
 
 /obj/item/clothing/shoes/costume_2021/infinity_shoes
 	name = "infinity shoes"
@@ -279,17 +283,67 @@
 
 /obj/item/clothing/mask/costume_2021/breather_mask
 	name = "breather mask"
-	desc = "A tight green balaclava with breathing apparatus strapped to the front."
+	desc = "A tight green balaclava with breathing apparatus strapped to the front. Only has one eye socket."
 	icon_state = "breather_mask"
-	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE|HIDEFACIALHAIR|HIDEHAIR
+	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE|HIDEFACIALHAIR|HIDEHAIR|HIDESNOUT
 	clothing_flags = MASKINTERNALS
+
+/obj/item/clothing/mask/costume_2021/breather_mask/blue
+	desc = "A tight blue balaclava with breathing apparatus strapped to the front. Only has one eye socket."
+	icon_state = "breather_mask_blue"
+
+/obj/item/clothing/mask/costume_2021/breather_mask/equipped(mob/user, slot)
+	. = ..()
+	if(slot != ITEM_SLOT_MASK)
+		return
+	RegisterSignal(user, COMSIG_MOB_SAY, PROC_REF(handle_speech))
+	START_PROCESSING(SSobj, src)
+
+/obj/item/clothing/mask/costume_2021/breather_mask/dropped(mob/user)
+	. = ..()
+	if(user.get_item_by_slot(ITEM_SLOT_MASK) == src)
+		STOP_PROCESSING(SSobj, src)
+		UnregisterSignal(user, COMSIG_MOB_SAY)
+
+/obj/item/clothing/mask/costume_2021/breather_mask/process(seconds_per_tick)
+	var/mob/living/breather_boy = loc
+	if(prob(70))
+		return
+	breather_boy.emote("gasp")
+	if(prob(15))
+		breather_boy.emote("gasp")
+		breather_boy.emote("gasp")
+
+/obj/item/clothing/mask/costume_2021/breather_mask/proc/handle_speech(datum/source, list/speech_args)
+	var/message = speech_args[SPEECH_MESSAGE]
+	if(message)
+		var/list/message_split = splittext(message, " ")
+		var/list/new_message = list()
+		for(var/word in message_split)
+			if(word != message_split[1])
+				new_message += pick(
+					"..",
+					"...",
+					"*gasp*",
+					"... *gasp*..",
+					"*cough*",
+					"..eugh.",
+				)
+			new_message += word
+		message = jointext(new_message, " ")
+		playsound(source, 'fulp_modules/features/halloween/sounds/yoo.wav', 50, TRUE)
+	speech_args[SPEECH_MESSAGE] = message
+	if(ismob(source))
+		var/mob/source_mob = source
+		INVOKE_ASYNC(source_mob, TYPE_PROC_REF(/mob, emote), "gasp")
+		if(prob(1))
+			INVOKE_ASYNC(source_mob, TYPE_PROC_REF(/mob, emote), "collapse")
 
 /obj/item/storage/box/halloween/edition_21/breather_mask
 	theme_name = "2021's Breather Boys"
 	costume_contents = list(
 		/obj/item/clothing/mask/costume_2021/breather_mask,
-		/obj/item/clothing/mask/costume_2021/breather_mask,
-		/obj/item/clothing/mask/costume_2021/breather_mask,
+		/obj/item/clothing/mask/costume_2021/breather_mask/blue,
 	)
 
 
@@ -375,8 +429,8 @@
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEFACIALHAIR|HIDEHAIR
 
 /obj/item/clothing/gloves/tackler/propeller_gloves
-	icon = 'fulp_modules/features/halloween/2021/2021_icons.dmi'
-	worn_icon = 'fulp_modules/features/halloween/2021/2021_icons_worn.dmi'
+	icon = 'fulp_modules/icons/halloween/2021_icons.dmi'
+	worn_icon = 'fulp_modules/icons/halloween/2021_icons_worn.dmi'
 	name = "propeller gloves"
 	desc = "A tight yet comfortable pair of gloves, can be used for very, very bad tackles."
 	icon_state = "propeller_gloves"
@@ -429,7 +483,8 @@
 /obj/item/clothing/accessory/toolbox_medal
 	name = "Toolbox Tournamet silver medal"
 	desc = "A silver medal for the second place finalists of the Toolbox Tournament. This one is for the year 2561."
-	icon = 'fulp_modules/features/halloween/2021/2021_icons.dmi'
+	icon = 'fulp_modules/icons/halloween/2021_icons.dmi'
+	worn_icon = 'fulp_modules/icons/halloween/2021_icons_worn.dmi'
 	icon_state = "tt_medal"
 	resistance_flags = FIRE_PROOF
 
@@ -507,8 +562,8 @@
  */
 
 /obj/item/clothing/under/color/thirsty_suit
-	name = "thirsy flower jumpsuit"
-	desc = "A dark green jumpsuit that represents a thirty flower's stem."
+	name = "thirsty flower jumpsuit"
+	desc = "A dark green jumpsuit that represents a thirsty flower's stem."
 	greyscale_colors = "#128512"
 
 /obj/item/clothing/head/costume_2021/thirsty_hat
@@ -582,7 +637,7 @@
 	name = "Spin Master's coat"
 	desc = "GO! GO! ZEPPELI"
 	icon_state = "gyro_under"
-	fitted = FEMALE_UNIFORM_TOP
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 /obj/item/clothing/head/costume_2021/zeppeli_hat
 	name = "Spin Master's hat"
@@ -614,7 +669,7 @@
 	name = "thrift store dress"
 	desc = "Reminiscent of a schoolgirl uniform."
 	icon_state = "rakka_under"
-	fitted = FEMALE_UNIFORM_TOP
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 /obj/item/clothing/shoes/costume_2021/rakka_shoes
 	name = "wooden sandals"
@@ -625,7 +680,6 @@
 	name = "Old Home halo"
 	desc = "Not related to any religion."
 	icon_state = "rakka_hat"
-	dynamic_hair_suffix = ""
 
 /obj/item/clothing/suit/costume_2021/rakka_jacket
 	name = "thrift store jacket"

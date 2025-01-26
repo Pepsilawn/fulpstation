@@ -18,7 +18,7 @@ GLOBAL_PROTECT(poll_options)
 		var/datum/poll_question/poll = p
 		if((poll.admin_only && !client.holder) || poll.future_poll)
 			continue
-		output += "<tr bgcolor='#e2e2e2'><td><a href='?src=[rs];viewpoll=[REF(poll)]'><b>[poll.question]</b></a></td></tr>"
+		output += "<tr bgcolor='#e2e2e2'><td><a href='byond://?src=[rs];viewpoll=[REF(poll)]'><b>[poll.question]</b></a></td></tr>"
 	output += "</table>"
 	src << browse(jointext(output, ""),"window=playerpolllist;size=500x300")
 
@@ -325,14 +325,14 @@ GLOBAL_PROTECT(poll_options)
 	if(!poll || !href_list)
 		return
 	if(IsAdminAdvancedProcCall())
-		log_game("[key_name(usr)] attempted to rig the vote by voting as [key]")
-		message_admins("[key_name_admin(usr)] attempted to rig the vote by voting as [key]")
+		usr.log_message("attempted to rig the vote by voting as [key].", LOG_ADMIN)
+		message_admins("[key_name_admin(usr)] attempted to rig the vote by voting as [key].")
 		to_chat(usr, span_danger("You don't seem to be [key]."))
-		to_chat(src, span_danger("Something went horribly wrong processing your vote. Please contact an administrator, they should have gotten a message about this"))
+		to_chat(src, span_danger("Something went horribly wrong processing your vote. Please contact an administrator, they should have gotten a message about this."))
 		return
 	var/admin_rank
 	if(client.holder)
-		admin_rank = client.holder.rank.name
+		admin_rank = client.holder.rank_names()
 	else
 		if(poll.admin_only)
 			return

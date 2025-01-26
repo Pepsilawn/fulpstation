@@ -1,44 +1,56 @@
 ## List of all TG edits:
 
-- _maps/_basemap.dm > Adds our maps to the list of playable maps
+- code/datums/greyscale/_greyscale_config.dm > Adds our greyscales folder to the sanity check
 
-- code/__DEFINES/role_preferences.dm > Bloodsuckers/Monster Hunters as antagonist preference options
+- code/game/area/areas/shuttles.dm > Plays ApproachingFulp instead of ApproachingTG
 
-- code/__HELPERS/roundend.dm > Plays our roundend music instead
+- README.md > Replaces it with our own readme
 
-- code/game/area/areas/shuttle.dm > Plays ApproachingFulp instead of ApproachingTG
-- code/game/gamemodes/objective.dm > Added Bloodsucker objectives to the list of objectives Admins can make
-- code/game/objects/items/devices/scanners.dm > Falsifies health analyzers if you're on Masquerade
-
-- code/modules/mob/living/carbon/human/examine.dm > Changes examine text for Beefmen || Added examining Bloodsuckers/Vassals || adds ShowAsPaleExamine()
-- code/modules/mob/living/carbon/human/species.dm > Beefmen customization/preferences || Makes Digitigrade shoes fit Digi Lizards.
+- tgui/packages/tgui/routes.tsx > Add custom routing so fulp-specific interfaces can be found and loaded
 
 - tools/build/build.js > Adds our folder to be read for changes when compiling.
 
+- tgstation.dme > Adds our files to be included when compiling
+
+- several removed objectives from /tg/ have been readded; see 'fulp_modules\Z_edits\antag_edits\traitor'
+
+- tools/pull_request_hooks/autoChangelog.js > Changes changelog folder to fulp_modules/data/html/changelogs, to preserve them across TGUs.
+
+- .github\workflows\compile_changelogs.yml > Same as above.
+
 ## All Fulp files not contained within /fulp_modules/
 
-### Maps
+- code/__DEFINES/fulp_defines > Contains all of our defines
+- _maps/fulp_maps > Contains all of our non-station maps (Ruins, Deathmatch maps, etc.)
+- tgui/packages/fulpui-patches > Adds all Fulp TGUI files
 
-- _maps/map_files/Heliostation.dmm
+#### Maps & Shuttles
+- _maps/map_files/Heliostation/Heliostation.dmm
 - _maps/heliostation.json
-- _maps/map_files/SeleneStation.dmm
-- _maps/Selenestation.json
-- _maps/map_files/Solitairestation.dmm
-- _maps/Solitairestation.json
-- _maps/map_files/PubbyStation.dmm
+- _maps/shuttles/arrival_helio.dmm
+- _maps/shuttles/cargo_helio.dmm
+- _maps/shuttles/emergency_helio.dmm
+- _maps/shuttles/labour_helio.dmm
+- _maps/map_files/SeleneStation/SeleneStation.dmm
+- _maps/selenestation.json
+- _maps/shuttles/arrival_selene.dmm
+- _maps/shuttles/cargo_selene.dmm
+- _maps/shuttles/emergency_selene.dmm
+- _maps/shuttles/mining_selene.dmm
+- _maps/shuttles/labour_selene.dmm
+- _maps/map_files/PubbyStation/PubbyStation.dmm
 - _maps/pubbystation.json
+- _maps/map_files/TheiaStation/TheiaStation.dmm
+- _maps/theiastation.json
+- _maps/shuttles/arrival_fulp.dmm
+- _maps/shuttles/cargo_fulp.dmm
+- _maps/shuttles/emergency_theia.dmm
 
-### Defines
-
-- code\__fulp_defines\bloodsucker_defines.dm
-- code\__fulp_defines\fulp_defines.dm
-
-### TGUI
-- tgui/packages/tgui/interfaces/KindredArchives.js
+#### TGUI
 - tgui/packages/tgui/interfaces/PreferencesMenu/antagonists/antagonists/bloodsucker.ts
 - tgui/packages/tgui/interfaces/PreferencesMenu/antagonists/antagonists/bloodsuckerbreakout.ts
+- tgui/packages/tgui/interfaces/PreferencesMenu/antagonists/antagonists/ghostinfiltrator.ts
 - tgui/packages/tgui/interfaces/PreferencesMenu/antagonists/antagonists/monsterhunter.ts
 - tgui/packages/tgui/interfaces/PreferencesMenu/antagonists/antagonists/vampiricaccident.ts
-- tgui/packages/tgui/interfaces/PreferencesMenu/preferences/features/beefman_features.tsx
-- tgui/packages/tgui/interfaces/PreferencesMenu/preferences/features/character_preferences/antag_tips.tsx
-- tgui/packages/tgui/interfaces/PreferencesMenu/preferences/species/beefman.ts
+- tgui/packages/tgui/interfaces/PreferencesMenu/preferences/features/game_preferences/antag_tips.tsx
+- tgui/packages/tgui/interfaces/PreferencesMenu/preferences/features/fulp_species_features.tsx

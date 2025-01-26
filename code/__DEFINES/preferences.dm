@@ -3,15 +3,9 @@
 // !!! DO NOT ADD ANY NEW ONES HERE !!!
 // Use `/datum/preference/toggle` instead.
 #define SOUND_ADMINHELP (1<<0)
-#define SOUND_MIDI (1<<1)
-#define SOUND_AMBIENCE (1<<2)
-#define SOUND_LOBBY (1<<3)
 #define MEMBER_PUBLIC (1<<4)
-#define SOUND_INSTRUMENTS (1<<7)
-#define SOUND_SHIP_AMBIENCE (1<<8)
 #define SOUND_PRAYERS (1<<9)
 #define ANNOUNCE_LOGIN (1<<10)
-#define SOUND_ANNOUNCEMENTS (1<<11)
 #define DISABLE_DEATHRATTLE (1<<12)
 #define DISABLE_ARRIVALRATTLE (1<<13)
 #define COMBOHUD_LIGHTING (1<<14)
@@ -20,12 +14,11 @@
 #define DEADMIN_POSITION_HEAD (1<<17)
 #define DEADMIN_POSITION_SECURITY (1<<18)
 #define DEADMIN_POSITION_SILICON (1<<19)
-#define SOUND_ENDOFROUND (1<<20)
 #define ADMIN_IGNORE_CULT_GHOST (1<<21)
-#define SOUND_COMBATMODE (1<<22)
 #define SPLIT_ADMIN_TABS (1<<23)
 
-#define TOGGLES_DEFAULT (SOUND_ADMINHELP|SOUND_MIDI|SOUND_AMBIENCE|SOUND_LOBBY|SOUND_ENDOFROUND|MEMBER_PUBLIC|SOUND_INSTRUMENTS|SOUND_SHIP_AMBIENCE|SOUND_PRAYERS|SOUND_ANNOUNCEMENTS|SOUND_COMBATMODE)
+#define TOGGLES_DEADMIN_DEFAULT (DEADMIN_ANTAGONIST|DEADMIN_POSITION_HEAD|DEADMIN_POSITION_SECURITY|DEADMIN_POSITION_SILICON)
+#define TOGGLES_DEFAULT (SOUND_ADMINHELP|MEMBER_PUBLIC|SOUND_PRAYERS|TOGGLES_DEADMIN_DEFAULT)
 
 // Legacy chat toggles.
 // !!! DO NOT ADD ANY NEW ONES HERE !!!
@@ -39,11 +32,11 @@
 #define CHAT_GHOSTWHISPER (1<<7)
 #define CHAT_GHOSTPDA (1<<8)
 #define CHAT_GHOSTRADIO (1<<9)
-#define CHAT_BANKCARD  (1<<10)
+#define CHAT_BANKCARD (1<<10)
 #define CHAT_GHOSTLAWS (1<<11)
 #define CHAT_LOGIN_LOGOUT (1<<12)
 
-#define TOGGLES_DEFAULT_CHAT (CHAT_OOC|CHAT_DEAD|CHAT_GHOSTEARS|CHAT_GHOSTSIGHT|CHAT_PRAYER|CHAT_PULLR|CHAT_GHOSTWHISPER|CHAT_GHOSTPDA|CHAT_GHOSTRADIO|CHAT_BANKCARD|CHAT_GHOSTLAWS|CHAT_LOGIN_LOGOUT)
+#define TOGGLES_DEFAULT_CHAT (CHAT_OOC|CHAT_DEAD|CHAT_PRAYER|CHAT_PULLR|CHAT_GHOSTPDA|CHAT_GHOSTRADIO|CHAT_BANKCARD|CHAT_GHOSTLAWS|CHAT_LOGIN_LOGOUT)
 
 #define PARALLAX_INSANE "Insane"
 #define PARALLAX_HIGH "High"
@@ -81,19 +74,14 @@
 #define EXP_TYPE_GHOST "Ghost"
 #define EXP_TYPE_ADMIN "Admin"
 
-///Screentip settings
-#define SCREENTIP_OFF 0
-#define SCREENTIP_SMALL 1
-#define SCREENTIP_MEDIUM 1
-#define SCREENTIP_BIG 1
-
 //Flags in the players table in the db
-#define DB_FLAG_EXEMPT 1
+#define DB_FLAG_EXEMPT (1<<0)
 
 #define DEFAULT_CYBORG_NAME "Default Cyborg Name"
 
 
 //Job preferences levels
+#define JP_ANY 0
 #define JP_LOW 1
 #define JP_MEDIUM 2
 #define JP_HIGH 3
@@ -104,7 +92,7 @@
 #define RANDOM_ENABLED 3
 
 //recommened client FPS
-#define RECOMMENDED_FPS 40
+#define RECOMMENDED_FPS 100
 
 // randomise_appearance_prefs() and randomize_human_appearance() proc flags
 #define RANDOMIZE_SPECIES (1<<0)
@@ -144,3 +132,29 @@
 /// These are preferences that are supplementary for main features,
 /// such as hair color being affixed to hair.
 #define PREFERENCE_CATEGORY_SUPPLEMENTAL_FEATURES "supplemental_features"
+
+/// These preferences will not be rendered on the preferences page, and are practically invisible unless specifically rendered. Used for quirks, currently.
+#define PREFERENCE_CATEGORY_MANUALLY_RENDERED "manually_rendered_features"
+
+// Playtime is tracked in minutes
+/// The time needed to unlock hardcore random mode in preferences
+#define PLAYTIME_HARDCORE_RANDOM 120 // 2 hours
+/// The time needed to unlock the gamer cloak in preferences
+#define PLAYTIME_VETERAN 300000 // 5,000 hours
+
+/// The key used for sprite accessories that should never actually be applied to the player.
+#define SPRITE_ACCESSORY_NONE "None"
+
+// Loadout
+/// Used to make something not recolorable even if it's capable
+#define DONT_GREYSCALE -1
+// Loadout item info keys
+// Changing these will break existing loadouts
+/// Tracks GAGS color information
+#define INFO_GREYSCALE "greyscale"
+/// Used to set custom names
+#define INFO_NAMED "name"
+/// Used for specific alt-reskins, like the pride pin
+#define INFO_RESKIN "reskin"
+/// Handles which layer the item will be on, for accessories
+#define INFO_LAYER "layer"

@@ -27,19 +27,19 @@
 
 /datum/martial_art/velvetfu/proc/check_streak(mob/living/A, mob/living/D)
 	if(findtext(streak, FLYING_AXEKICK_COMBO))
-		streak = ""
+		reset_streak(A)
 		flyingAxekick(A,D)
 		return TRUE
 	if(findtext(streak, GOAT_HEADBUTT_COMBO))
-		streak = ""
+		reset_streak(A)
 		goatHeadbutt(A,D)
 		return TRUE
 	if(findtext(streak, FULL_THRUST_COMBO))
-		streak = ""
+		reset_streak(A)
 		fullThrust(A,D)
 		return TRUE
 	if(findtext(streak, MINOR_IRIS_COMBO))
-		streak = ""
+		reset_streak(A)
 		minorIris(A,D)
 	return FALSE
 
@@ -56,12 +56,12 @@
 /// Receding Stance
 /datum/action/receding_stance
 	name = "Receding Stance - Regenerates Stamina, takes time to do."
-	icon_icon = 'fulp_modules/features/lisa/icons/stances.dmi'
+	button_icon = 'fulp_modules/icons/lisa/stances.dmi'
 	button_icon_state = "receding_stance"
 	var/stancing = FALSE
 
 /datum/action/receding_stance/Trigger(trigger_flags)
-	if(owner.incapacitated())
+	if(owner.incapacitated)
 		to_chat(owner, span_warning("You can't do stances while incapacitated..."))
 		return
 	if(stancing)
@@ -88,11 +88,11 @@
 /// Twisted Stance
 /datum/action/twisted_stance
 	name = "Twisted Stance - Regenerates a lot of stamina, deals brute damage."
-	icon_icon = 'fulp_modules/features/lisa/icons/stances.dmi'
+	button_icon = 'fulp_modules/icons/lisa/stances.dmi'
 	button_icon_state = "twisted_stance"
 
 /datum/action/twisted_stance/Trigger(trigger_flags)
-	if(owner.incapacitated())
+	if(owner.incapacitated)
 		to_chat(owner, span_warning("You can't do stances while incapacitated..."))
 		return
 	var/mob/living/user = owner
@@ -111,7 +111,7 @@
 	owner.mind.martial_art.streak = TWISTED_STANCE
 	user.adjustStaminaLoss(-40)
 	user.apply_damage(18, BRUTE, BODY_ZONE_CHEST, wound_bonus = CANT_WOUND)
-	addtimer(CALLBACK(src, .proc/untwist), 15 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(untwist)), 15 SECONDS)
 
 /datum/action/twisted_stance/proc/untwist()
 	owner.visible_message(
@@ -144,10 +144,10 @@
 	A.adjustStaminaLoss(50)
 	if(prob(70))
 		var/obj/item/bodypart/limb = D.get_bodypart(ran_zone(A.zone_selected))
-		var/datum/wound/slash/moderate/crit_wound = new
+		var/datum/wound/slash/flesh/moderate/crit_wound = new
 		crit_wound.apply_wound(limb)
 	D.apply_damage(15, A.get_attack_type(), wound_bonus = CANT_WOUND)
-	playsound(get_turf(A), 'sound/weapons/slice.ogg', 50, TRUE, -1)
+	playsound(get_turf(A), 'sound/items/weapons/slice.ogg', 50, TRUE, -1)
 	return TRUE
 
 /// Goat Headbutt
@@ -164,7 +164,7 @@
 	A.adjustStaminaLoss(20)
 	if(prob(60) && !D.stat)
 		D.Paralyze(3 SECONDS)
-		D.Jitter(5 SECONDS)
+		D.set_timed_status_effect(5 SECONDS, /datum/status_effect/jitter, only_if_higher = TRUE)
 	/// Tell them in big text that they failed, since the effects aren't instantly visible like the others.
 	else
 		to_chat(A, span_userdanger("You fail to stun [D]!"))
@@ -186,7 +186,7 @@
 	if(prob(70) && !D.stat)
 		D.Knockdown(4 SECONDS)
 	D.apply_damage(10, A.get_attack_type(), BODY_ZONE_CHEST, wound_bonus = CANT_WOUND)
-	playsound(get_turf(A), 'sound/weapons/cqchit1.ogg', 50, TRUE, -1)
+	playsound(get_turf(A), 'sound/items/weapons/cqchit1.ogg', 50, TRUE, -1)
 	return TRUE
 
 /// Minor Iris
@@ -201,10 +201,10 @@
 	to_chat(A, span_danger("You swiftly and repeatedly slash at [D], truly a master attack!"))
 	A.adjustStaminaLoss(80)
 	var/obj/item/bodypart/limb = D.get_bodypart(ran_zone(A.zone_selected))
-	var/datum/wound/slash/moderate/crit_wound = new
+	var/datum/wound/slash/flesh/moderate/crit_wound = new
 	crit_wound.apply_wound(limb)
 	D.apply_damage(30, A.get_attack_type(), wound_bonus = CANT_WOUND)
-	playsound(get_turf(A), 'sound/weapons/bladeslice.ogg', 50, TRUE, -1)
+	playsound(get_turf(A), 'sound/items/weapons/bladeslice.ogg', 50, TRUE, -1)
 	return TRUE
 
 
@@ -219,7 +219,7 @@
 	if(HAS_TRAIT(A, TRAIT_PACIFISM))
 		return FALSE
 	var/datum/dna/dna = A.has_dna()
-	if(dna?.check_mutation(HULK))
+	if(dna?.check_mutation(/datum/mutation/human/hulk))
 		return FALSE
 	add_to_streak("D",D)
 	if(check_streak(A,D))
@@ -239,14 +239,14 @@
 		COMBAT_MESSAGE_RANGE, A,
 	)
 	to_chat(A, span_danger("You [picked_hit_type] [D]!"))
-	playsound(D, 'sound/weapons/punch1.ogg', 50, TRUE, -1)
+	playsound(D, 'sound/items/weapons/punch1.ogg', 50, TRUE, -1)
 	return TRUE
 
 /datum/martial_art/velvetfu/grab_act(mob/living/A, mob/living/D)
 	if(HAS_TRAIT(A, TRAIT_PACIFISM))
 		return FALSE
 	var/datum/dna/dna = A.has_dna()
-	if(dna?.check_mutation(HULK))
+	if(dna?.check_mutation(/datum/mutation/human/hulk))
 		return FALSE
 	add_to_streak("G",D)
 	if(check_streak(A,D))
@@ -262,12 +262,12 @@
 		COMBAT_MESSAGE_RANGE, A,
 	)
 	to_chat(A, span_danger("You [picked_hit_type] [D]!"))
-	playsound(D, 'sound/weapons/punch1.ogg', 50, TRUE, -1)
+	playsound(D, 'sound/items/weapons/punch1.ogg', 50, TRUE, -1)
 	return TRUE
 
 /datum/martial_art/velvetfu/harm_act(mob/living/A, mob/living/D)
 	var/datum/dna/dna = A.has_dna()
-	if(dna?.check_mutation(HULK))
+	if(dna?.check_mutation(/datum/mutation/human/hulk))
 		return FALSE
 	add_to_streak("H",D)
 	if(check_streak(A,D))
@@ -282,7 +282,7 @@
 		COMBAT_MESSAGE_RANGE, A,
 	)
 	to_chat(A, span_danger("You silken wrist [D]!"))
-	playsound(D, 'sound/weapons/punch1.ogg', 50, TRUE, -1)
+	playsound(D, 'sound/items/weapons/punch1.ogg', 50, TRUE, -1)
 	return TRUE
 
 /mob/living/proc/velvetfu_help()

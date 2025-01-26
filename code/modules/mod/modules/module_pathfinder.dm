@@ -3,16 +3,18 @@
 	name = "MOD pathfinder module"
 	desc = "This module, brought to you by Nakamura Engineering, has two components. \
 		The first component is a series of thrusters and a computerized location subroutine installed into the \
-		very control unit of the suit, allowing it flight at highway speeds, \
-		and to be able to locate the second part of the system; \
+		very control unit of the suit, allowing it flight at highway speeds using the suit's access locks \
+		to navigate through the station, and to be able to locate the second part of the system; \
 		a pathfinding implant installed into the base of the user's spine, \
-		broadcasting their location to the suit and allowing them to recall it to their back at any time. \
+		broadcasting their location to the suit and allowing them to recall it to their person at any time. \
 		The implant is stored in the module and needs to be injected in a human to function. \
 		Nakamura Engineering swears up and down there's airbrakes."
 	icon_state = "pathfinder"
-	complexity = 2
-	use_power_cost = DEFAULT_CHARGE_DRAIN * 10
+	complexity = 1
+	module_type = MODULE_USABLE
+	use_energy_cost = DEFAULT_CHARGE_DRAIN * 10
 	incompatible_modules = list(/obj/item/mod/module/pathfinder)
+	required_slots = list(ITEM_SLOT_BACK|ITEM_SLOT_BELT)
 	/// The pathfinding implant.
 	var/obj/item/implant/mod/implant
 
@@ -21,8 +23,18 @@
 	implant = new(src)
 
 /obj/item/mod/module/pathfinder/Destroy()
-	implant = null
+	QDEL_NULL(implant)
 	return ..()
+
+/obj/item/mod/module/pathfinder/Exited(atom/movable/gone, direction)
+	if(gone == implant)
+		implant = null
+		update_icon_state()
+	return ..()
+
+/obj/item/mod/module/pathfinder/update_icon_state()
+	. = ..()
+	icon_state = implant ? "pathfinder" : "pathfinder_empty"
 
 /obj/item/mod/module/pathfinder/examine(mob/user)
 	. = ..()
@@ -45,8 +57,21 @@
 	else
 		target.visible_message(span_notice("[user] implants [target]."), span_notice("[user] implants you with [implant]."))
 	playsound(src, 'sound/effects/spray.ogg', 30, TRUE, -6)
-	icon_state = "pathfinder_empty"
-	implant = null
+	module_type = MODULE_PASSIVE
+
+/obj/item/mod/module/pathfinder/on_use()
+	. = ..()
+	if (!ishuman(mod.wearer) || !implant)
+		return
+	if(!implant.implant(mod.wearer, mod.wearer))
+		balloon_alert(mod.wearer, "can't implant!")
+		return
+	balloon_alert(mod.wearer, "implanted")
+	playsound(src, 'sound/effects/spray.ogg', 30, TRUE, -6)
+	module_type = MODULE_PASSIVE
+	var/datum/action/item_action/mod/pinnable/module/existing_action = pinned_to[REF(mod.wearer)]
+	if(existing_action)
+		mod.remove_item_action(existing_action)
 
 /obj/item/mod/module/pathfinder/proc/attach(mob/living/user)
 	if(!ishuman(user))
@@ -60,7 +85,7 @@
 	human_user.update_action_buttons(TRUE)
 	balloon_alert(human_user, "[mod] attached")
 	playsound(mod, 'sound/machines/ping.ogg', 50, TRUE)
-	drain_power(use_power_cost)
+	drain_power(use_energy_cost)
 
 /obj/item/implant/mod
 	name = "MOD pathfinder implant"
@@ -86,38 +111,37 @@
 	return ..()
 
 /obj/item/implant/mod/get_data()
-	var/dat = {"<b>Implant Specifications:</b><BR>
-				<b>Name:</b> Nakamura Engineering Pathfinder Implant<BR>
-				<b>Implant Details:</b> Allows for the recall of a Modular Outerwear Device by the implant owner at any time.<BR>"}
-	return dat
+	return "<b>Implant Specifications:</b><BR> \
+		<b>Name:</b> Nakamura Engineering Pathfinder Implant<BR> \
+		<b>Implant Details:</b> Allows for the recall of a Modular Outerwear Device by the implant owner at any time.<BR>"
 
 /obj/item/implant/mod/proc/recall()
 	if(!module?.mod)
-		balloon_alert(imp_in, "no connected suit!")
+		balloon_alert(imp_in, "no connected unit!")
 		return FALSE
 	if(module.mod.open)
-		balloon_alert(imp_in, "suit is open!")
+		balloon_alert(imp_in, "cover open!")
 		return FALSE
 	if(module.mod.ai_controller)
-		balloon_alert(imp_in, "already in transit!")
+		balloon_alert(imp_in, "already moving!")
 		return FALSE
 	if(ismob(get_atom_on_turf(module.mod)))
 		balloon_alert(imp_in, "already on someone!")
 		return FALSE
 	if(module.z != z || get_dist(imp_in, module.mod) > MOD_AI_RANGE)
-		balloon_alert(imp_in, "too far away!")
+		balloon_alert(imp_in, "too far!")
 		return FALSE
 	var/datum/ai_controller/mod_ai = new /datum/ai_controller/mod(module.mod)
 	module.mod.ai_controller = mod_ai
-	mod_ai.current_movement_target = imp_in
-	mod_ai.blackboard[BB_MOD_TARGET] = imp_in
-	mod_ai.blackboard[BB_MOD_IMPLANT] = src
+	mod_ai.set_movement_target(type, imp_in)
+	mod_ai.set_blackboard_key(BB_MOD_TARGET, imp_in)
+	mod_ai.set_blackboard_key(BB_MOD_IMPLANT, src)
 	module.mod.interaction_flags_item &= ~INTERACT_ITEM_ATTACK_HAND_PICKUP
 	module.mod.AddElement(/datum/element/movetype_handler)
 	ADD_TRAIT(module.mod, TRAIT_MOVE_FLYING, MOD_TRAIT)
 	animate(module.mod, 0.2 SECONDS, pixel_x = base_pixel_y, pixel_y = base_pixel_y)
 	module.mod.add_overlay(jet_icon)
-	RegisterSignal(module.mod, COMSIG_MOVABLE_MOVED, .proc/on_move)
+	RegisterSignal(module.mod, COMSIG_MOVABLE_MOVED, PROC_REF(on_move))
 	balloon_alert(imp_in, "suit recalled")
 	return TRUE
 
@@ -145,22 +169,24 @@
 	name = "Recall MOD"
 	desc = "Recall a MODsuit anyplace, anytime."
 	check_flags = AB_CHECK_CONSCIOUS
-	background_icon_state = "bg_tech_blue"
-	icon_icon = 'icons/mob/actions/actions_mod.dmi'
+	background_icon_state = "bg_mod"
+	overlay_icon_state = "bg_mod_border"
+	button_icon = 'icons/mob/actions/actions_mod.dmi'
 	button_icon_state = "recall"
 	/// The cooldown for the recall.
 	COOLDOWN_DECLARE(recall_cooldown)
-	/// The implant we are linked to.
-	var/obj/item/implant/mod/implant
 
 /datum/action/item_action/mod_recall/New(Target)
 	..()
-	implant = Target
+	if(!istype(Target, /obj/item/implant/mod))
+		qdel(src)
+		return
 
 /datum/action/item_action/mod_recall/Trigger(trigger_flags)
 	. = ..()
 	if(!.)
 		return
+	var/obj/item/implant/mod/implant = target
 	if(!COOLDOWN_FINISHED(src, recall_cooldown))
 		implant.balloon_alert(implant.imp_in, "on cooldown!")
 		return

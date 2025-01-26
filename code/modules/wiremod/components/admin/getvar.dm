@@ -45,7 +45,7 @@
 			output_value.set_datatype(expected_output_type.value)
 
 /obj/item/circuit_component/get_variable/input_received(datum/port/input/port)
-	var/atom/object = entity?.value
+	var/datum/object = entity?.value
 	if(getvar_options.value == "Global")
 		object = GLOB
 
@@ -58,4 +58,5 @@
 		output_value.set_output(null)
 		return
 
+	log_admin_circuit("[parent.get_creator()] requested the variable '[var_name]' on [object].")
 	output_value.set_output(object.vars[var_name])

@@ -8,6 +8,9 @@
 	desc = "A component that listens for messages. Requires a shell."
 	category = "Entity"
 
+	/// The on/off port
+	var/datum/port/input/on
+
 	/// The message heard
 	var/datum/port/output/message_port
 	/// The language heard
@@ -20,6 +23,7 @@
 	var/datum/port/output/trigger_port
 
 /obj/item/circuit_component/hear/populate_ports()
+	on = add_input_port("On", PORT_TYPE_NUMBER, default = 1)
 	message_port = add_output_port("Message", PORT_TYPE_STRING)
 	language_port = add_output_port("Language", PORT_TYPE_STRING)
 	speaker_port = add_output_port("Speaker", PORT_TYPE_ATOM)
@@ -30,7 +34,7 @@
 /obj/item/circuit_component/hear/register_shell(atom/movable/shell)
 	if(parent.loc != shell)
 		shell.become_hearing_sensitive(CIRCUIT_HEAR_TRAIT)
-		RegisterSignal(shell, COMSIG_MOVABLE_HEAR, .proc/on_shell_hear)
+		RegisterSignal(shell, COMSIG_MOVABLE_HEAR, PROC_REF(on_shell_hear))
 
 /obj/item/circuit_component/hear/unregister_shell(atom/movable/shell)
 	REMOVE_TRAIT(shell, TRAIT_HEARING_SENSITIVE, CIRCUIT_HEAR_TRAIT)
@@ -39,9 +43,11 @@
 	SIGNAL_HANDLER
 	return Hear(arglist(arguments))
 
-/obj/item/circuit_component/hear/Hear(message, atom/movable/speaker, datum/language/message_language, raw_message, radio_freq, list/spans, list/message_mods)
+/obj/item/circuit_component/hear/Hear(message, atom/movable/speaker, datum/language/message_language, raw_message, radio_freq, list/spans, list/message_mods, message_range)
+	if(!on.value)
+		return FALSE
 	if(speaker == parent?.shell)
-		return
+		return FALSE
 
 	message_port.set_output(raw_message)
 	if(message_language)
@@ -49,3 +55,4 @@
 	speaker_port.set_output(speaker)
 	speaker_name.set_output(speaker.GetVoice())
 	trigger_port.set_output(COMPONENT_SIGNAL)
+	return TRUE

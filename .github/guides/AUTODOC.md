@@ -3,7 +3,7 @@
 
 [BYOND]: https://secure.byond.com/
 
-[DMDOC]: https://github.com/SpaceManiac/SpacemanDMM/tree/master/src/dmdoc
+[DMDOC]: https://github.com/SpaceManiac/SpacemanDMM/tree/master/crates/dmdoc
 
 [DMDOC] is a documentation generator for DreamMaker, the scripting language
 of the [BYOND] game engine. It produces simple static HTML files based on
@@ -40,7 +40,7 @@ public functions rely on to implement logic
 When documenting a proc, we give a short one line description (as this is shown
 next to the proc definition in the list of all procs for a type or global
 namespace), then a longer paragraph which will be shown when the user clicks on
-the proc to jump to it's definition
+the proc to jump to its definition
 ```
 /**
  * Short description of the proc
@@ -59,7 +59,7 @@ just going to be the typepath of the class, as dmdoc uses that by default
 
 Then we give a short oneline description of the class
 
-Finally we give a longer multi paragraph description of the class and it's details
+Finally we give a longer multi paragraph description of the class and its details
 ```
 /**
  * # Classname (Can be omitted if it's just going to be the typepath)
@@ -74,7 +74,7 @@ Finally we give a longer multi paragraph description of the class and it's detai
 ```
 
 ### Documenting a variable/define
-Give a short explanation of what the variable, in the context of the class, or define is. 
+Give a short explanation of what the variable, in the context of the class, or define is.
 ```
 /// Type path of item to go in suit slot
 var/suit = null
@@ -96,13 +96,13 @@ You can use certain special template variables in DM DOC comments and they will 
 ```
     [DEFINE_NAME] - Expands to a link to the define definition if documented
     [/mob] - Expands to a link to the docs for the /mob class
-    [/mob/proc/Dizzy] - Expands to a link that will take you to the /mob class and anchor you to the dizzy proc docs
+    [/mob/proc/adjust_drunk_effect] - Expands to a link that will take you to the /mob class and anchor you to the adjust_drunk_effect proc docs
     [/mob/var/stat] - Expands to a link that will take you to the /mob class and anchor you to the stat var docs
 ```
 
 You can customise the link name by using `[link name][link shorthand].`
 
-eg. `[see more about dizzy here] [/mob/proc/Dizzy]`
+eg. `[see more about adjust drunk effect here] [/mob/proc/adjust_drunk_effect]`
 
 This is very useful to quickly link to other parts of the autodoc code to expand
 upon a comment made, or reasoning about code

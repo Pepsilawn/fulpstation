@@ -3,7 +3,7 @@
  */
 /obj/item/clipboard
 	name = "clipboard"
-	icon = 'icons/obj/bureaucracy.dmi'
+	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "clipboard"
 	inhand_icon_state = "clipboard"
 	worn_icon_state = "clipboard"
@@ -13,6 +13,14 @@
 	throw_range = 7
 	slot_flags = ITEM_SLOT_BELT
 	resistance_flags = FLAMMABLE
+
+	unique_reskin = list(
+		"Brown" = "clipboard",
+		"Black" = "clipboard_black",
+		"White" = "clipboard_white",
+	)
+	unique_reskin_changes_inhand = TRUE
+
 	/// The stored pen
 	var/obj/item/pen/pen
 	/// Is the pen integrated?
@@ -71,13 +79,16 @@
 	pen = null
 	update_icon()
 
-/obj/item/clipboard/AltClick(mob/user)
-	..()
-	if(pen)
-		if(integrated_pen)
-			to_chat(user, span_warning("You can't seem to find a way to remove [src]'s [pen]."))
-		else
-			remove_pen(user)
+/obj/item/clipboard/click_alt(mob/user)
+	if(isnull(pen))
+		return CLICK_ACTION_BLOCKING
+
+	if(integrated_pen)
+		to_chat(user, span_warning("You can't seem to find a way to remove [src]'s [pen]."))
+		return CLICK_ACTION_BLOCKING
+
+	remove_pen(user)
+	return CLICK_ACTION_SUCCESS
 
 /obj/item/clipboard/update_overlays()
 	. = ..()
@@ -104,7 +115,7 @@
 			return
 		if(toppaper)
 			UnregisterSignal(toppaper, COMSIG_ATOM_UPDATED_ICON)
-		RegisterSignal(weapon, COMSIG_ATOM_UPDATED_ICON, .proc/on_top_paper_change)
+		RegisterSignal(weapon, COMSIG_ATOM_UPDATED_ICON, PROC_REF(on_top_paper_change))
 		toppaper_ref = WEAKREF(weapon)
 		to_chat(user, span_notice("You clip [weapon] onto [src]."))
 	else if(istype(weapon, /obj/item/pen) && !pen)
@@ -148,7 +159,7 @@
 
 	return data
 
-/obj/item/clipboard/ui_act(action, params)
+/obj/item/clipboard/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return

@@ -1,7 +1,7 @@
 ///Returns location. Returns null if no location was found.
-/proc/get_teleport_loc(turf/location,mob/target,distance = 1, density = FALSE, errorx = 0, errory = 0, eoffsetx = 0, eoffsety = 0)
+/proc/get_teleport_loc(turf/location, mob/target, distance = 1, density_check = FALSE, closed_turf_check = FALSE, errorx = 0, errory = 0, eoffsetx = 0, eoffsety = 0)
 /*
-Location where the teleport begins, target that will teleport, distance to go, density checking 0/1(yes/no).
+Location where the teleport begins, target that will teleport, distance to go, density checking 0/1(yes/no), closed turf checking.
 Random error in tile placement x, error in tile placement y, and block offset.
 Block offset tells the proc how to place the box. Behind teleport location, relative to starting location, forward, etc.
 Negative values for offset are accepted, think of it in relation to North, -x is west, -y is south. Error defaults to positive.
@@ -63,8 +63,10 @@ Turf and target are separate in case you want to teleport some distance from a t
 		return
 
 	if(!errorx && !errory)//If errorx or y were not specified.
-		if(density&&destination.density)
+		if(density_check && destination.density)
 			return
+		if(closed_turf_check && isclosedturf(destination))
+			return//If closed was specified.
 		if(destination.x>world.maxx || destination.x<1)
 			return
 		if(destination.y>world.maxy || destination.y<1)
@@ -74,7 +76,7 @@ Turf and target are separate in case you want to teleport some distance from a t
 	//destination_list = new()
 	/*This will draw a block around the target turf, given what the error is.
 	Specifying the values above will basically draw a different sort of block.
-	If the values are the same, it will be a square. If they are different, it will be a rectengle.
+	If the values are the same, it will be a square. If they are different, it will be a rectangle.
 	In either case, it will center based on offset. Offset is position from center.
 	Offset always calculates in relation to direction faced. In other words, depending on the direction of the teleport,
 	the offset should remain positioned in relation to destination.*/
@@ -82,9 +84,13 @@ Turf and target are separate in case you want to teleport some distance from a t
 	var/turf/center = locate((destination.x + xoffset), (destination.y + yoffset), location.z)//So now, find the new center.
 
 	//Now to find a box from center location and make that our destination.
-	for(var/turf/current_turf in block(locate(center.x + b1xerror, center.y + b1yerror, location.z), locate(center.x + b2xerror, center.y + b2yerror, location.z)))
-		if(density && current_turf.density)
+	var/width = (b2xerror - b1xerror) + 1
+	var/height = (b2yerror - b1yerror) + 1
+	for(var/turf/current_turf as anything in CORNER_BLOCK_OFFSET(center, width, height, b1xerror, b1yerror))
+		if(density_check && current_turf.density)
 			continue//If density was specified.
+		if(closed_turf_check && isclosedturf(current_turf))
+			continue//If closed was specified.
 		if(current_turf.x > world.maxx || current_turf.x < 1)
 			continue//Don't want them to teleport off the map.
 		if(current_turf.y > world.maxy || current_turf.y < 1)
@@ -98,17 +104,26 @@ Turf and target are separate in case you want to teleport some distance from a t
 	return destination
 
 /**
- * Returns the atom sitting on the turf.
- * For example, using this on a disk, which is in a bag, on a mob, will return the mob because it's on the turf.
- * Optional arg 'type' to stop once it reaches a specific type instead of a turf.
-**/
-/proc/get_atom_on_turf(atom/movable/atom_on_turf, stop_type)
-	var/atom/turf_to_check = atom_on_turf
-	while(turf_to_check?.loc && !isturf(turf_to_check.loc))
-		turf_to_check = turf_to_check.loc
-		if(stop_type && istype(turf_to_check, stop_type))
+ * Returns the top-most atom sitting on the turf.
+ * For example, using this on a disk, which is in a bag, on a mob,
+ * will return the mob because it's on the turf.
+ *
+ * Arguments
+ * * something_in_turf - a movable within the turf, somewhere.
+ * * stop_type - optional - stops looking if stop_type is found in the turf, returning that type (if found).
+ **/
+/proc/get_atom_on_turf(atom/movable/something_in_turf, stop_type)
+	if(!istype(something_in_turf))
+		CRASH("get_atom_on_turf was not passed an /atom/movable! Got [isnull(something_in_turf) ? "null":"type: [something_in_turf.type]"]")
+
+	var/atom/movable/topmost_thing = something_in_turf
+
+	while(topmost_thing?.loc && !isturf(topmost_thing.loc))
+		topmost_thing = topmost_thing.loc
+		if(stop_type && istype(topmost_thing, stop_type))
 			break
-	return turf_to_check
+
+	return topmost_thing
 
 ///Returns the turf located at the map edge in the specified direction relative to target_atom used for mass driver
 /proc/get_edge_target_turf(atom/target_atom, direction)
@@ -191,40 +206,57 @@ Turf and target are separate in case you want to teleport some distance from a t
  * NOTE: if your atom has non-standard bounds then this proc
  * will handle it, but:
  * if the bounds are even, then there are an even amount of "middle" turfs, the one to the EAST, NORTH, or BOTH is picked
- * this may seem bad, but you're atleast as close to the center of the atom as possible, better than byond's default loc being all the way off)
+ * this may seem bad, but you're at least as close to the center of the atom as possible, better than byond's default loc being all the way off)
  * if the bounds are odd, the true middle turf of the atom is returned
 **/
 /proc/get_turf_pixel(atom/checked_atom)
-	if(!istype(checked_atom))
-		return
-
-	//Find checked_atom's matrix so we can use it's X/Y pixel shifts
-	var/matrix/atom_matrix = matrix(checked_atom.transform)
-
-	var/pixel_x_offset = checked_atom.pixel_x + atom_matrix.get_x_shift()
-	var/pixel_y_offset = checked_atom.pixel_y + atom_matrix.get_y_shift()
-
-	//Irregular objects
-	var/icon/checked_atom_icon = icon(checked_atom.icon, checked_atom.icon_state)
-	var/checked_atom_icon_height = checked_atom_icon.Height()
-	var/checked_atom_icon_width = checked_atom_icon.Width()
-	if(checked_atom_icon_height != world.icon_size || checked_atom_icon_width != world.icon_size)
-		pixel_x_offset += ((checked_atom_icon_width / world.icon_size) - 1) * (world.icon_size * 0.5)
-		pixel_y_offset += ((checked_atom_icon_height / world.icon_size) - 1) * (world.icon_size * 0.5)
-
-	//DY and DX
-	var/rough_x = round(round(pixel_x_offset, world.icon_size) / world.icon_size)
-	var/rough_y = round(round(pixel_y_offset, world.icon_size) / world.icon_size)
-
-	//Find coordinates
-	var/turf/atom_turf = get_turf(checked_atom) //use checked_atom's turfs, as it's coords are the same as checked_atom's AND checked_atom's coords are lost if it is inside another atom
+	var/turf/atom_turf = get_turf(checked_atom) //use checked_atom's turfs, as its coords are the same as checked_atom's AND checked_atom's coords are lost if it is inside another atom
 	if(!atom_turf)
 		return null
-	var/final_x = atom_turf.x + rough_x
-	var/final_y = atom_turf.y + rough_y
+	if(checked_atom.flags_1 & IGNORE_TURF_PIXEL_OFFSET_1)
+		return atom_turf
+
+	var/list/offsets = get_visual_offset(checked_atom)
+	return pixel_offset_turf(atom_turf, offsets)
+
+/**
+ * Returns how visually "off" the atom is from its source turf as a list of x, y (in pixel steps)
+ * it takes into account:
+ * Pixel_x/y
+ * Matrix x/y
+ * Icon width/height
+**/
+/proc/get_visual_offset(atom/checked_atom)
+	//Find checked_atom's matrix so we can use its X/Y pixel shifts
+	var/matrix/atom_matrix = matrix(checked_atom.transform)
+
+	var/pixel_x_offset = checked_atom.pixel_x + checked_atom.pixel_w + atom_matrix.get_x_shift()
+	var/pixel_y_offset = checked_atom.pixel_y + checked_atom.pixel_z + atom_matrix.get_y_shift()
+
+	//Irregular objects
+	var/list/icon_dimensions = get_icon_dimensions(checked_atom.icon)
+	var/checked_atom_icon_height = icon_dimensions["height"]
+	var/checked_atom_icon_width = icon_dimensions["width"]
+	if(checked_atom_icon_height != ICON_SIZE_Y || checked_atom_icon_width != ICON_SIZE_X)
+		pixel_x_offset += ((checked_atom_icon_width / ICON_SIZE_X) - 1) * (ICON_SIZE_X * 0.5)
+		pixel_y_offset += ((checked_atom_icon_height / ICON_SIZE_Y) - 1) * (ICON_SIZE_Y * 0.5)
+
+	return list(pixel_x_offset, pixel_y_offset)
+
+/**
+ * Takes a turf, and a list of x and y pixel offsets and returns the turf that the offset position best lands in
+**/
+/proc/pixel_offset_turf(turf/offset_from, list/offsets)
+	//DY and DX
+	var/rough_x = round(round(offsets[1], ICON_SIZE_X) / ICON_SIZE_X)
+	var/rough_y = round(round(offsets[2], ICON_SIZE_Y) / ICON_SIZE_Y)
+
+	var/final_x = clamp(offset_from.x + rough_x, 1, world.maxx)
+	var/final_y = clamp(offset_from.y + rough_y, 1, world.maxy)
 
 	if(final_x || final_y)
-		return locate(final_x, final_y, atom_turf.z)
+		return locate(final_x, final_y, offset_from.z)
+	return offset_from
 
 ///Returns a turf based on text inputs, original turf and viewing client
 /proc/parse_caught_click_modifiers(list/modifiers, turf/origin, client/viewing_client)
@@ -243,8 +275,8 @@ Turf and target are separate in case you want to teleport some distance from a t
 	click_turf_y = origin.y + text2num(click_turf_y[1]) - round(actual_view[2] / 2) - 1
 
 	var/turf/click_turf = locate(clamp(click_turf_x, 1, world.maxx), clamp(click_turf_y, 1, world.maxy), click_turf_z)
-	LAZYSET(modifiers, ICON_X, "[(click_turf_px - click_turf.pixel_x) + ((click_turf_x - click_turf.x) * world.icon_size)]")
-	LAZYSET(modifiers, ICON_Y, "[(click_turf_py - click_turf.pixel_y) + ((click_turf_y - click_turf.y) * world.icon_size)]")
+	LAZYSET(modifiers, ICON_X, "[(click_turf_px - click_turf.pixel_x) + ((click_turf_x - click_turf.x) * ICON_SIZE_X)]")
+	LAZYSET(modifiers, ICON_Y, "[(click_turf_py - click_turf.pixel_y) + ((click_turf_y - click_turf.y) * ICON_SIZE_Y)]")
 	return click_turf
 
 ///Almost identical to the params_to_turf(), but unused (remove?)
@@ -345,34 +377,57 @@ Turf and target are separate in case you want to teleport some distance from a t
 			return target
 
 /**
- * Checks whether the target turf is in a valid state to accept a directional window
- * or other directional pseudo-dense object such as railings.
+ * Checks whether the target turf is in a valid state to accept a directional construction
+ * such as windows or railings.
  *
- * Returns FALSE if the target turf cannot accept a directional window or railing.
+ * Returns FALSE if the target turf cannot accept a directional construction.
  * Returns TRUE otherwise.
  *
  * Arguments:
- * * dest_turf - The destination turf to check for existing windows and railings
+ * * dest_turf - The destination turf to check for existing directional constructions
  * * test_dir - The prospective dir of some atom you'd like to put on this turf.
  * * is_fulltile - Whether the thing you're attempting to move to this turf takes up the entire tile or whether it supports multiple movable atoms on its tile.
  */
-/proc/valid_window_location(turf/dest_turf, test_dir, is_fulltile = FALSE)
+/proc/valid_build_direction(turf/dest_turf, test_dir, is_fulltile = FALSE)
 	if(!dest_turf)
 		return FALSE
 	for(var/obj/turf_content in dest_turf)
-		if(istype(turf_content, /obj/machinery/door/window))
-			if((turf_content.dir == test_dir) || is_fulltile)
+		if(turf_content.obj_flags & BLOCKS_CONSTRUCTION_DIR)
+			if(is_fulltile)  // for making it so fulltile things can't be built over directional things--a special case
 				return FALSE
-		if(istype(turf_content, /obj/structure/windoor_assembly))
-			var/obj/structure/windoor_assembly/windoor_assembly = turf_content
-			if(windoor_assembly.dir == test_dir || is_fulltile)
-				return FALSE
-		if(istype(turf_content, /obj/structure/window))
-			var/obj/structure/window/window_structure = turf_content
-			if(window_structure.dir == test_dir || window_structure.fulltile || is_fulltile)
-				return FALSE
-		if(istype(turf_content, /obj/structure/railing))
-			var/obj/structure/railing/rail = turf_content
-			if(rail.dir == test_dir || is_fulltile)
+			if(turf_content.dir == test_dir)
 				return FALSE
 	return TRUE
+
+/**
+ * Checks whether or not a particular typepath or subtype of it is present on a turf
+ *
+ * Returns the first instance located if an instance of the desired type or a subtype of it is found
+ * Returns null if the type is not found, or if no turf is supplied
+ *
+ * Arguments:
+ * * location - The turf to be checked for the desired type
+ * * type_to_find - The typepath whose presence you are checking for
+ */
+/proc/is_type_on_turf(turf/location, type_to_find)
+	if(!location)
+		return
+	var/found_type = locate(type_to_find) in location
+	return found_type
+
+/**
+ * get_blueprint_data
+ * Gets a list of turfs around a central turf and gets the blueprint data in a list
+ * Args:
+ * - central_turf: The center turf we're getting data from.
+ * - viewsize: The viewsize we're getting the turfs around central_turf of.
+ */
+/proc/get_blueprint_data(turf/central_turf, viewsize)
+	var/list/blueprint_data_returned = list()
+	var/list/dimensions = getviewsize(viewsize)
+	var/horizontal_radius = dimensions[1] / 2
+	var/vertical_radius = dimensions[2] / 2
+	for(var/turf/nearby_turf as anything in RECT_TURFS(horizontal_radius, vertical_radius, central_turf))
+		if(nearby_turf.blueprint_data)
+			blueprint_data_returned += nearby_turf.blueprint_data
+	return blueprint_data_returned
